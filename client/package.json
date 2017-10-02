@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "jss": "latest",
-    "jss-preset-default": "latest",
+    "jss": "^9.0.0",
+    "jss-preset-default": "^4.0.0",
     "material-ui": "next",
-    "prop-types": "latest",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-helmet": "4",
-    "react-jss": "latest",
-    "react-router-dom": "next",
-    "react-scripts": "1.0.14",
+    "react-helmet": "^5.2.0",
+    "react-jss": "^7.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.0.14",
     "react-snapshot": "^1.2.0",
-    "recompose": "latest"
+    "recompose": "^0.25.1"
   },
   "scripts": {
     "start": "react-scripts start",
