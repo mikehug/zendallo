@@ -18,6 +18,8 @@ const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./app.hooks');
 
+const httpsRedirect = require('express-https-redirect');
+
 const app = feathers();
 
 // Load app configuration
@@ -31,7 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', feathers.static(app.get('public')));
-
+//Redirect all traffic to SSL except at localhost 
+app.use('/', httpsRedirect());
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
