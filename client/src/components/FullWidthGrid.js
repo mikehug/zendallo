@@ -9,10 +9,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  core: {
-    padding: 20,
-    maxWidth: 1600,
-  },
   paper: {
     padding: 16,
     textAlign: 'center',
@@ -24,34 +20,18 @@ function FullWidthGrid(props) {
   const { classes } = props;
 
   return (
-    <Grid container align="center" direction="column" >
-      <Grid item xs={12}>
-        <Grid container spacing={24} className={classes.core} >
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>xs=12</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
 
+    <Grid container spacing={0} >
+      <Grid item xs={1} sm={1} md={2} />
+
+      <Grid item xs={10} sm={10} md={8} >
+        <Paper className={classes.paper}>
+          {props.children}
+        </Paper>
+      </Grid>
+
+      <Grid item xs={1} sm={1} md={2} />
+    </Grid>
   );
 }
 

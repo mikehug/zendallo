@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:3030",  
+  "proxy": "http://localhost:3030",
   "private": true,
   "dependencies": {
     "jss": "^9.0.0",
@@ -16,7 +16,9 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.0.14",
     "react-snapshot": "^1.2.0",
-    "recompose": "^0.26.0"
+    "recompose": "^0.26.0",
+    "typeface-roboto": "0.0.35",
+    "typeface-share-tech": "0.0.35"
   },
   "scripts": {
     "start": "react-scripts start",

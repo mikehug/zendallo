@@ -10,11 +10,15 @@ import logo from '../logo.svg';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 0,
+    marginTop: theme.spacing.unit * 10,
     width: '100%',
   },
   logo: {
     paddingRight: 10,
+  },
+  font: {
+    fontFamily: 'Share Tech',
+    textAlign: 'center',
   },
 });
 
@@ -22,12 +26,12 @@ function NavBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="fixed" color="default">
         <Toolbar>
           <img src={logo} alt="logo" className={classes.logo} />
 
-          <Typography type="headline" color="inherit">
-            INITIATIO
+          <Typography type="headline" color="secondary" className={classes.font}>
+            INITIAT.IO
           </Typography>
         </Toolbar>
       </AppBar>

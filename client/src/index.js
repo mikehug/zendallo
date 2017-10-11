@@ -4,6 +4,9 @@ import { render } from 'react-snapshot'; // eslint-disable-line import/no-extran
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+require('typeface-roboto');
+require('typeface-share-tech');
+
 const target = document.querySelector('#root');
 
 render(<App />, target);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Grid from 'material-ui/Grid';
 import withRoot from './components/withRoot';
 import NavBar from './components/NavBar';
 import FullWidthGrid from './components/FullWidthGrid';
@@ -9,7 +10,9 @@ class App extends Component { // eslint-disable-line
     return (
       <div>
         <NavBar />
-        <FullWidthGrid />
+        <FullWidthGrid >
+          {'Hello World'}
+        </FullWidthGrid>
       </div>
     );
   }
