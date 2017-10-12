@@ -10,8 +10,14 @@ import logo from '../logo.svg';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 10,
     width: '100%',
+    marginTop: theme.spacing.unit * 8,
+    '@media (min-width:0px) and (orientation: landscape)': {
+      marginTop: theme.spacing.unit * 7,
+    },
+    '@media (min-width:600px)': {
+      marginTop: theme.spacing.unit * 9,
+    },
   },
   logo: {
     paddingRight: 10,

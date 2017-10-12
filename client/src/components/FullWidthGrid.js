@@ -5,14 +5,13 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+  content: {
+    marginLeft: 5,
+    marginRight: 5,
   },
 });
 
@@ -21,16 +20,14 @@ function FullWidthGrid(props) {
 
   return (
 
-    <Grid container spacing={0} >
-      <Grid item xs={1} sm={1} md={2} />
+    <Grid container spacing={0} className={classes.content} >
+      <Grid item xs={0} md={1} />
 
-      <Grid item xs={10} sm={10} md={8} >
-        <Paper className={classes.paper}>
-          {props.children}
-        </Paper>
+      <Grid item xs={12} md={10} >
+        {props.children}
       </Grid>
 
-      <Grid item xs={1} sm={1} md={2} />
+      <Grid item xs={0} md={1} />
     </Grid>
   );
 }

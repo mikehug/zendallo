@@ -20,6 +20,10 @@ const appHooks = require('./app.hooks');
 
 const httpsRedirect = require('express-https-redirect');
 
+const authentication = require('./authentication');
+
+const mongodb = require('./mongodb');
+
 const app = feathers();
 
 // Load app configuration
@@ -37,11 +41,13 @@ app.use('/', feathers.static(app.get('public')));
 app.use('/', httpsRedirect());
 // Set up Plugins and providers
 app.configure(hooks());
+app.configure(mongodb);
 app.configure(rest());
 app.configure(socketio());
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
+app.configure(authentication);
 // Set up our services (see `services/index.js`)
 app.configure(services);
 // Configure a middleware for 404s and the error handler
