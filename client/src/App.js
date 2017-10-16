@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import Grid from 'material-ui/Grid';
-import withRoot from './styles/withRoot';
-import NavBar from './components/NavBar';
-import FullWidthGrid from './components/FullWidthGrid';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect,
-  withRouter
-} from 'react-router-dom';        
-// In your render...
+} from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import AppGrid from './components/AppGrid';
+import Team from './components/Team';
 
+// withRoot HOC expects component
 class App extends Component { // eslint-disable-line 
   render() {
     return (
-      <div>
-        <NavBar />
-        <FullWidthGrid >
-          {'Hello World'}
-        </FullWidthGrid>
-      </div>
+      <Router>
+        <div>
+          <NavBar />
+          <AppGrid>
+            <Route path="/" exact component={Home} />
+            <Route path="/SignIn" component={SignIn} />
+            <Route path="/SignUp" component={SignUp} />
+            <Route path="/team" componet={Team} />
+          </AppGrid>
+        </div>
+      </Router>
     );
   }
 }
 
-export default withRoot(App);
+export default App;

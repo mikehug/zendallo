@@ -30,18 +30,18 @@
     // "import/default": "off",
     // "import/no-named-as-default-member": "off"
   },
+  "globals": {
+    "window": true,
+    "_": true,
+    "document": true,
+    "localStorage": true,
+    "history": true
+  },
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
-  },
-  "globals": {
-    "_": true,
-    "window": true,
-    "document": true,
-    "localStorage": true,
-    "history": true
   }
 }

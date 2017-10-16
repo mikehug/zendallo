@@ -4,22 +4,26 @@
   "proxy": "http://localhost:3030",
   "private": true,
   "dependencies": {
-    "jss": "^9.0.0",
-    "jss-preset-default": "^4.0.0",
+    "feathers": "^2.2.2",
+    "feathers-authentication-client": "^0.3.3",
+    "feathers-authentication-management": "^1.0.0",
+    "feathers-errors": "^2.9.2",
+    "feathers-hooks": "^2.1.0",
+    "feathers-socketio": "^2.0.0",
+    "formik": "^0.9.4",
     "material-ui": "^1.0.0-beta.16",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
-    "react-jss": "^7.2.0",
-    "react-motion": "^0.5.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.0.14",
     "react-snapshot": "^1.2.0",
     "recompose": "^0.26.0",
-    "typeface-roboto": "0.0.35",
-    "typeface-share-tech": "0.0.35"
+    "socket.io-client": "^2.0.3",
+    "typeface-roboto": "^0.0.41",
+    "typeface-share-tech": "^0.0.40"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,9 +32,10 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^15.1.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.0.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0"
   }
 }

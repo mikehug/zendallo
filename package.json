@@ -24,7 +24,7 @@
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint server/. test/. --config .eslintrc.json",
-    "dev": "concurrently \"node server/\" \"cd client && npm start\"",
+    "dev": "concurrently \"nodemon server/\" \"cd client && npm start\"",
     "start": "node server/",
     "mocha": "mocha test/ --recursive"
   },
@@ -38,6 +38,7 @@
     "feathers-authentication-hooks": "^0.1.4",
     "feathers-authentication-jwt": "^0.3.2",
     "feathers-authentication-local": "^0.4.4",
+    "feathers-authentication-management": "^1.0.0",
     "feathers-authentication-oauth2": "^0.3.1",
     "feathers-configuration": "^0.4.1",
     "feathers-errors": "^2.9.2",
@@ -52,6 +53,7 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^1.0.0",
     "serve-favicon": "^2.4.5",
+    "uws": "^8.14.1",
     "winston": "^2.4.0"
   },
   "devDependencies": {

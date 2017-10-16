@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
 const styles = () => ({
@@ -15,25 +14,25 @@ const styles = () => ({
   },
 });
 
-function FullWidthGrid(props) {
+function AppGrid(props) {
   const { classes } = props;
 
   return (
 
     <Grid container spacing={0} className={classes.content} >
-      <Grid item xs={0} md={1} />
+      <Grid item md={1} />
 
       <Grid item xs={12} md={10} >
         {props.children}
       </Grid>
 
-      <Grid item xs={0} md={1} />
+      <Grid item md={1} />
     </Grid>
   );
 }
 
-FullWidthGrid.propTypes = {
+AppGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FullWidthGrid);
+export default withStyles(styles)(AppGrid);

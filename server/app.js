@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const feathers = require('feathers');
 const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
+const { iff } = require('feathers-hooks-common');
 const rest = require('feathers-rest');
 const socketio = require('feathers-socketio');
 
@@ -21,6 +22,9 @@ const appHooks = require('./app.hooks');
 const httpsRedirect = require('express-https-redirect');
 
 const authentication = require('./authentication');
+const authManagement = require('feathers-authentication-management');
+const auth = require('feathers-authentication');
+
 
 const mongodb = require('./mongodb');
 
@@ -43,11 +47,20 @@ app.use('/', httpsRedirect());
 app.configure(hooks());
 app.configure(mongodb);
 app.configure(rest());
-app.configure(socketio());
+app.configure(socketio({
+  wsEngine: 'uws'
+}));
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
 app.configure(authentication);
+app.configure(authManagement());
+const isAction = (...args) => hook => args.includes(hook.data.action);
+app.service('authManagement').before({
+  create: [
+    iff(isAction('passwordChange', 'identityChange'), auth.hooks.authenticate('jwt')),
+  ],
+});
 // Set up our services (see `services/index.js`)
 app.configure(services);
 // Configure a middleware for 404s and the error handler
