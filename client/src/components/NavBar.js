@@ -28,7 +28,7 @@ const styles = theme => ({
   },
 });
 
-function NavBar(props) {
+const NavBar = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>

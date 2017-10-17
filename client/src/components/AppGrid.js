@@ -16,14 +16,12 @@ const styles = () => ({
 
 function AppGrid(props) {
   const { classes } = props;
-
   return (
-
-    <Grid container spacing={0} className={classes.content} >
+    <Grid container align="center" direction="column" spacing={0} className={classes.content} >
       <Grid item md={1} />
 
       <Grid item xs={12} md={10} >
-        {props.children}
+        { props.children }
       </Grid>
 
       <Grid item md={1} />

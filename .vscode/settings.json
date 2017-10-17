@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "editor.minimap.enabled": true,
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,

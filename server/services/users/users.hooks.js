@@ -32,11 +32,11 @@ module.exports = {
         hook => hook.params.provider,
         commonHooks.discard('password')
       ),
+      verifyHooks.removeVerification()
     ],
     find: [],
     get: [],
     create: [
-      verifyHooks.removeVerification()      
     ],
     update: [],
     patch: [],
