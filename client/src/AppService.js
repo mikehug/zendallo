@@ -11,7 +11,7 @@ const socket = io();
 const AppService = feathers()
   .configure(socketio(socket))
   .configure(hooks())
-  .configure(auth({ storage: localStorage }));
+  .configure(auth({ storage: window.localStorage }));
 
 export const authManagement = new AuthManagement(AppService);
 

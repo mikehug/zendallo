@@ -7,6 +7,9 @@ const Home = () => (
     <Button>
       Sign In
     </Button>
+    <Button>
+      Sign In
+    </Button>
   </Link>
 );
 
