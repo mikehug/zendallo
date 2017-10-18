@@ -5,8 +5,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
+import { Link } from 'react-router-dom';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 import logo from '../logo.svg';
+import AppService from '../AppService';
+import { logout } from '../Auth';
+
 
 const styles = theme => ({
   root: {
@@ -22,9 +27,9 @@ const styles = theme => ({
   logo: {
     paddingRight: 10,
   },
-  font: {
+  name: {
+    flex: 1,
     fontFamily: 'Share Tech',
-    textAlign: 'center',
   },
 });
 
@@ -34,16 +39,30 @@ const NavBar = (props) => {
     <div className={classes.root}>
       <AppBar position="fixed" color="default">
         <Toolbar>
-          <img src={logo} alt="logo" className={classes.logo} />
-
-          <Typography type="headline" color="secondary" className={classes.font}>
+          <Link to="/" href="/">
+            <img src={logo} alt="logo" className={classes.logo} />
+          </Link>
+          <Typography type="headline" color="secondary" className={classes.name}>
             INITIAT.IO
           </Typography>
+          { AppService.get('user') ?
+            <Link to="/" href="/" >
+              <Button onClick={() => logout()} >
+                Sign Out
+              </Button>
+            </Link>
+            :
+            <Link to="/signin" href="/signin" >
+              <Button>
+                Sign In
+              </Button>
+            </Link>
+          }
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,

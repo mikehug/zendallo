@@ -18,13 +18,11 @@ function AppGrid(props) {
   const { classes } = props;
   return (
     <Grid container align="center" direction="column" spacing={0} className={classes.content} >
-      <Grid item md={1} />
 
-      <Grid item xs={12} md={10} >
+      <Grid item >
         { props.children }
       </Grid>
 
-      <Grid item md={1} />
     </Grid>
   );
 }

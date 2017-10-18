@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'material-ui/Button';
+import AppService from '../AppService';
+import { logout } from '../Auth';
 
 const Home = () => (
-  <Link to="/signin" href="/signin" >
-    <Button>
-      Sign In
-    </Button>
-    <Button>
-      Sign In
-    </Button>
-  </Link>
+  <div>
+    home
+  </div>
 );
 
 export default Home;

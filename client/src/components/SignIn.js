@@ -1,65 +1,22 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import TextField from 'material-ui/TextField';
-import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import AppService from '../AppService';
-
-const styles = () => ({
-  root: {
-    margin: 10,
-    width: 200,
-  },
-  formStyle: {
-    padding: 10,
-  },
-});
-
-const renderTextField = ({ field, form: { touched, errors }, ...props }) =>
-  (<TextField
-    label={(touched[field.name] && errors[field.name]) ? errors[field.name] : ''}
-    error={!!((touched[field.name] && errors[field.name]))}
-    {...field}
-    {...props}
-  />);
-
-const SignInForm = withStyles(styles)((props) => {
-  const { isSubmitting, isValid, classes } = props;
-  return (
-    <Form className={classes.root}>
-      <Typography type="title" color="secondary" >Sign In</Typography>
-      <div className={classes.formStyle}>
-        <div>
-          <Field name="email" type="email" component={renderTextField} placeholder="Email" />
-        </div>
-        <div>
-          <Field name="password" type="password" component={renderTextField} />
-        </div>
-        <Grid container direction="row-reverse" >
-          <Grid item>
-            <Button type="submit" disabled={isSubmitting || !isValid} >Submit</Button>
-          </Grid>
-        </Grid>
-      </div>
-    </Form>
-  );
-});
+import SignInForm from './SignInForm';
+import { login } from '../Auth';
 
 class SignIn extends Component {
-  state: {
+  state = {
     redirect: {
-      pathname: '/'
-    }
+      pathname: '/team',
+    },
   }
 
   componentWillMount() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: '/team' } };
     this.setState({ redirect: from });
     if (window.localStorage && window.localStorage.getItem('feathers-jwt')) {
-      this.login();
+      login();
     }
   }
 
@@ -76,14 +33,6 @@ class SignIn extends Component {
     return errors;
   };
 
-  login = credentials => AppService.authenticate(credentials)
-    .then(response => AppService.passport.verifyJWT(response.accessToken))
-    .then(payload => AppService.service('users').get(payload.userId))
-    .then((user) => {
-      AppService.set('user', user);
-      this.props.history.push(this.state.redirect.pathname);
-    })
-
   render() {
     return (
       <Formik
@@ -91,18 +40,17 @@ class SignIn extends Component {
         component={SignInForm}
         validate={this.handleValidate}
         onSubmit={(values, { setSubmitting, setErrors }) => {
-          this.login({
+          login({
             strategy: 'local',
             email: values.email,
             password: values.password,
           })
             .then(() => {
-              setSubmitting(false);
+              this.props.history.push(this.state.redirect.pathname);
             })
             .catch((error) => {
               setSubmitting(false);
               const errors = {};
-              console.log('Error authenticating!', error);
               if (error.code === 401) {
                 errors.email = 'Invalid login';
               } else errors.email = 'Login error';
