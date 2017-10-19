@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Form, Field } from 'formik';
+import Loader from 'react-loader';
 
 const styles = () => ({
   root: {
@@ -27,22 +28,24 @@ const renderTextField = ({ field, form: { touched, errors }, ...props }) =>
 const SignInForm = (props) => {
   const { isSubmitting, isValid, classes } = props;
   return (
-    <Form className={classes.root}>
-      <Typography type="title" color="secondary" >Sign In</Typography>
-      <div className={classes.formStyle}>
-        <div>
-          <Field name="email" type="email" component={renderTextField} placeholder="Email" />
-        </div>
-        <div>
-          <Field name="password" type="password" component={renderTextField} />
-        </div>
-        <Grid container direction="row-reverse" >
-          <Grid item>
-            <Button type="submit" disabled={isSubmitting || !isValid} >Submit</Button>
+    <Loader loaded={!isSubmitting} >
+      <Form className={classes.root}>
+        <Typography type="title" color="secondary" >Sign In</Typography>
+        <div className={classes.formStyle}>
+          <div>
+            <Field name="email" type="email" component={renderTextField} placeholder="Email" />
+          </div>
+          <div>
+            <Field name="password" type="password" component={renderTextField} />
+          </div>
+          <Grid container direction="row-reverse" >
+            <Grid item>
+              <Button type="submit" disabled={isSubmitting || !isValid} >Submit</Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    </Form>
+        </div>
+      </Form>
+    </Loader>
   );
 };
 

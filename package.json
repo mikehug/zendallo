@@ -48,7 +48,7 @@
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
     "helmet": "^3.8.2",
-    "mongodb": "^2.2.31",
+    "mongodb": "^2.2.33",
     "passport-auth0": "^0.6.0",
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^1.0.0",

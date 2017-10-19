@@ -6,15 +6,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      AppService.get('user') ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{
+      AppService.get('user') ?
+        (<Component {...props} />)
+        :
+        (<Redirect
+          to={{
             pathname: '/signin',
             state: { from: props.location },
           }}
-          />
-        )
+        />)
     )}
   />
 );

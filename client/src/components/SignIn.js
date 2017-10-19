@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
-import AppService from '../AppService';
+import Loader from 'react-loader';
 import SignInForm from './SignInForm';
 import { login } from '../Auth';
 
@@ -10,13 +10,18 @@ class SignIn extends Component {
     redirect: {
       pathname: '/team',
     },
+    isLogingIn: false,
   }
 
   componentWillMount() {
     const { from } = this.props.location.state || { from: { pathname: '/team' } };
     this.setState({ redirect: from });
     if (window.localStorage && window.localStorage.getItem('feathers-jwt')) {
-      login();
+      this.setState({ isLogingIn: true });
+      login()
+        .then(() => {
+          this.props.history.push(this.state.redirect.pathname);
+        });
     }
   }
 
@@ -35,29 +40,31 @@ class SignIn extends Component {
 
   render() {
     return (
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        component={SignInForm}
-        validate={this.handleValidate}
-        onSubmit={(values, { setSubmitting, setErrors }) => {
-          login({
-            strategy: 'local',
-            email: values.email,
-            password: values.password,
-          })
-            .then(() => {
-              this.props.history.push(this.state.redirect.pathname);
+      this.state.isLogingIn ?
+        <Loader /> :
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          component={SignInForm}
+          validate={this.handleValidate}
+          onSubmit={(values, { setSubmitting, setErrors }) => {
+            login({
+              strategy: 'local',
+              email: values.email,
+              password: values.password,
             })
-            .catch((error) => {
-              setSubmitting(false);
-              const errors = {};
-              if (error.code === 401) {
-                errors.email = 'Invalid login';
-              } else errors.email = 'Login error';
-              setErrors(errors);
-            });
-        }}
-      />
+              .then(() => {
+                this.props.history.push(this.state.redirect.pathname);
+              })
+              .catch((error) => {
+                setSubmitting(false);
+                const errors = {};
+                if (error.code === 401) {
+                  errors.email = 'Invalid login';
+                } else errors.email = 'Login error';
+                setErrors(errors);
+              });
+          }}
+        />
     );
   }
 }

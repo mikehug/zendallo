@@ -9,7 +9,7 @@ import Home from './components/Home';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import AppGrid from './components/AppGrid';
-import Team from './components/Team';
+import Team from './components/team/Team';
 import Session from './components/Session';
 import PrivateRoute from './components/PrivateRoute';
 
