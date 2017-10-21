@@ -57,7 +57,6 @@ class SignIn extends Component {
       });
   };
 
-
   render() {
     return (
       this.state.isLogingIn ?
@@ -71,6 +70,5 @@ class SignIn extends Component {
     );
   }
 }
-
 
 export default withRouter(SignIn);
