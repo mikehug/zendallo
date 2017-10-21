@@ -1,9 +1,5 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-  "css.validate": false,
-  "scss.validate": false,
-  "less.validate": false,
-  "javascript.implicitProjectConfig.checkJs": true,
+  "editor.minimap.enabled": false,
   "emmet.syntaxProfiles": {
     "html": {
       "attr_quotes": "single"

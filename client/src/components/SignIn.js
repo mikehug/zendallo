@@ -38,6 +38,26 @@ class SignIn extends Component {
     return errors;
   };
 
+  handleSubmit = (values, { setSubmitting, setErrors }) => {
+    login({
+      strategy: 'local',
+      email: values.email,
+      password: values.password,
+    })
+      .then(() => {
+        this.props.history.push(this.state.redirect.pathname);
+      })
+      .catch((error) => {
+        setSubmitting(false);
+        const errors = {};
+        if (error.code === 401) {
+          errors.email = 'Invalid login';
+        } else { errors.email = 'Login error'; }
+        setErrors(errors);
+      });
+  };
+
+
   render() {
     return (
       this.state.isLogingIn ?
@@ -46,24 +66,7 @@ class SignIn extends Component {
           initialValues={{ email: '', password: '' }}
           component={SignInForm}
           validate={this.handleValidate}
-          onSubmit={(values, { setSubmitting, setErrors }) => {
-            login({
-              strategy: 'local',
-              email: values.email,
-              password: values.password,
-            })
-              .then(() => {
-                this.props.history.push(this.state.redirect.pathname);
-              })
-              .catch((error) => {
-                setSubmitting(false);
-                const errors = {};
-                if (error.code === 401) {
-                  errors.email = 'Invalid login';
-                } else errors.email = 'Login error';
-                setErrors(errors);
-              });
-          }}
+          onSubmit={this.handleSubmit}
         />
     );
   }

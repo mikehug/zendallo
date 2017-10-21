@@ -1,11 +1,11 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Form, Field } from 'formik';
 import Loader from 'react-loader';
+import RenderTextField from '../utils/RenderTextField';
 
 const styles = () => ({
   root: {
@@ -17,14 +17,6 @@ const styles = () => ({
   },
 });
 
-const renderTextField = ({ field, form: { touched, errors }, ...props }) =>
-  (<TextField
-    label={(touched[field.name] && errors[field.name]) ? errors[field.name] : ''}
-    error={!!((touched[field.name] && errors[field.name]))}
-    {...field}
-    {...props}
-  />);
-
 const SignInForm = (props) => {
   const { isSubmitting, isValid, classes } = props;
   return (
@@ -33,10 +25,10 @@ const SignInForm = (props) => {
         <Typography type="title" color="secondary" >Sign In</Typography>
         <div className={classes.formStyle}>
           <div>
-            <Field name="email" type="email" component={renderTextField} placeholder="Email" />
+            <Field autoFocus name="email" type="email" component={RenderTextField} placeholder="Email" />
           </div>
           <div>
-            <Field name="password" type="password" component={renderTextField} />
+            <Field name="password" type="password" component={RenderTextField} />
           </div>
           <Grid container direction="row-reverse" >
             <Grid item>

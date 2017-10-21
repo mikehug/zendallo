@@ -40,11 +40,11 @@ class App extends Component { // eslint-disable-line
           <AppWrapper>
             <NavBar />
             <AppGrid>
-              <Route path="/" exact component={Home} />
+              <Route exact path="/" component={Home} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/session" component={Session} />
-              <PrivateRoute path="/team" component={Team} />
+              <PrivateRoute exact path="/team" component={Team} />
             </AppGrid>
           </AppWrapper>
         </MuiThemeProvider>

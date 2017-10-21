@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Button from 'material-ui/Button';
 
-const Home = () => (
+const Home = ({ history }) => (
   <div>
-    <Link to="/team" href="/team">
-      <Button>
-        Team
-      </Button>
-    </Link>
-
+    <Button onClick={() => history.push('/team')} >
+      Team
+    </Button>
   </div>
 );
 
-export default Home;
+export default withRouter(Home);

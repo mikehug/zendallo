@@ -36,7 +36,7 @@ const SignUpForm = withStyles(styles)((props) => {
       <Typography type="title" color="secondary" >Create New Account</Typography>
       <div className={classes.formStyle}>
         <div>
-          <Field name="email" type="email" component={renderTextField} placeholder="Email" />
+          <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />
         </div>
         <div>
           <Field name="password" type="password" component={renderTextField} />
