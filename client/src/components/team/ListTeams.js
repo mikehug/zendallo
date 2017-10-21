@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import List, {
   ListItem,
   ListItemIcon,
@@ -11,13 +12,13 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
 
-const ListTeams = props => (
+const ListTeams = withRouter(props => (
   <div>
     <Grid container align="start">
       <List >
         {props.data.map(team => (
           <div key={team.name}>
-            <ListItem button>
+            <ListItem button onClick={() => props.history.push(`/team/${team.name}`)} >
               <ListItemIcon>
                 <GroupIcon />
               </ListItemIcon>
@@ -36,6 +37,6 @@ const ListTeams = props => (
       </List>
     </Grid>
   </div>
-);
+));
 
 export default ListTeams;

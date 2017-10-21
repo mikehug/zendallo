@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import ListTeams from './ListTeams';
 import CreateTeam from './CreateTeam';
 import AppService from '../../AppService';
 import AlertDialog from '../AlertDialog';
+import TeamDetail from './TeamDetail';
 
 const styles = () => ({
   root: {
@@ -30,7 +31,6 @@ class Team extends Component {
       AppService.service('teams').find({ userId: user._id })
         .then((result) => {
           this.setState({ teams: result.data });
-          console.log(result.data);
         });
     }
 
@@ -57,7 +57,6 @@ class Team extends Component {
     handleCreate = (name) => {
       AppService.service('teams').create({ name })
         .then((result) => {
-          console.log(result);
           const { teams } = this.state;
           teams.push(result);
           this.setState({ teams });
@@ -66,20 +65,38 @@ class Team extends Component {
 
     render() {
       const data = this.state.teams;
+      const { match, classes } = this.props;
       return (
-        <div className={this.props.classes.root}>
-          <Typography type="title" color="secondary">
-            Teams
-          </Typography>
-          <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} />
-          <CreateTeam data={data} handleCreate={this.handleCreate} />
-          <AlertDialog
-            open={this.state.alert.open}
-            title={this.state.alert.title}
-            contentText={this.state.alert.contentText}
-            action={this.handleDelete}
-            handleAlertClose={this.handleAlertClose}
-          />
+        <div className={classes.root}>
+          <Switch>
+            <Route
+              exact
+              path={match.url}
+              render={() => (
+                <div>
+                  <Typography type="title" color="secondary">
+                  Teams
+                  </Typography>
+                  <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} />
+                  <CreateTeam data={data} handleCreate={this.handleCreate} />
+                  <AlertDialog
+                    open={this.state.alert.open}
+                    title={this.state.alert.title}
+                    contentText={this.state.alert.contentText}
+                    action={this.handleDelete}
+                    handleAlertClose={this.handleAlertClose}
+                  />
+                </div>
+          )}
+            />
+            <Route
+              path={`${match.url}/:name`}
+              render={props => (
+                <TeamDetail {...props} data={this.state.teams.filter(team => team.name === props.match.params.name)} />
+            )
+            }
+            />
+          </Switch>
         </div>
       );
     }

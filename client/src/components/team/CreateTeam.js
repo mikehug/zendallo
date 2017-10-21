@@ -8,7 +8,6 @@ import Dialog, {
 } from 'material-ui/Dialog';
 import { Formik, Form, Field } from 'formik';
 import RenderTextField from '../../utils/RenderTextField';
-import AppService from '../../AppService';
 
 export default class CreateTeam extends React.Component {
   state = {
