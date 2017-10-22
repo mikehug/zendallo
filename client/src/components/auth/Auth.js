@@ -1,5 +1,5 @@
 import AuthManagement from 'feathers-authentication-management/lib/client';
-import AppService from './AppService';
+import AppService from '../../AppService';
 
 export const authManagement = new AuthManagement(AppService);
 

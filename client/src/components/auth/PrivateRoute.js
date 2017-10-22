@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import AppService from '../AppService';
+import AppService from '../../AppService';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route

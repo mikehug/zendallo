@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import Loader from 'react-loader';
 import SignInForm from './SignInForm';
-import { login } from '../Auth';
+import { login } from './Auth';
 
 class SignIn extends Component {
   state = {

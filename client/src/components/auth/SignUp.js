@@ -6,8 +6,8 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Formik, Form, Field } from 'formik';
-import AppService from '../AppService';
-import { authManagement } from '../Auth';
+import AppService from '../../AppService';
+import { authManagement } from './Auth';
 
 const styles = () => ({
   root: {

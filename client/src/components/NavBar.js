@@ -1,5 +1,4 @@
 // @flow weak
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -10,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import logo from '../logo.svg';
 import AppService from '../AppService';
-import { logout } from '../Auth';
+import { logout } from './auth/Auth';
 
 
 const styles = theme => ({

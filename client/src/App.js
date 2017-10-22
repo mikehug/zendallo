@@ -6,12 +6,12 @@ import {
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
 import AppGrid from './components/AppGrid';
 import Team from './components/team/Team';
 import Session from './components/Session';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 const theme = createMuiTheme();
 // reset styles
