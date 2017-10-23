@@ -5,7 +5,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Form, Field } from 'formik';
 import Loader from 'react-loader';
-import RenderTextField from '../../utils/RenderTextField';
+import RenderTextField from '../utils/RenderTextField';
 
 const styles = () => ({
   root: {

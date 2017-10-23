@@ -55,10 +55,32 @@ class Team extends Component {
     }
 
     handleCreate = (name) => {
-      AppService.service('teams').create({ name })
+      AppService.service('teams').create({ name, members: [] })
         .then((result) => {
           const { teams } = this.state;
           teams.push(result);
+          this.setState({ teams });
+        });
+    }
+
+    handleRemoveMember = (id, email) => {
+      const { teams } = this.state;
+      const index = teams.findIndex(team => team._id === id);
+      const { members } = teams[index];
+      const memberIndex = members.findIndex(member => member.email === email);
+      members.splice(memberIndex, 1);
+      AppService.service('teams').patch(id, { members })
+        .then(() => {
+          this.setState({ teams });
+        });
+    }
+
+    handleAddMember = (id, members) => {
+      const { teams } = this.state;
+      const index = teams.findIndex(team => team._id === id);
+      teams[index].members = members;
+      AppService.service('teams').patch(id, { members })
+        .then(() => {
           this.setState({ teams });
         });
     }
@@ -92,9 +114,13 @@ class Team extends Component {
             <Route
               path={`${match.url}/:name`}
               render={props => (
-                <TeamDetail {...props} data={this.state.teams.filter(team => team.name === props.match.params.name)} />
-            )
-            }
+                <TeamDetail
+                  {...props}
+                  data={this.state.teams.filter(team => team.name === props.match.params.name)}
+                  handleAddMember={this.handleAddMember}
+                  handleRemoveMember={this.handleRemoveMember}
+                />)
+              }
             />
           </Switch>
         </div>

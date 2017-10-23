@@ -21,6 +21,8 @@ class SignIn extends Component {
       login()
         .then(() => {
           this.props.history.push(this.state.redirect.pathname);
+        }).catch(() => {
+          this.setState({ isLogingIn: false });
         });
     }
   }

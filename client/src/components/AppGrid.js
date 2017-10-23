@@ -9,8 +9,8 @@ const styles = () => ({
     flexGrow: 1,
   },
   content: {
-    marginLeft: 5,
-    marginRight: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
 
