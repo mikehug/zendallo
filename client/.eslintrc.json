@@ -35,7 +35,8 @@
     "_": true,
     "document": true,
     "localStorage": true,
-    "history": true
+    "history": true,
+    "require": true
   },
   "parserOptions": {
     "ecmaVersion": 7,

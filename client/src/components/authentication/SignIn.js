@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import Loader from 'react-loader';
 import SignInForm from './SignInForm';
-import { login } from './Auth';
 
 class SignIn extends Component {
   state = {
@@ -18,7 +17,7 @@ class SignIn extends Component {
     this.setState({ redirect: from });
     if (window.localStorage && window.localStorage.getItem('feathers-jwt')) {
       this.setState({ isLogingIn: true });
-      login()
+      this.props.handleLogin()
         .then(() => {
           this.props.history.push(this.state.redirect.pathname);
         }).catch(() => {
@@ -41,7 +40,7 @@ class SignIn extends Component {
   };
 
   handleSubmit = (values, { setSubmitting, setErrors }) => {
-    login({
+    this.props.handleLogin({
       strategy: 'local',
       email: values.email,
       password: values.password,

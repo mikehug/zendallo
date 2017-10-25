@@ -8,6 +8,7 @@ export const login = credentials => AppService.authenticate(credentials)
   .then(payload => AppService.service('users').get(payload.userId))
   .then((user) => {
     AppService.set('user', user);
+    return user;
   });
 
 export const logout = () => {

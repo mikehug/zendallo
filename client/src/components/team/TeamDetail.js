@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
@@ -8,31 +8,43 @@ import AddMember from './AddMember';
 import ListMembers from './ListMembers';
 
 const styles = () => ({
-  nav: {
-    textAlign: 'left',
+  header: {
+    display: 'flex',
+  },
+  icon: {
+    marginTop: -10,
+  },
+  title: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    marginLeft: -48,
+
   },
   add: {
     textAlign: 'right',
   },
 });
 
-const TeamDetail = ({
-  match, data, handleAddMember, handleRemoveMember, classes,
+const TeamDetail = withRouter(({
+  match, data, handleAddMember, handleRemoveMember, classes, history,
 }) => (
   <div>
-    <div className={classes.nav}>
-      <Link to="/team" href="/team" >
-        <IconButton>
-          <NavigateBeforeIcon />
-        </IconButton>
-      </Link>
+    <div className={classes.header} >
+      <IconButton onClick={() => history.push('/team')} className={classes.icon} >
+        <NavigateBeforeIcon />
+      </IconButton>
+      <div className={classes.title} >
+        <Typography type="title" color="secondary">
+          {match.params.name}
+        </Typography>
+      </div>
     </div>
-    <Typography type="subheading" >{match.params.name} </Typography>
+
     <ListMembers team={data[0]} handleRemoveMember={handleRemoveMember} />
     <div className={classes.add}>
       <AddMember team={data[0]} handleAddMember={handleAddMember} />
     </div>
   </div>
-);
+));
 
 export default withStyles(styles)(TeamDetail);

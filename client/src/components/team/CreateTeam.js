@@ -41,8 +41,10 @@ export default class CreateTeam extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.handleClickOpen}>Create Team</Button>
+      <div style={{ paddingTop: '10px' }} >
+        <Button onClick={this.handleClickOpen} color="primary">
+          Create Team
+        </Button>
         <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
           <DialogTitle>Create Team</DialogTitle>
           <Formik

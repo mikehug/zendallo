@@ -4,16 +4,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import { Link } from 'react-router-dom';
-import Typography from 'material-ui/Typography';
+import { Link, withRouter } from 'react-router-dom';
 import Button from 'material-ui/Button';
-import logo from '../logo.svg';
-import AppService from '../AppService';
-import { logout } from './auth/Auth';
-
+import LogoButton from './LogoButton';
 
 const styles = theme => ({
   root: {
+    display: 'flex',
     width: '100%',
     marginTop: theme.spacing.unit * 8,
     '@media (min-width:0px) and (orientation: landscape)': {
@@ -24,29 +21,27 @@ const styles = theme => ({
     },
   },
   logo: {
-    paddingRight: 10,
-  },
-  name: {
     flex: 1,
-    fontFamily: 'Share Tech',
   },
+
+
 });
 
-const NavBar = (props) => {
-  const { classes } = props;
+const NavBar = withRouter((props) => {
+  const {
+    classes, user, history, handleLogout,
+  } = props;
   return (
     <div className={classes.root}>
       <AppBar position="fixed" color="default">
         <Toolbar>
-          <Link to="/" href="/">
-            <img src={logo} alt="logo" className={classes.logo} />
-          </Link>
-          <Typography type="headline" color="secondary" className={classes.name}>
-            INITIAT.IO
-          </Typography>
-          { AppService.get('user') ?
+          <div className={classes.logo} >
+            <LogoButton onClick={() => history.push('/')} />
+          </div>
+          {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
+          { user ?
             <Link to="/" href="/" >
-              <Button onClick={() => logout()} >
+              <Button onClick={() => handleLogout()} >
                 Sign Out
               </Button>
             </Link>
@@ -61,7 +56,7 @@ const NavBar = (props) => {
       </AppBar>
     </div>
   );
-};
+});
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,

@@ -5,7 +5,7 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import ListTeams from './ListTeams';
 import CreateTeam from './CreateTeam';
 import AppService from '../../AppService';
-import AlertDialog from '../AlertDialog';
+import AlertDialog from '../utils/AlertDialog';
 import TeamDetail from './TeamDetail';
 
 const styles = () => ({
@@ -96,7 +96,7 @@ class Team extends Component {
               path={match.url}
               render={() => (
                 <div>
-                  <Typography type="title" color="secondary">
+                  <Typography type="title" color="secondary" gutterBottom>
                   Teams
                   </Typography>
                   <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} />
@@ -116,7 +116,7 @@ class Team extends Component {
               render={props => (
                 <TeamDetail
                   {...props}
-                  data={this.state.teams.filter(team => team.name === props.match.params.name)}
+                  data={this.state.teams.filter(team => team.name === decodeURI(match.params.name))}
                   handleAddMember={this.handleAddMember}
                   handleRemoveMember={this.handleRemoveMember}
                 />)
