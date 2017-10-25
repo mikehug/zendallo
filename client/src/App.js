@@ -11,6 +11,7 @@ import SignUp from './components/authentication/SignUp';
 import AppGrid from './components/utils/AppGrid';
 import Team from './components/team/Team';
 import Session from './components/session/Session';
+import SessionDetail from './components/session/SessionDetail';
 import PrivateRoute from './components/authentication/PrivateRoute';
 import AppService from './AppService';
 import { login, logout } from './components/authentication/Auth';
@@ -75,7 +76,8 @@ class App extends Component {
                   <SignIn handleLogin={this.handleLogin} />)}
               />
               <Route path="/signup" component={SignUp} />
-              <PrivateRoute path="/session" component={Session} />
+              <PrivateRoute exact path="/session" component={Session} />
+              <PrivateRoute path="/session/:code" component={SessionDetail} />
               <PrivateRoute path="/team" component={Team} />
             </AppGrid>
           </AppWrapper>

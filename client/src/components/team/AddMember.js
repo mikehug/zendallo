@@ -4,6 +4,14 @@ import { Formik, Form, Field } from 'formik';
 import RenderTextField from '../utils/RenderTextField';
 
 export default class AddMember extends React.Component {
+  handleSubmit = (values, props) => {
+    props.setSubmitting(true);
+    const { members } = this.props.team;
+    members.push({ email: values.email });
+    this.props.handleAddMember(this.props.team._id, members);
+    props.resetForm();
+  }
+
   handleValidate = (values) => {
     const errors = {};
     if (!values.email) {
@@ -14,18 +22,7 @@ export default class AddMember extends React.Component {
     if (this.props.team && this.props.team.members.find(member => member.email === values.email)) {
       errors.email = 'Email already exists';
     }
-    // if (this.props.data.find(team => team.email === values.email)) {
-    //   errors.email = 'email already exists';
-    // }
     return errors;
-  }
-
-  handleSubmit = (values, props) => {
-    props.setSubmitting(true);
-    const { members } = this.props.team;
-    members.push({ email: values.email });
-    this.props.handleAddMember(this.props.team._id, members);
-    props.resetForm();
   }
 
   render() {

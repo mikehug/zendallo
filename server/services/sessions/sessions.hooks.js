@@ -1,11 +1,21 @@
 const { authenticate } = require('feathers-authentication').hooks;
+const { associateCurrentUser } = require('feathers-authentication-hooks');
+const Hashids = require('hashids');
+const hashids = new Hashids('initiatio');        
+
 
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [],
+    create: [
+      associateCurrentUser(),
+      (hook)=>{
+        hook.data.code = hashids.encode(Date.now());
+        return hook;
+      }
+    ],
     update: [],
     patch: [],
     remove: []

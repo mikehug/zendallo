@@ -28,10 +28,27 @@ class Team extends Component {
 
     componentWillMount() {
       const user = AppService.get('user');
-      AppService.service('teams').find({ userId: user._id })
+      AppService.service('teams').find({ query: { userId: user._id } })
         .then((result) => {
           this.setState({ teams: result.data });
         });
+    }
+
+    handleCreate = (name) => {
+      AppService.service('teams').create({ name, members: [] })
+        .then((result) => {
+          const { teams } = this.state;
+          teams.push(result);
+          this.setState({ teams });
+        });
+    }
+
+    openDeleteAlert =(team) => {
+      this.setState({
+        alert: {
+          open: true, title: 'Confirm Delete', contentText: `Name: ${team.name}`, id: team._id,
+        },
+      });
     }
 
     handleDelete = () => {
@@ -46,19 +63,12 @@ class Team extends Component {
       this.setState({ alert: { open: false } });
     }
 
-    openDeleteAlert =(team) => {
-      this.setState({
-        alert: {
-          open: true, title: 'Confirm Delete', contentText: `Name: ${team.name}`, id: team._id,
-        },
-      });
-    }
-
-    handleCreate = (name) => {
-      AppService.service('teams').create({ name, members: [] })
-        .then((result) => {
-          const { teams } = this.state;
-          teams.push(result);
+    handleAddMember = (id, members) => {
+      const { teams } = this.state;
+      const index = teams.findIndex(team => team._id === id);
+      teams[index].members = members;
+      AppService.service('teams').patch(id, { members })
+        .then(() => {
           this.setState({ teams });
         });
     }
@@ -69,16 +79,6 @@ class Team extends Component {
       const { members } = teams[index];
       const memberIndex = members.findIndex(member => member.email === email);
       members.splice(memberIndex, 1);
-      AppService.service('teams').patch(id, { members })
-        .then(() => {
-          this.setState({ teams });
-        });
-    }
-
-    handleAddMember = (id, members) => {
-      const { teams } = this.state;
-      const index = teams.findIndex(team => team._id === id);
-      teams[index].members = members;
       AppService.service('teams').patch(id, { members })
         .then(() => {
           this.setState({ teams });
@@ -129,4 +129,3 @@ class Team extends Component {
 }
 
 export default withRouter(withStyles(styles)(Team));
-
