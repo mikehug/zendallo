@@ -29,10 +29,24 @@ class Session extends Component {
       });
   }
 
+  deleteSession = (session) => {
+    const { sessions } = this.state;
+    const deleteIndex = this.state.sessions.findIndex(sess => sess._id === session._id);
+    sessions.splice(deleteIndex, 1);
+    console.log(sessions);
+    AppService.service('sessions').remove(session._id)
+      .then(() => {
+        this.setState({ sessions });
+      });
+  }
+
   createSession = () => {
     AppService.service('sessions').create({ startTime: Date.now(), attendees: [] })
       .then((result) => {
-        console.log(`created: ${result}`);
+        const { sessions } = this.state;
+        sessions.push(result);
+        this.setState({ sessions });
+        console.log(result);
       });
   }
 
@@ -44,7 +58,7 @@ class Session extends Component {
         <Typography type="title" color="secondary" gutterBottom>
                   Sessions
         </Typography>
-        <ListSessions data={data} />
+        <ListSessions data={data} handleDelete={this.deleteSession} />
         <Button onClick={() => this.createSession()} color="primary" className={classes.button} >
               Create Session
         </Button>

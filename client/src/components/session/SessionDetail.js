@@ -3,11 +3,13 @@ import { withRouter } from 'react-router-dom';
 import AppService from '../../AppService';
 import JoinSession from './JoinSession';
 import SessionNotValid from './SessionNotValid';
+import LiveSession from './LiveSession';
 
 class SessionDetail extends Component {
     state = {
       session: null,
       attendee: false,
+      user: {},
     }
 
     componentWillMount() {
@@ -24,6 +26,7 @@ class SessionDetail extends Component {
 
     checkAttendee = () => {
       const user = AppService.get('user');
+      this.setState({ user });
       return (this.state.session && this.state.session.attendees.find(attendee => attendee.userId === user._id));
     }
 
@@ -46,7 +49,7 @@ class SessionDetail extends Component {
       if (this.state.session && this.state.attendee) {
         return (
           <div>
-            Let go!
+            <LiveSession session={this.state.session} user={this.state.user} />
           </div>);
       } else if (this.state.session) {
         return (

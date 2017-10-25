@@ -8,7 +8,7 @@ import List, {
 } from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import GroupWorkIcon from 'material-ui-icons/GroupWork';
-import EditIcon from 'material-ui-icons/Edit';
+import DeleteIcon from 'material-ui-icons/Delete';
 import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
 
@@ -26,8 +26,8 @@ const ListSessions = withRouter(props => (
                 primary={session.code}
               />
               <ListItemSecondaryAction>
-                <IconButton aria-label="Edit" >
-                  <EditIcon />
+                <IconButton aria-label="Delete" onClick={() => props.handleDelete(session)} >
+                  <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
