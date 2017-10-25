@@ -40,9 +40,9 @@ const TeamDetail = withRouter(({
       </div>
     </div>
 
-    <ListMembers team={data[0]} handleRemoveMember={handleRemoveMember} />
+    <ListMembers team={data} handleRemoveMember={handleRemoveMember} />
     <div className={classes.add}>
-      <AddMember team={data[0]} handleAddMember={handleAddMember} />
+      <AddMember team={data} handleAddMember={handleAddMember} />
     </div>
   </div>
 ));

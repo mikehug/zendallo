@@ -24,6 +24,7 @@ class Team extends Component {
         contentText: '',
         id: '',
       },
+      selectedTeam: {},
     }
 
     componentWillMount() {
@@ -85,6 +86,11 @@ class Team extends Component {
         });
     }
 
+    handleTeamSelect = (team) => {
+      this.setState({ selectedTeam: team });
+      this.props.history.push(`/team/${encodeURI(team.name)}`);
+    }
+
     render() {
       const data = this.state.teams;
       const { match, classes } = this.props;
@@ -97,9 +103,9 @@ class Team extends Component {
               render={() => (
                 <div>
                   <Typography type="title" color="secondary" gutterBottom>
-                  Teams
+                  Team
                   </Typography>
-                  <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} />
+                  <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} handleTeamSelect={this.handleTeamSelect} />
                   <CreateTeam data={data} handleCreate={this.handleCreate} />
                   <AlertDialog
                     open={this.state.alert.open}
@@ -116,7 +122,7 @@ class Team extends Component {
               render={props => (
                 <TeamDetail
                   {...props}
-                  data={this.state.teams.filter(team => team.name === decodeURI(match.params.name))}
+                  data={this.state.selectedTeam}
                   handleAddMember={this.handleAddMember}
                   handleRemoveMember={this.handleRemoveMember}
                 />)

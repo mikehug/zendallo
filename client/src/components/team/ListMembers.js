@@ -16,7 +16,7 @@ const ListMembers = withRouter(props => (
   <div>
     <Grid container align="start">
       <List >
-        {props.team && props.team.members.map(member => (
+        {props.team.members && props.team.members.map(member => (
           <div key={member.email}>
             <ListItem >
               <ListItemIcon>

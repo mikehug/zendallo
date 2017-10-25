@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Button from 'material-ui/Button';
-import { withRouter, Link } from 'react-router-dom';
-import Typography from 'material-ui/Typography';
+import { withRouter } from 'react-router-dom';
 import AppService from '../../AppService';
 import JoinSession from './JoinSession';
+import SessionNotValid from './SessionNotValid';
 
 class SessionDetail extends Component {
     state = {
@@ -25,7 +24,7 @@ class SessionDetail extends Component {
 
     checkAttendee = () => {
       const user = AppService.get('user');
-      return (this.state.session.attendees.find(attendee => attendee.userId === user._id));
+      return (this.state.session && this.state.session.attendees.find(attendee => attendee.userId === user._id));
     }
 
     handleSubmit = (values, props) => {
@@ -44,22 +43,18 @@ class SessionDetail extends Component {
     }
 
     render() {
-      if (this.state.session && this.state.attendee) return (<div> Let go!</div>);
-      else if (this.state.session) {
+      if (this.state.session && this.state.attendee) {
+        return (
+          <div>
+            Let go!
+          </div>);
+      } else if (this.state.session) {
         return (
           <div>
             <JoinSession id={this.state.session._id} handleSubmit={this.handleSubmit} />
           </div>);
       } return (
-        <div>
-          <Typography type="subheading" >
-                    Code not valid
-          </Typography>
-          <Link to="/session" href="/session" >
-            <Button> Session Home</Button>
-          </Link>
-
-        </div>
+        <SessionNotValid />
       );
     }
 }

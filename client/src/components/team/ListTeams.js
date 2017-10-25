@@ -18,7 +18,7 @@ const ListTeams = withRouter(props => (
       <List >
         {props.data.map(team => (
           <div key={team.name}>
-            <ListItem button onClick={() => props.history.push(`/team/${encodeURI(team.name)}`)} >
+            <ListItem button onClick={() => props.handleTeamSelect(team)} >
               <ListItemIcon>
                 <GroupIcon />
               </ListItemIcon>

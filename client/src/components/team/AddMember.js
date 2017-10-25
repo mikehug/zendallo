@@ -19,7 +19,7 @@ export default class AddMember extends React.Component {
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       errors.email = 'Invalid email address';
     }
-    if (this.props.team && this.props.team.members.find(member => member.email === values.email)) {
+    if (this.props.team.members && this.props.team.members.find(member => member.email === values.email)) {
       errors.email = 'Email already exists';
     }
     return errors;
@@ -35,7 +35,6 @@ export default class AddMember extends React.Component {
           render={props => (
             <Form>
               <Field
-                autoFocus
                 margin="dense"
                 name="email"
                 placeholder="Email"

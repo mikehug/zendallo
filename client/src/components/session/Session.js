@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import AppService from '../../AppService';
@@ -9,6 +10,9 @@ const styles = () => ({
   root: {
     padding: 10,
     width: 300,
+  },
+  button: {
+    marginTop: 10,
   },
 });
 
@@ -37,8 +41,11 @@ class Session extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root} >
+        <Typography type="title" color="secondary" gutterBottom>
+                  Sessions
+        </Typography>
         <ListSessions data={data} />
-        <Button onClick={() => this.createSession()} >
+        <Button onClick={() => this.createSession()} color="primary" className={classes.button} >
               Create Session
         </Button>
       </div>
