@@ -16,16 +16,20 @@ const styles = () => ({
   },
 });
 
+
 class Session extends Component {
   state = {
     sessions: [],
   }
 
   componentWillMount() {
-    const user = AppService.get('user');
-    AppService.service('sessions').find({ userId: user._id })
-      .then((result) => {
-        this.setState({ sessions: result.data });
+    // console.log(user);
+    AppService.authenticate()
+      .then((user) => {
+        AppService.service('sessions').find({ userId: user._id })
+          .then((result) => {
+            this.setState({ sessions: result.data });
+          });
       });
   }
 

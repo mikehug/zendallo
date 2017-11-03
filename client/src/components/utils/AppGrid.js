@@ -5,9 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
 const styles = () => ({
-  root: {
-    flexGrow: 1,
-  },
   content: {
     paddingLeft: 5,
     paddingRight: 5,
@@ -17,9 +14,9 @@ const styles = () => ({
 function AppGrid(props) {
   const { classes } = props;
   return (
-    <Grid container align="center" direction="column" spacing={0} className={classes.content} >
+    <Grid container align="center" spacing={0} className={classes.content} >
 
-      <Grid item >
+      <Grid item xs={12} >
         { props.children }
       </Grid>
 

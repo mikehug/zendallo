@@ -28,10 +28,12 @@ class Team extends Component {
     }
 
     componentWillMount() {
-      const user = AppService.get('user');
-      AppService.service('teams').find({ query: { userId: user._id } })
-        .then((result) => {
-          this.setState({ teams: result.data });
+      AppService.authenticate()
+        .then((user) => {
+          AppService.service('teams').find({ query: { userId: user._id } })
+            .then((result) => {
+              this.setState({ teams: result.data });
+            });
         });
     }
 

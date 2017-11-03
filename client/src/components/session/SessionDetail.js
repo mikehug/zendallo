@@ -10,17 +10,22 @@ class SessionDetail extends Component {
       session: null,
       attendee: false,
       user: {},
+
+
     }
 
     componentWillMount() {
-      AppService.service('sessions').find({
-        query: {
-          code: this.props.match.params.code,
-        },
-      })
-        .then((result) => {
-          this.setState({ session: result.data[0] });
-          if (this.checkAttendee()) this.setState({ attendee: true });
+      AppService.authenticate()
+        .then(() => {
+          AppService.service('sessions').find({
+            query: {
+              code: this.props.match.params.code,
+            },
+          })
+            .then((result) => {
+              this.setState({ session: result.data[0] });
+              if (this.checkAttendee()) this.setState({ attendee: true });
+            });
         });
     }
 

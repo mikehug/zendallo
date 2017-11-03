@@ -11,6 +11,12 @@ export const login = credentials => AppService.authenticate(credentials)
     return user;
   });
 
+export const localLogin = () => {
+  if (window.localStorage && window.localStorage.getItem('feathers-jwt')) {
+    return login();
+  } throw Error;
+};
+
 export const logout = () => {
   AppService.set('user', null);
   AppService.logout();

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'material-ui/Button';
 import AppService from '../../AppService';
+import DecisionMap from './DecisionMap';
 
 const sessionFeed = AppService.service('sessions');
 const users = AppService.service('users');
@@ -14,7 +14,10 @@ class LiveSession extends Component {
       this.setState({
         session: this.props.session,
       });
-      users.patch(this.props.user._id, { currentSession: this.props.session._id });
+      AppService.authenticate()
+        .then((user) => {
+          users.patch(user._id, { currentSession: this.props.session._id });
+        });
     }
 
     componentDidMount() {
@@ -29,23 +32,26 @@ class LiveSession extends Component {
       if (this.state.session && this.state.session.attendees) {
         return (
           <div >
-            {this.state.session.attendees.map(attendee => (
-              <div key={attendee.name} >
-                {attendee.userId === this.props.user._id ?
-                  <Button
-                    raised
-                    onClick={() => this.handleStatusUpdate()}
-                    color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}
-                  >
-                    {attendee.name}
-                  </Button> :
-                  <Button color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}>
-                    {attendee.name}
-                  </Button> }
-              </div>))}
+            <DecisionMap />
+
           </div>);
       } return (<div> Session empty</div>);
     }
 }
 
 export default LiveSession;
+
+// {this.state.session.attendees.map(attendee => (
+//               <div key={attendee.name} >
+//                 {attendee.userId === this.props.user._id ?
+//                   <Button
+//                     raised
+//                     onClick={() => this.handleStatusUpdate()}
+//                     color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}
+//                   >
+//                     {attendee.name}
+//                   </Button> :
+//                   <Button color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}>
+//                     {attendee.name}
+//                   </Button> }
+//               </div>))}

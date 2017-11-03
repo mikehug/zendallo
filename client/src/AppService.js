@@ -12,5 +12,16 @@ const AppService = feathers()
   .configure(hooks())
   .configure(auth({ storage: window.localStorage }));
 
+const errorHandler = (error) => {
+  console.log('hello reauth');
+  AppService.authenticate()
+    .then((response) => {
+      console.log(response);
+    });
+};
+
+
+// Handle when auth fails during a reconnect or a transport upgrade
+AppService.on('reauthentication-error', errorHandler);
 
 export default AppService;
