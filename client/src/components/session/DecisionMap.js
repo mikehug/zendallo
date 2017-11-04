@@ -64,7 +64,9 @@ class DecisionMap extends React.Component {
       this.handleMouseMove(touches[0]);
     };
 
-    handleMouseMove = ({ clientX: x, clientY: y }) => {
+    handleMouseMove = ({ clientX, clientY }) => {
+      let x = clientX;
+      let y = clientY;
       if (this.state.isPressed) {
         this.setMapCoordinates();
 

@@ -1,15 +1,15 @@
 {
-  "name": "initiatioWeb",
+  "name": "initiatioweb",
   "description": "Real-time team building and decision making app",
   "version": "0.0.0",
-  "homepage": "",
+  "homepage": "https://www.initiat.io",
   "main": "server",
   "keywords": [
-    "feathers"
+    "initiatio"
   ],
   "author": {
     "name": "",
-    "email": ""
+    "email": "mike@initiat.io"
   },
   "contributors": [],
   "bugs": {},

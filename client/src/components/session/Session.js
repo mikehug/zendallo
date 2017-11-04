@@ -37,7 +37,6 @@ class Session extends Component {
     const { sessions } = this.state;
     const deleteIndex = this.state.sessions.findIndex(sess => sess._id === session._id);
     sessions.splice(deleteIndex, 1);
-    console.log(sessions);
     AppService.service('sessions').remove(session._id)
       .then(() => {
         this.setState({ sessions });
@@ -50,7 +49,6 @@ class Session extends Component {
         const { sessions } = this.state;
         sessions.push(result);
         this.setState({ sessions });
-        console.log(result);
       });
   }
 

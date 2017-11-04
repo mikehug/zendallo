@@ -1,5 +1,5 @@
 import React from 'react';
-import { hydrate, render } from 'react-dom';
+import { render } from 'react-snapshot';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -7,11 +7,8 @@ require('typeface-roboto');
 require('typeface-share-tech');
 
 const rootElement = document.getElementById('root');
-if (rootElement.hasChildNodes()) {
-  hydrate(<App />, rootElement);
-} else {
-  render(<App />, rootElement);
-}
+
+render(<App />, rootElement);
 
 registerServiceWorker();
 
