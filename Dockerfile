@@ -1,4 +1,4 @@
-FROM node:8.2.1
+FROM node:8.8.1
 MAINTAINER Azure App Services Container Images <appsvc-images@microsoft.com>
 
 COPY startup /opt/startup
