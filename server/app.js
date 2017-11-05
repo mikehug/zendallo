@@ -40,7 +40,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
-app.use('/', feathers.static(app.get('public')));
+app.use('/', feathers.static(app.get('public')))
+// Return index to handle different routes  
+  .get('*', function (req, res) {
+    res.sendFile(path.join(app.get('public'), 'index.html'));
+  });
 //Redirect all traffic to SSL except at localhost 
 app.use('/', httpsRedirect());
 // Set up Plugins and providers
