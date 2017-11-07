@@ -30,7 +30,7 @@ const TeamDetail = withRouter(({
 }) => (
   <div>
     <div className={classes.header} >
-      <IconButton onClick={() => history.push('/team')} className={classes.icon} >
+      <IconButton onClick={() => history.push('/app/team')} className={classes.icon} >
         <NavigateBeforeIcon />
       </IconButton>
       <div className={classes.title} >

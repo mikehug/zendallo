@@ -25,7 +25,7 @@ const LogoButton = ({ classes, onClick }) => (
     <div className={classes.row} >
       <LogoSvg />
       <div className={classes.logoText} >
-        INITIAT.IO
+        initiat.io
       </div>
     </div>
   </Button>

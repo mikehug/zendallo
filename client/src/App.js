@@ -4,6 +4,8 @@ import {
   Route,
 } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
+import deepOrange from 'material-ui/colors/deepOrange';
+import lightBlue from 'material-ui/colors/lightBlue';
 import NavBar from './components/navigation/NavBar';
 import Home from './components/Home';
 import SignIn from './components/authentication/SignIn';
@@ -15,7 +17,16 @@ import SessionDetail from './components/session/SessionDetail';
 import PrivateRoute from './components/authentication/PrivateRoute';
 import { logout, login } from './components/authentication/Auth';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: lightBlue, // Purple and lightBlue play nicely together.
+    secondary: {
+      ...deepOrange,
+      // A400: '#00e677',
+    },
+  },
+});
 // reset styles
 const styles = () => ({
   '@global': {
@@ -56,16 +67,16 @@ class App extends Component {
           <AppWrapper>
             <NavBar user={this.state.user} handleLogout={this.handleLogout} />
             <AppGrid>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/app/" component={Home} />
               <Route
-                path="/signin"
+                path="/app/signin"
                 render={() => (
                   <SignIn handleLogin={this.handleLogin} />)}
               />
-              <Route path="/signup" component={SignUp} />
-              <PrivateRoute exact path="/session" component={Session} />
-              <PrivateRoute path="/session/:code" component={SessionDetail} />
-              <PrivateRoute path="/team" component={Team} />
+              <Route path="/app/signup" component={SignUp} />
+              <PrivateRoute exact path="/app/session" component={Session} />
+              <PrivateRoute path="/app/session/:code" component={SessionDetail} />
+              <PrivateRoute path="/app/team" component={Team} />
             </AppGrid>
           </AppWrapper>
         </MuiThemeProvider>

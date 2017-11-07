@@ -1,10 +1,10 @@
 // @flow weak
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import { Link, withRouter } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import LogoButton from './LogoButton';
 
@@ -36,18 +36,18 @@ const NavBar = withRouter((props) => {
       <AppBar position="fixed" color="default">
         <Toolbar>
           <div className={classes.logo} >
-            <LogoButton onClick={() => history.push('/')} />
+            <LogoButton onClick={() => history.push('/app')} />
           </div>
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
           { user ?
-            <Link to="/" href="/" >
+            <Link to="/app" href="/app" >
               <Button onClick={() => handleLogout()} >
                 Sign Out
               </Button>
             </Link>
             :
-            <Link to="/signin" href="/signin" >
-              <Button>
+            <Link to="/app/signin" href="/app/signin" >
+              <Button color="accent" >
                 Sign In
               </Button>
             </Link>

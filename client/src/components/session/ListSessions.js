@@ -18,7 +18,7 @@ const ListSessions = withRouter(props => (
       <List >
         {props.data.map(session => (
           <div key={session.code}>
-            <ListItem button onClick={() => props.history.push(`/session/${encodeURI(session.code)}`)} >
+            <ListItem button onClick={() => props.history.push(`/app/session/${encodeURI(session.code)}`)} >
               <ListItemIcon>
                 <GroupWorkIcon />
               </ListItemIcon>

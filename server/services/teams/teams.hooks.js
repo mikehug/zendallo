@@ -1,4 +1,4 @@
-const { authenticate } = require('feathers-authentication').hooks;
+const { authenticate } = require('@feathersjs/authentication').hooks;
 const { associateCurrentUser } = require('feathers-authentication-hooks');
 const ObjectID = require('mongodb').ObjectID;
 

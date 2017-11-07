@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 require('typeface-roboto');
 require('typeface-share-tech');
+require('typeface-ubuntu');
 
 const rootElement = document.getElementById('root');
 

@@ -1,7 +1,6 @@
 // Initializes the `teams` service on path `/teams`
 const createService = require('feathers-mongodb');
 const hooks = require('./teams.hooks');
-const filters = require('./teams.filters');
 
 module.exports = function () {
   const app = this;
@@ -20,8 +19,4 @@ module.exports = function () {
   });
 
   service.hooks(hooks);
-
-  if (service.filter) {
-    service.filter(filters);
-  }
 };

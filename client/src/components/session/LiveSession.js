@@ -16,6 +16,7 @@ class LiveSession extends Component {
       });
       AppService.authenticate()
         .then((user) => {
+          console.log(user);
           users.patch(user._id, { currentSession: this.props.session._id });
         });
     }

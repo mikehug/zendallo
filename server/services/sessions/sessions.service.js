@@ -1,7 +1,6 @@
 // Initializes the `sessions` service on path `/sessions`
 const createService = require('feathers-mongodb');
 const hooks = require('./sessions.hooks');
-const filters = require('./sessions.filters');
 
 module.exports = function () {
   const app = this;
@@ -21,7 +20,16 @@ module.exports = function () {
 
   service.hooks(hooks);
 
-  if (service.filter) {
-    service.filter(filters);
-  }
+  service.publish((data, hook) => {
+  // Here you can add event publishers to channels set up in `channels.js`
+  // To publish only for a specific event use `app.publish(eventname, () => {})`
+
+  
+    // if(data._id.toString() !== connection.user.currentSession.toString() ) {
+    //   return false;
+    // }
+
+    // publish all service events to all authenticated users users
+    return app.channel('authenticated');
+  });
 };
