@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { throttle } from 'lodash';
 import AppService from '../../AppService';
+import { login } from '../authentication/Auth';
 import DecisionMap from './DecisionMap';
 
 const sessionFeed = AppService.service('sessions');
@@ -14,26 +16,29 @@ class LiveSession extends Component {
       this.setState({
         session: this.props.session,
       });
-      AppService.authenticate()
+      login()
         .then((user) => {
-          console.log(user);
           users.patch(user._id, { currentSession: this.props.session._id });
         });
     }
 
     componentDidMount() {
-      sessionFeed.on('patched', session => this.setState({ session }));
+      sessionFeed.on('patched', throttle(session => this.setState({ session }), 50));
     }
 
-    handleStatusUpdate = () => {
-      sessionFeed.patch(this.state.session._id, { currentStatus: !this.state.session.currentStatus });
+    handleUpdate = (data) => {
+      // sessionFeed.patch(this.state.session._id, { currentStatus: !this.state.session.currentStatus });
+      // const query = { attendees: { $elemMatch: { name: this.state.user.name } } };
+      const updateObj = {};
+      updateObj[`attendees.${this.props.userIndex}.status`] = data;
+      sessionFeed.patch(this.state.session._id, updateObj);
     }
 
     render() {
       if (this.state.session && this.state.session.attendees) {
         return (
           <div >
-            <DecisionMap />
+            <DecisionMap handleUpdate={this.handleUpdate} attendees={this.state.session.attendees} userIndex={this.props.userIndex} />
 
           </div>);
       } return (<div> Session empty</div>);

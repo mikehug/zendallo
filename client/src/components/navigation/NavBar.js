@@ -6,12 +6,15 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
-import LogoButton from './LogoButton';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+import Typography from 'material-ui/Typography';
+
+const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    width: '100%',
+    // width: '100%',
     marginTop: theme.spacing.unit * 8,
     '@media (min-width:0px) and (orientation: landscape)': {
       marginTop: theme.spacing.unit * 7,
@@ -20,7 +23,19 @@ const styles = theme => ({
       marginTop: theme.spacing.unit * 9,
     },
   },
-  logo: {
+  appBar: {
+    position: 'absolute',
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+  },
+  navIconHide: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+  title: {
     flex: 1,
   },
 
@@ -29,15 +44,24 @@ const styles = theme => ({
 
 const NavBar = withRouter((props) => {
   const {
-    classes, user, history, handleLogout,
+    classes, user, handleLogout, handleDrawerToggle, location,
   } = props;
+
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="default">
-        <Toolbar>
-          <div className={classes.logo} >
-            <LogoButton onClick={() => history.push('/app')} />
-          </div>
+    <div >
+      <AppBar position="fixed" color="default" className={classes.appBar}>
+        <Toolbar >
+          <IconButton
+            aria-label="open drawer"
+            onClick={handleDrawerToggle}
+            className={classes.navIconHide}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography type="title" color="secondary" noWrap className={classes.title}>
+            {location.pathname.split('/').splice(2, 3).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
+          </Typography>
+
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
           { user ?
             <Link to="/app" href="/app" >

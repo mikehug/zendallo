@@ -30,7 +30,9 @@ const renderTextField = ({ field, form: { touched, errors }, ...props }) =>
   );
 
 const SignUpForm = withStyles(styles)((props) => {
-  const { isSubmitting, isValid, classes } = props;
+  const {
+    isSubmitting, isValid, classes,
+  } = props;
   return (
     <Form className={classes.root}>
       <Typography type="title" color="secondary" >Create New Account</Typography>

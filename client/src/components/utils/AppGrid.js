@@ -6,8 +6,8 @@ import Grid from 'material-ui/Grid';
 
 const styles = () => ({
   content: {
-    paddingLeft: 5,
-    paddingRight: 5,
+    marginLeft: 5,
+    marginRight: 5,
   },
 });
 

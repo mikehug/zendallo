@@ -9,9 +9,6 @@ class SessionDetail extends Component {
     state = {
       session: null,
       attendee: false,
-      user: {},
-
-
     }
 
     componentWillMount() {
@@ -24,15 +21,14 @@ class SessionDetail extends Component {
           })
             .then((result) => {
               this.setState({ session: result.data[0] });
-              if (this.checkAttendee()) this.setState({ attendee: true });
+              if (this.findAttendeeIndex() !== -1) this.setState({ attendee: true });
             });
         });
     }
 
-    checkAttendee = () => {
+    findAttendeeIndex = () => {
       const user = AppService.get('user');
-      this.setState({ user });
-      return (this.state.session && this.state.session.attendees.find(attendee => attendee.userId === user._id));
+      return (this.state.session && this.state.session.attendees.findIndex(attendee => attendee.userId === user._id));
     }
 
     handleSubmit = (values, props) => {
@@ -54,7 +50,7 @@ class SessionDetail extends Component {
       if (this.state.session && this.state.attendee) {
         return (
           <div>
-            <LiveSession session={this.state.session} user={this.state.user} />
+            <LiveSession session={this.state.session} userIndex={this.findAttendeeIndex()} />
           </div>);
       } else if (this.state.session) {
         return (
