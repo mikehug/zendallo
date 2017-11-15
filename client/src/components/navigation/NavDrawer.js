@@ -21,7 +21,6 @@ const styles = theme => ({
       position: 'relative',
     },
   },
-
 });
 
 const DrawerContent = withStyles(styles)(props => (

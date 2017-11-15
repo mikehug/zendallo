@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { throttle } from 'lodash';
+import Typography from 'material-ui/Typography';
 import AppService from '../../AppService';
 import { login } from '../authentication/Auth';
 import DecisionMap from './DecisionMap';
@@ -10,16 +11,22 @@ const users = AppService.service('users');
 class LiveSession extends Component {
     state={
       session: {},
+      status: {},
     }
 
     componentWillMount() {
       this.setState({
         session: this.props.session,
       });
+      // TODO: Check if this is necessary
       login()
         .then((user) => {
           users.patch(user._id, { currentSession: this.props.session._id });
         });
+      this.setState({
+        session: this.props.session,
+        status: this.props.session.attendees[this.props.userIndex].status,
+      });
     }
 
     componentDidMount() {
@@ -29,6 +36,7 @@ class LiveSession extends Component {
     handleUpdate = (data) => {
       // sessionFeed.patch(this.state.session._id, { currentStatus: !this.state.session.currentStatus });
       // const query = { attendees: { $elemMatch: { name: this.state.user.name } } };
+      this.setState({ status: data });
       const updateObj = {};
       updateObj[`attendees.${this.props.userIndex}.status`] = data;
       sessionFeed.patch(this.state.session._id, updateObj);
@@ -38,7 +46,9 @@ class LiveSession extends Component {
       if (this.state.session && this.state.session.attendees) {
         return (
           <div >
-            <DecisionMap handleUpdate={this.handleUpdate} attendees={this.state.session.attendees} userIndex={this.props.userIndex} />
+            <Typography type="title" color="secondary" gutterBottom >{this.state.session.name} </Typography>
+
+            <DecisionMap handleUpdate={this.handleUpdate} status={this.state.status} session={this.state.session} userIndex={this.props.userIndex} />
 
           </div>);
       } return (<div> Session empty</div>);
@@ -46,18 +56,3 @@ class LiveSession extends Component {
 }
 
 export default LiveSession;
-
-// {this.state.session.attendees.map(attendee => (
-//               <div key={attendee.name} >
-//                 {attendee.userId === this.props.user._id ?
-//                   <Button
-//                     raised
-//                     onClick={() => this.handleStatusUpdate()}
-//                     color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}
-//                   >
-//                     {attendee.name}
-//                   </Button> :
-//                   <Button color={this.state.session && this.state.session.currentStatus ? 'primary' : 'accent'}>
-//                     {attendee.name}
-//                   </Button> }
-//               </div>))}

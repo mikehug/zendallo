@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import AppService from '../../AppService';
 import ListSessions from './ListSessions';
+import CreateSession from './CreateSession';
 
 const styles = () => ({
   root: {
@@ -15,7 +16,6 @@ const styles = () => ({
     marginTop: 10,
   },
 });
-
 
 class Session extends Component {
   state = {
@@ -43,8 +43,16 @@ class Session extends Component {
       });
   }
 
-  createSession = () => {
-    AppService.service('sessions').create({ startTime: Date.now(), attendees: [] })
+  createSession = (values) => {
+    AppService.service('sessions').create({
+      name: values.name,
+      option1: values.option1,
+      option2: values.option2,
+      option3: values.option3,
+      option4: values.option4,
+      startTime: Date.now(),
+      attendees: [],
+    })
       .then((result) => {
         const { sessions } = this.state;
         sessions.push(result);
@@ -61,9 +69,7 @@ class Session extends Component {
                   Sessions
         </Typography>
         <ListSessions data={data} handleDelete={this.deleteSession} />
-        <Button onClick={() => this.createSession()} color="primary" className={classes.button} >
-              Create Session
-        </Button>
+        <CreateSession data={data} handleCreate={this.createSession} />
       </div>
 
     );

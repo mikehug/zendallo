@@ -24,7 +24,7 @@ const JoinSession = ({ id, handleSubmit }) => (
             autoFocus
             margin="dense"
             name="name"
-            placeholder="Name"
+            placeholder="Participant name"
             type="text"
             component={RenderTextField}
           />

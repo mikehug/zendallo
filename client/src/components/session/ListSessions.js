@@ -23,7 +23,7 @@ const ListSessions = withRouter(props => (
                 <GroupWorkIcon />
               </ListItemIcon>
               <ListItemText
-                primary={session.code}
+                primary={session.name}
               />
               <ListItemSecondaryAction>
                 <IconButton aria-label="Delete" onClick={() => props.handleDelete(session)} >

@@ -73,11 +73,9 @@ class App extends React.Component {
     user: null,
   };
 
-
   componentWillMount() {
     this.handleLogin();
   }
-
 
   handleLogout =() => {
     logout();

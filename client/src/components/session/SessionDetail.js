@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Typography from 'material-ui/Typography';
 import AppService from '../../AppService';
 import JoinSession from './JoinSession';
 import SessionNotValid from './SessionNotValid';
@@ -55,6 +56,7 @@ class SessionDetail extends Component {
       } else if (this.state.session) {
         return (
           <div>
+            <Typography type="title">{this.state.session.name} </Typography>
             <JoinSession id={this.state.session._id} handleSubmit={this.handleSubmit} />
           </div>);
       } return (

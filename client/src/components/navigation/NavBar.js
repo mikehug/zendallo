@@ -62,7 +62,7 @@ const NavBar = withRouter((props) => {
             <MenuIcon />
           </IconButton>
           <Typography type="title" color="secondary" noWrap className={classes.title}>
-            {location.pathname.split('/').splice(2, 3).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
+            {location.pathname.split('/').splice(1, 2).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
           </Typography>
 
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}

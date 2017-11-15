@@ -5,6 +5,13 @@ import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import { throttle } from 'lodash';
 import { Motion, spring } from 'react-motion';
+import orange from 'material-ui/colors/orange';
+import amber from 'material-ui/colors/amber';
+import lightGreen from 'material-ui/colors/lightGreen';
+import pink from 'material-ui/colors/pink';
+import DragIcon from 'material-ui-icons/DragHandle';
+import PersonIcon from 'material-ui-icons/Person';
+import BallPopover from './BallPopover';
 
 const styles = theme => ({
   map: {
@@ -13,6 +20,7 @@ const styles = theme => ({
     maxWidth: 950,
     position: 'relative',
     backgroundImage: 'radial-gradient(800px 1000px at center 200px,#6c38a0 0,#351552 100%)',
+    userSelect: 'none',
   },
   myBall: {
     position: 'absolute',
@@ -20,9 +28,9 @@ const styles = theme => ({
     top: 110,
     left: 135,
     borderRadius: '99px;',
-    backgroundColor: '#8bc34a',
-    width: 30,
-    height: 30,
+    backgroundColor: amber[500],
+    width: 40,
+    height: 40,
   },
   ball: {
     position: 'absolute',
@@ -31,25 +39,40 @@ const styles = theme => ({
     left: 135,
     borderRadius: '99px;',
     backgroundColor: '#2196f3',
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
   },
   chip: {
     margin: theme.spacing.unit,
   },
+  option1: {
+    backgroundColor: lightGreen[500],
+  },
+  option2: {
+    backgroundColor: lightGreen[500],
+  },
+  option3: {
+    backgroundColor: lightGreen[500],
+  },
+  option4: {
+    backgroundColor: lightGreen[500],
+  },
 });
 
+// const springSetting1 = { stiffness: 180, damping: 10 };
+// const springSetting2 = { stiffness: 120, damping: 17 };
 
 class DecisionMap extends React.Component {
     state = {
-      x: 0.5,
-      y: 0.5,
+      // x: this.props.session.attendees[this.props.userIndex].status.x,
+      // y: this.props.session.attendees[this.props.userIndex].status.y,
       left: 0,
       top: 0,
       width: 0,
       height: 0,
       isPressed: false,
     };
+
 
     componentDidMount() {
       document.getElementById('map').addEventListener('mousemove', throttle(this.handleMouseMove, 100));
@@ -66,10 +89,10 @@ class DecisionMap extends React.Component {
 
       if (element) {
         position = element.getBoundingClientRect();
-        this.setState({ left: position.left + 15 });
-        this.setState({ top: position.top + 15 });
-        this.setState({ width: position.right - position.left });
-        this.setState({ height: position.bottom - position.top });
+        this.setState({ left: position.left + 20 });
+        this.setState({ top: position.top + 20 });
+        this.setState({ width: position.right - position.left - 40 });
+        this.setState({ height: position.bottom - position.top - 40 });
       }
     }
 
@@ -81,8 +104,9 @@ class DecisionMap extends React.Component {
       this.setState({ isPressed: true });
     }
 
-    handleTouchMove = ({ touches }) => {
-      this.handleMouseMove(touches[0]);
+    handleTouchMove = (e) => {
+      e.preventDefault();
+      this.handleMouseMove(e.touches[0]);
     };
 
      handleTouchStart = (key, pressLocation, e) => {
@@ -98,7 +122,6 @@ class DecisionMap extends React.Component {
         this.setMapCoordinates();
         const { x, y } = this.limitCoordinates(clientX, clientY);
         this.props.handleUpdate({ x, y });
-        this.setState({ x, y });
       }
     };
 
@@ -107,8 +130,8 @@ class DecisionMap extends React.Component {
       let y = clientY;
       x -= this.state.left;
       y -= this.state.top;
-      x = Math.min(Math.max(x, 5), this.state.width - 5);
-      y = Math.min(Math.max(y, 5), this.state.height - 5);
+      x = Math.min(Math.max(x, 0), this.state.width);
+      y = Math.min(Math.max(y, 0), this.state.height);
       x /= (this.state.width);
       y /= (this.state.height);
       // console.log(`x,y: (${x}, ${y} )top: ${this.state.top} bottom: ${this.state.bottom} left: ${this.state.left} right: ${this.state.right}`);
@@ -117,32 +140,35 @@ class DecisionMap extends React.Component {
 
     render() {
       const scale = this.state.isPressed ? 'scale(1.2)' : 'scale(1)';
+      const boxShadow = this.state.isPressed ? '6px 12px 5px #424242' : 'none';
       return (
         <Grid container id="map" className={this.props.classes.map} direction="row" spacing={0} >
           <Grid container justify="space-between" spacing={0}>
             <Grid item >
               <Chip
-                avatar={<Avatar>A</Avatar>}
-                label="Option 1"
+                avatar={<Avatar className={this.props.classes.option1}>A</Avatar>}
+                label={this.props.session.option1}
                 onClick={() => this.handleClick()}
                 className={this.props.classes.chip}
               />
             </Grid>
             <Grid item >
               <Chip
-                avatar={<Avatar>B</Avatar>}
-                label="Option 2"
+                avatar={<Avatar className={this.props.classes.option1}>B</Avatar>}
+                label={this.props.session.option2}
                 onClick={() => this.handleClick()}
                 className={this.props.classes.chip}
+                style={{ flexDirection: 'row-reverse' }}
               />
             </Grid>
           </Grid>
 
           <Motion style={{
-                    left: spring(this.state.x * this.state.width, { stiffness: 200, damping: 10 }),
-                    top: spring(this.state.y * this.state.height, { stiffness: 200, damping: 10 }),
+                    left: spring(this.props.status.x * this.state.width, { stiffness: 180, damping: 10 }),
+                    top: spring(this.props.status.y * this.state.height, { stiffness: 200, damping: 10 }),
                     }}
           >{ motionStyle => (
+
             <div
               className={this.props.classes.myBall}
               onMouseDown={this.handleMouseDown}
@@ -152,11 +178,19 @@ class DecisionMap extends React.Component {
                  left: motionStyle.left,
                  top: motionStyle.top,
                 transform: scale,
+                boxShadow,
                }}
-            />)}
+            >
+              <DragIcon style={{ paddingTop: 10, color: 'darkSlateGrey' }} />
+            </div>
+
+            )}
           </Motion>
 
-          {this.props.attendees.map((attendee, index) => (
+          {/* <BallPopover name={this.props.session.attendees[this.props.userIndex].name} > */}
+          {/* </BallPopover> */}
+
+          {this.props.session.attendees.map((attendee, index) => (
             attendee && this.props.userIndex !== index ?
               <Motion
                 key={attendee.userId}
@@ -167,14 +201,19 @@ class DecisionMap extends React.Component {
             }}
               >
                 {motionStyle => (
-                  <div
-                    className={this.props.classes.ball}
-                    role="presentation"
-                    style={{
+                  <BallPopover name={attendee.name} >
+                    <div
+                      className={this.props.classes.ball}
+                      role="presentation"
+                      style={{
                     left: motionStyle.left,
                     top: motionStyle.top,
                     }}
-                  />)}
+                    >
+                      <PersonIcon style={{ paddingTop: 6, color: 'darkSlateGrey' }} />
+                    </div>
+                  </BallPopover>
+                  )}
               </Motion>
 
               : null
@@ -183,18 +222,19 @@ class DecisionMap extends React.Component {
           <Grid container justify="space-between" alignItems="flex-end" spacing={0} >
             <Grid item >
               <Chip
-                avatar={<Avatar>C</Avatar>}
-                label="Option 3"
+                avatar={<Avatar className={this.props.classes.option1} >C</Avatar>}
+                label={this.props.session.option3}
                 onClick={() => this.handleClick()}
                 className={this.props.classes.chip}
               />
             </Grid>
             <Grid item >
               <Chip
-                avatar={<Avatar>D</Avatar>}
-                label="Option 4"
+                avatar={<Avatar className={this.props.classes.option1}>D</Avatar>}
+                label={this.props.session.option4}
                 onClick={() => this.handleClick()}
                 className={this.props.classes.chip}
+                style={{ flexDirection: 'row-reverse' }}
               />
             </Grid>
           </Grid>

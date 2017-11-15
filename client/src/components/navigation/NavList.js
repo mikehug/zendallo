@@ -37,7 +37,7 @@ class NavList extends React.Component {
 
     return (
       <List className={classes.root} >
-        <ListItem button onClick={() => history.push('/')} >
+        {/* <ListItem button onClick={() => history.push('/')} >
           <ListItemIcon >
             <Dashboard />
           </ListItemIcon>
@@ -48,14 +48,14 @@ class NavList extends React.Component {
             <GroupIcon />
           </ListItemIcon>
           <ListItemText inset primary="Team" />
-        </ListItem>
+        </ListItem> */}
         <ListItem button onClick={() => history.push('/session')} >
           <ListItemIcon>
             <GroupWorkIcon />
           </ListItemIcon>
-          <ListItemText inset primary="Sessions" />
+          <ListItemText inset primary="Session" />
         </ListItem>
-        <ListItem button onClick={this.handleClick}>
+        {/* <ListItem button onClick={this.handleClick}>
           <ListItemIcon>
             <PlaylistPlayIcon />
           </ListItemIcon>
@@ -69,7 +69,7 @@ class NavList extends React.Component {
             </ListItemIcon>
             <ListItemText inset primary="Intro" />
           </ListItem>
-        </Collapse>
+        </Collapse> */}
       </List>
     );
   }
