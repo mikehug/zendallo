@@ -39,7 +39,7 @@ class SessionDetail extends Component {
       attendees.push({
         name: values.name,
         userId: user._id,
-        status: 'active',
+        status: { x: 0.5, y: 0.5 },
       });
       AppService.service('sessions').patch(this.state.session._id, { attendees })
         .then(() => {
