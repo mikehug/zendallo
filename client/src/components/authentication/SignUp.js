@@ -41,10 +41,10 @@ const SignUpForm = withStyles(styles)((props) => {
           <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />
         </div>
         <div>
-          <Field name="password" type="password" component={renderTextField} />
+          <Field name="password" type="password" component={renderTextField} placeholder="Password" />
         </div>
         <div>
-          <Field name="confirmPassword" type="password" component={renderTextField} />
+          <Field name="confirmPassword" type="password" component={renderTextField} placeholder="Confirm password" />
         </div>
         <Grid container direction="row-reverse" >
           <Grid item>

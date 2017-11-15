@@ -28,7 +28,7 @@ const SignInForm = (props) => {
             <Field autoFocus name="email" type="email" component={RenderTextField} placeholder="Email" />
           </div>
           <div>
-            <Field name="password" type="password" component={RenderTextField} />
+            <Field name="password" type="password" component={RenderTextField} placeholder="Password" />
           </div>
           <Grid container direction="row-reverse" >
             <Grid item>

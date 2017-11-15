@@ -26,14 +26,13 @@ const styles = theme => ({
 });
 
 class NavList extends React.Component {
-  state = { open: true };
-
-  handleClick = () => {
-    this.setState({ open: !this.state.open });
+  handleClick = (path) => {
+    this.props.handleDrawerToggle();
+    this.props.history.push(path);
   };
 
   render() {
-    const { classes, history } = this.props;
+    const { classes } = this.props;
 
     return (
       <List className={classes.root} >
@@ -49,7 +48,7 @@ class NavList extends React.Component {
           </ListItemIcon>
           <ListItemText inset primary="Team" />
         </ListItem> */}
-        <ListItem button onClick={() => history.push('/session')} >
+        <ListItem button onClick={() => this.handleClick('/session')} >
           <ListItemIcon>
             <GroupWorkIcon />
           </ListItemIcon>
