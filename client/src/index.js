@@ -13,7 +13,7 @@ render(<App />, rootElement);
 registerServiceWorker();
 
 if (module.hot) {
-  module.hot.accept('./App2', () => {
+  module.hot.accept('./App', () => {
     render(<App />, rootElement);
   });
 }

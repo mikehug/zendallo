@@ -90,7 +90,7 @@ class Team extends Component {
 
     handleTeamSelect = (team) => {
       this.setState({ selectedTeam: team });
-      this.props.history.push(`/app/team/${encodeURI(team.name)}`);
+      this.props.history.push(`/team/${encodeURI(team.name)}`);
     }
 
     render() {

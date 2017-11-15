@@ -64,13 +64,13 @@ const NavBar = withRouter((props) => {
 
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
           { user ?
-            <Link to="/app" href="/app" >
+            <Link to="/" href="/" >
               <Button onClick={() => handleLogout()} >
                 Sign Out
               </Button>
             </Link>
             :
-            <Link to="/app/signin" href="/app/signin" >
+            <Link to="/signin" href="/signin" >
               <Button color="accent" >
                 Sign In
               </Button>

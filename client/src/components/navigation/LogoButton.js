@@ -24,7 +24,7 @@ const styles = theme => ({
 });
 
 const LogoButton = withRouter(({ classes, history }) => (
-  <Button onClick={() => history.push('/app')} color="contrast" className={classes.button}>
+  <Button onClick={() => history.push('/')} color="contrast" className={classes.button}>
     <div className={classes.row} >
       <LogoSvg />
       <div className={classes.logoText} >

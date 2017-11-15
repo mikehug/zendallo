@@ -96,7 +96,7 @@ const SignUp = withRouter(({ history }) => (
         .then(() => {
           // TODO: Use response to pass user email to sigin page
           setSubmitting(false);
-          history.push('/app/signin');
+          history.push('/signin');
         })
         .catch((error) => {
           // TODO: Use error to create alert

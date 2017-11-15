@@ -96,19 +96,18 @@ class App extends React.Component {
             <div className={classes.appFrame}>
               <NavBar user={this.state.user} handleDrawerToggle={this.handleDrawerToggle} handleLogout={this.handleLogout} />
               <NavDrawer mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} />
-
               <main className={classes.content}>
                 <AppGrid>
-                  <Route exact path="/app/" component={Home} />
+                  <Route exact path="/" component={Home} />
                   <Route
-                    path="/app/signin"
+                    path="/signin"
                     render={() => (
                       <SignIn handleLogin={this.handleLogin} />)}
                   />
-                  <Route path="/app/signup" component={SignUp} />
-                  <PrivateRoute exact path="/app/session" component={Session} />
-                  <PrivateRoute path="/app/session/:code" component={SessionDetail} />
-                  <PrivateRoute path="/app/team" component={Team} />
+                  <Route path="/signup" component={SignUp} />
+                  <PrivateRoute exact path="/session" component={Session} />
+                  <PrivateRoute path="/session/:code" component={SessionDetail} />
+                  <PrivateRoute path="/team" component={Team} />
                 </AppGrid>
               </main>
             </div>
