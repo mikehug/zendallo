@@ -73,6 +73,12 @@ class App extends React.Component {
     user: null,
   };
 
+
+  componentWillMount() {
+    this.handleLogin();
+  }
+
+
   handleLogout =() => {
     logout();
     this.setState({ user: null });
@@ -95,7 +101,7 @@ class App extends React.Component {
           <div className={classes.root}>
             <div className={classes.appFrame}>
               <NavBar user={this.state.user} handleDrawerToggle={this.handleDrawerToggle} handleLogout={this.handleLogout} />
-              <NavDrawer mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} />
+              <NavDrawer mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} user={this.state.user} />
               <main className={classes.content}>
                 <AppGrid>
                   <Route exact path="/" component={Home} />

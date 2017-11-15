@@ -30,12 +30,14 @@ const DrawerContent = withStyles(styles)(props => (
       <LogoButton />
     </div>
     <Divider />
-    <NavList />
+    { props.user ?
+      <NavList /> :
+      null}
   </div>
 ));
 
 const NavDrawer = ({
-  theme, classes, mobileOpen, handleDrawerToggle,
+  theme, classes, mobileOpen, handleDrawerToggle, user,
 }) => (
   <div>
     <Hidden mdUp>
@@ -47,7 +49,7 @@ const NavDrawer = ({
         onRequestClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }}
       >
-        <DrawerContent />
+        <DrawerContent user={user} />
       </Drawer>
     </Hidden>
     <Hidden mdDown implementation="css">
@@ -56,7 +58,7 @@ const NavDrawer = ({
         open
         classes={{ paper: classes.drawerPaper }}
       >
-        <DrawerContent />
+        <DrawerContent user={user} />
       </Drawer>
     </Hidden>
   </div>

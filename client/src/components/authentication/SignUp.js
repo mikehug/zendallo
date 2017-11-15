@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Formik, Form, Field } from 'formik';
 import AppService from '../../AppService';
-import { authManagement } from './Auth';
+import { AuthManagement } from './Auth';
 
 const styles = () => ({
   root: {
@@ -56,7 +56,10 @@ const SignUpForm = withStyles(styles)((props) => {
   );
 });
 
-const handleValidate = values => authManagement.checkUnique({ email: values.email })
+const handleValidate = values => AuthManagement.create({
+  action: 'checkUnique',
+  value: { email: values.email },
+})
   .catch(() => {
     const errors = {};
     errors.email = 'Email already taken';

@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "proxy": "http://localhost:3030/",
+  "homepage": "https://www.initiat.io",
   "private": true,
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.0",
@@ -9,7 +10,6 @@
     "@feathersjs/socketio-client": "^1.0.0",
     "classnames": "^2.2.5",
     "eslint-config-react-app": "^2.0.1",
-    "feathers-authentication-management": "^1.0.0",
     "formik": "^0.10.4",
     "lodash": "^4.17.4",
     "material-ui": "^1.0.0-beta.21",

@@ -1,7 +1,7 @@
 // @flow weak
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -38,13 +38,16 @@ const styles = theme => ({
   title: {
     flex: 1,
   },
-
-
 });
+
+const logout = (handleLogout, history) => {
+  handleLogout();
+  history.push('/');
+};
 
 const NavBar = withRouter((props) => {
   const {
-    classes, user, handleLogout, handleDrawerToggle, location,
+    classes, user, handleLogout, handleDrawerToggle, location, history,
   } = props;
 
   return (
@@ -64,17 +67,13 @@ const NavBar = withRouter((props) => {
 
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
           { user ?
-            <Link to="/" href="/" >
-              <Button onClick={() => handleLogout()} >
+            <Button onClick={() => logout(handleLogout, history)} >
                 Sign Out
-              </Button>
-            </Link>
+            </Button>
             :
-            <Link to="/signin" href="/signin" >
-              <Button color="accent" >
+            <Button onClick={() => history.push('/signin')} >
                 Sign In
-              </Button>
-            </Link>
+            </Button>
           }
         </Toolbar>
       </AppBar>
