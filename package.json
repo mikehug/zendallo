@@ -2,13 +2,13 @@
   "name": "initiatioweb",
   "description": "Real-time team building and decision making app",
   "version": "0.0.0",
-  "homepage": "https://www.initiat.io",
+  "homepage": "https://initiat.io",
   "main": "server",
   "keywords": [
     "initiatio"
   ],
   "author": {
-    "name": "",
+    "name": "Mike Hughes",
     "email": "mike@initiat.io"
   },
   "contributors": [],

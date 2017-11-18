@@ -3,6 +3,7 @@ import Drawer from 'material-ui/Drawer';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
+import pink from 'material-ui/colors/pink';
 import classnames from 'classnames';
 import LogoButton from './LogoButton';
 import NavList from './NavList';
@@ -12,7 +13,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   drawerHeader: theme.mixins.toolbar,
   headerStyle: {
-    background: 'linear-gradient(rgb(241, 35, 27), rgb(230, 139, 11))',
+    background: pink[400],
   },
   drawerPaper: {
     width: 250,

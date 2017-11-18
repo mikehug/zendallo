@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "proxy": "http://localhost:3030/",
-  "homepage": "https://www.initiat.io",
+  "homepage": "https://initiat.io/app",
   "private": true,
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.0",

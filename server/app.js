@@ -40,13 +40,15 @@ app.use(favicon(path.join(app.get('client'), 'favicon.ico')));
 
 // Host the public folder
 
-app.use('/', express.static(app.get('client')))
-  .get('*', function (req, res) {
-    res.sendFile(path.join(app.get('client'), 'index.html'));
-  });
+app.use('/app', express.static(app.get('client')));
+app.get('/app/*', function (req, res) {
+  res.sendFile(path.join(app.get('client'), 'index.html'));
+});
 
-// app.use('/', express.static(app.get('public')));
-
+app.use('/', express.static(app.get('public'))); 
+app.get('*', function (req, res) {
+  res.sendFile(path.join(app.get('public'), 'index.html'));
+});
 
 // app.use('/app/', express.static(app.get('app')))
 // // Return index to handle different routes  

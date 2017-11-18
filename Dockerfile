@@ -5,7 +5,7 @@ COPY startup /opt/startup
 COPY package.json /home/site/wwwroot/package.json
 COPY test /home/site/wwwroot/test
 COPY server /home/site/wwwroot/server
-COPY public /home/site/wwwroot/public
+COPY static /home/site/wwwroot/static
 COPY config /home/site/wwwroot/config
 COPY client /home/site/wwwroot/client
 
@@ -22,6 +22,9 @@ RUN npm install -g pm2 \
      && cd /home/site/wwwroot \
      && npm install \
      && cd /home/site/wwwroot/client \
+     && npm install \
+     && npm run build \
+     && cd /home/site/wwwroot/static \
      && npm install \
      && npm run build \
      && chmod 755 /opt/startup/init_container.sh

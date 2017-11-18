@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "checkJs": false,
+    "jsx": "react",    
+    // This is the line you want to add
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true     
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

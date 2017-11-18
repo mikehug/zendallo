@@ -1,0 +1,17 @@
+{
+  "editor.minimap.enabled": false,
+  "emmet.syntaxProfiles": {
+    "html": {
+      "attr_quotes": "single"
+    },
+    "jsx": {
+      "self_closing_tag": true
+    }
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "prettier.eslintIntegration": false
+}

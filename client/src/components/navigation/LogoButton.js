@@ -16,9 +16,9 @@ const styles = theme => ({
   },
   logoText: {
     fontFamily: 'Share Tech',
-    fontSize: '28px',
-    margin: '8px 5px 5px 10px',
-    color: theme.palette.text.secondary,
+    fontSize: '26px',
+    margin: '8px 5px 5px 5px',
+    color: 'white',
 
   },
 });

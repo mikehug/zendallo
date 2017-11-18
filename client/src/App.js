@@ -86,6 +86,9 @@ class App extends React.Component {
      .then((result) => {
        this.setState({ user: result });
      })
+     .catch(() => {
+       this.handleLogout();
+     })
 
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
@@ -94,7 +97,7 @@ class App extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Router>
+      <Router basename="/app" >
         <MuiThemeProvider theme={theme} >
           <div className={classes.root}>
             <div className={classes.appFrame}>
