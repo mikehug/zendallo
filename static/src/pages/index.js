@@ -97,7 +97,7 @@ const IndexPage = ({ classes }) => (
             <Typography type="headline" className={classes.font} >
             Trust Building
             </Typography>
-            <Button color="accent" >  Learn</Button>
+            <Button color="accent" disabled >  Learn</Button>
           </Grid>
         </Grid>
         <Grid item xs={10} sm={7} md={3} className={classes.col} >
@@ -108,7 +108,7 @@ const IndexPage = ({ classes }) => (
             <Typography type="headline" className={classes.font} >
             Realtime Feedback
             </Typography>
-            <Button color="accent" >  Interact</Button>
+            <Button color="accent" disabled >  Interact</Button>
           </Grid>
         </Grid>
         <Grid item xs={10} sm={7} md={3} className={classes.col} >
@@ -118,10 +118,83 @@ const IndexPage = ({ classes }) => (
             <Typography type="headline" className={classes.font} >
             Visual Decisions
             </Typography>
-            <Button color="accent" >  Align</Button>
+            <Button color="accent" disabled >  Align</Button>
           </Grid>
         </Grid>
       </Grid>
+
+      <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+        <Grid item xs={10} sm={7} md={9} className={classes.col} >
+          <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
+          Company
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+
+ We are passionate about engagement, transparency and participation informing improved organizational decision making and outcomes.
+          The digital landscape has changed the way teams collaborate, meaning there are teams that rarely get to engage in face-to-face collaboration, and even when they do true participation doesn’t always occur.
+          </Typography>
+
+          <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
+          What is the problem?
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+
+  In the digital workplace companies rely more and more on technology to collaborate. Many teams fail to benefit from the creative collisions that in person engagement yields. The complexity of the digital landscape complexity impacts teamwork, trust and performance, leading to costly decisions.
+          </Typography>
+
+          <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
+          Our Solution
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+We want to change this and have created a mechanism for organizations to hear their team’s perspectives, so teams can reach decisions faster with higher levels of individual buy in. We provide team alignment tools and participatory process improvement tools specifically designed to address interpersonal disconnect of the 21st century workplace. Enabling better team engagement and participation leading to improved collective decision making.
+          </Typography>
+
+
+          <Typography className={classes.font} type="display1" gutterBottom color="primary" style={{ paddingTop: 50 }} >
+            { 'Who are we?' }
+
+          </Typography>
+
+
+          <Typography type="headline" color="primary" className={classes.font} >
+
+Sue Redmond, PhD
+          </Typography>
+
+          <Typography type="subheading" color="primary" className={classes.font} >
+
+CEO & Co-Founder - @suezredmond
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+
+With a career in human behavior change, curriculum development and organizational culture change nationally & internationally, Sue co-founded Initiatio to help organizations listen to and hear the voice of their greatest resource their people. Fuelling a new wave of transparency in leadership, engagement and participation.
+          Sue is a passionate triathlete, ironman, surfer, former martial artist and dog lover!
+Check out her book ‘The Athlete’s Secret Garden’ on Amazon.co.uk.
+          </Typography>
+
+          <Typography type="headline" color="primary" className={classes.font} style={{ paddingTop: 30 }}>
+            Mike Hughes
+          </Typography>
+
+          <Typography type="subheading" color="primary" className={classes.font} >
+
+CTO & Co-Founder - @mikehug
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+ With over 20 years software design and development, Mike has created software in multiple industries working with globally distributed teams. Most recently he helped lead the redesign of the world's leading enterprise workforce optimization suites.
+ He has a passion for crafty design and nifty solutions. Mike is one of the most enthusiastic and energetic people you are likely to meet!
+          </Typography>
+
+
+        </Grid>
+      </Grid>
+
+
     </Grid>
   </div>
 );

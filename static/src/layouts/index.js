@@ -86,7 +86,7 @@ const Header = withStyles(styles)(({ classes }) => (
         <div className={classes.logo}>
           <LogoSvg />
           <div className={classes.logoText} >
-        INITIAT.IO
+            INITIAT.IO
           </div>
         </div>
       </Link>
@@ -106,11 +106,11 @@ const Header = withStyles(styles)(({ classes }) => (
       Company
         </Typography>
       </Link> */}
-      <Link to="https://initiat.io/app/signin" className={classes.link} >
+      <a href="https://initiat.io/app/signin" className={classes.link} >
         <Typography type="subheading" color="primary" className={classes.menuLink}>
       Sign In
         </Typography>
-      </Link>
+      </a>
     </Toolbar>
   </AppBar>
 ));
@@ -125,6 +125,7 @@ const TemplateWrapper = ({ children, classes }) => (
           { name: 'keywords', content: 'teamwork, social collaboration' },
         ]}
       />
+
       <Header />
       {/* <Grid container justifyContent="center" spacing={0} direction="column" > */}
       {children()}
