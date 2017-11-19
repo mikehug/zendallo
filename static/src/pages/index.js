@@ -132,7 +132,7 @@ const IndexPage = ({ classes }) => (
 
           <Typography type="subheading" align="justify" >
 
-  In the digital workplace companies rely more and more on technology to collaborate. Many teams fail to benefit from the creative collisions that in person engagement yields. The complexity of the digital landscape complexity impacts teamwork, trust and performance, leading to costly decisions.
+  In the digital workplace, companies increasingly rely on technology to collaborate. Many teams fail to benefit from the creative collisions that in-person engagement yields. The complexity of the digital landscape impacts teamwork, trust and performance, leading to costly decisions.
           </Typography>
 
           <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
@@ -140,7 +140,7 @@ const IndexPage = ({ classes }) => (
           </Typography>
 
           <Typography type="subheading" align="justify" >
-We want to change this and have created a mechanism for organizations to hear their team’s perspectives, so teams can reach decisions faster with higher levels of individual buy in. We provide team alignment tools and participatory process improvement tools specifically designed to address interpersonal disconnect of the 21st century workplace. Enabling better team engagement and participation leading to improved collective decision making.
+We want to change this and have created a mechanism for organizations to hear their team’s perspectives, so teams can reach decisions faster with higher levels of individual buy in. We provide team alignment and participatory process improvement tools specifically designed to address interpersonal disconnect of the workplace. Enabling better team engagement and participation which leads to improved collective decision making.
           </Typography>
 
           <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
@@ -149,8 +149,8 @@ We want to change this and have created a mechanism for organizations to hear th
 
           <Typography type="subheading" align="justify" >
 
- We are passionate about engagement, transparency and participation informing improved organizational decision making and outcomes.
-          The digital landscape has changed the way teams collaborate, meaning there are teams that rarely engage in face-to-face collaboration and participation is often poor - we are working hard on changing this. We are currently in private beta but our public launch is on January 8th.
+ Initiatio <i>(e-nish-e-a-toe)</i> is the latin for 'participation and initiation'. We are passionate about engagement, transparency and participation which lead to improved organizational decision making and better outcomes.
+          The digital landscape is changing the way teams collaborate - we are working to enhance the human experience of this process. We are currently in private beta but our public launch is on January 8th.
           </Typography>
 
 
