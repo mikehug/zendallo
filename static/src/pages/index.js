@@ -125,15 +125,6 @@ const IndexPage = ({ classes }) => (
 
       <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
         <Grid item xs={10} sm={7} md={9} className={classes.col} >
-          <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
-          Company
-          </Typography>
-
-          <Typography type="subheading" align="justify" >
-
- We are passionate about engagement, transparency and participation informing improved organizational decision making and outcomes.
-          The digital landscape has changed the way teams collaborate, meaning there are teams that rarely get to engage in face-to-face collaboration, and even when they do true participation doesn’t always occur.
-          </Typography>
 
           <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
           What is the problem?
@@ -150,6 +141,16 @@ const IndexPage = ({ classes }) => (
 
           <Typography type="subheading" align="justify" >
 We want to change this and have created a mechanism for organizations to hear their team’s perspectives, so teams can reach decisions faster with higher levels of individual buy in. We provide team alignment tools and participatory process improvement tools specifically designed to address interpersonal disconnect of the 21st century workplace. Enabling better team engagement and participation leading to improved collective decision making.
+          </Typography>
+
+          <Typography className={classes.font} type="headline" gutterBottom style={{ paddingTop: 30 }} >
+          Company
+          </Typography>
+
+          <Typography type="subheading" align="justify" >
+
+ We are passionate about engagement, transparency and participation informing improved organizational decision making and outcomes.
+          The digital landscape has changed the way teams collaborate, meaning there are teams that rarely engage in face-to-face collaboration and participation is often poor - we are working hard on changing this. We are currently in private beta but our public launch is on January 8th.
           </Typography>
 
 
