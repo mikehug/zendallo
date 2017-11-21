@@ -5,9 +5,9 @@
   "homepage": "https://initiat.io/app",
   "private": true,
   "dependencies": {
-    "@feathersjs/authentication-client": "^1.0.0",
-    "@feathersjs/client": "^3.0.0",
-    "@feathersjs/socketio-client": "^1.0.0",
+    "@feathersjs/authentication-client": "^1.0.1",
+    "@feathersjs/client": "^3.1.0",
+    "@feathersjs/socketio-client": "^1.0.1",
     "classnames": "^2.2.5",
     "eslint-config-react-app": "^2.0.1",
     "formik": "^0.10.4",
@@ -42,7 +42,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react": "^7.5.1",
     "source-map-explorer": "^1.5.0"
   }
 }
