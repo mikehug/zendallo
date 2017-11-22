@@ -4,7 +4,7 @@ import Button from 'material-ui/Button';
 
 const Home = ({ history }) => (
   <div>
-    <Button color="accent" onClick={() => history.push('/signup')} >
+    <Button color="primary" onClick={() => history.push('/signup')} >
      Sign Up
     </Button>
   </div>
