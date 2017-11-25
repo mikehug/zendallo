@@ -16,6 +16,7 @@ import AppGrid from './components/utils/AppGrid';
 import Team from './components/team/Team';
 import Session from './components/session/Session';
 import SessionDetail from './components/session/SessionDetail';
+import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/authentication/PrivateRoute';
 import { logout, login } from './components/authentication/Auth';
 
@@ -113,6 +114,7 @@ class App extends React.Component {
                   />
                   <Route path="/signup" component={SignUp} />
                   <PrivateRoute exact path="/session" component={Session} />
+                  <PrivateRoute exact path="/dashboard" component={Dashboard} />
                   <PrivateRoute path="/session/:code" component={SessionDetail} />
                   <PrivateRoute path="/team" component={Team} />
                 </AppGrid>
