@@ -24,11 +24,11 @@ import { logout, login } from './components/authentication/Auth';
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: lightBlue, // Purple and lightBlue play nicely together.
-    secondary: {
-      ...deepOrange,
-      // A400: '#00e677',
-    },
+    // primary: lightBlue, // Purple and lightBlue play nicely together.
+    // secondary: {
+    //   ...deepOrange,
+    //   // A400: '#00e677',
+    // },
   },
 });
 

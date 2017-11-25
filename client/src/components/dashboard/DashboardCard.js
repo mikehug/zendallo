@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import Avatar from 'material-ui/Avatar';
 import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import { LinearProgress } from 'material-ui/Progress';
 import Chips from './Chip';
@@ -25,7 +26,9 @@ const styles = {
     color: 'white',
   },
   img: {
-    paddingTop: 15,
+    marginTop: 10,
+    width: 75,
+    height: 75,
   },
   cardContent: {
     margin: 2,
@@ -42,10 +45,10 @@ const DashboardCard = (props) => {
   } = props;
   return (
     <Card raised className={classes.root} >
-      <CardMedia className={classes.cardMedia} style={background} >
-        <div className={classes.img} >
+      <CardMedia className={classes.cardMedia} >
+        <Avatar className={classes.img} style={background} >
           {children}
-        </div>
+        </Avatar>
         <div className={classes.cardDesc}>
           <Typography type="title" component="h2" gutterBottom className={classes.cardText}>
             {heading}
