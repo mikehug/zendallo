@@ -1,11 +1,10 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
-import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import { LinearProgress } from 'material-ui/Progress';
 import Chips from './Chip';
 
@@ -27,8 +26,8 @@ const styles = {
   },
   img: {
     marginTop: 10,
-    width: 75,
-    height: 75,
+    width: 65,
+    height: 65,
   },
   cardContent: {
     margin: 2,
@@ -63,7 +62,7 @@ const DashboardCard = (props) => {
       </CardContent>
       <CardActions className={classes.cardActions} >
         <Chips label={chip} />
-        <Button color="primary" onClick={() => history.push(route)} >CONTINUE</Button>
+        <Button color="secondary" onClick={() => history.push(route)} >CONTINUE</Button>
       </CardActions>
     </Card>
   );

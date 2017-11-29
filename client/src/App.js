@@ -5,8 +5,8 @@ import {
   Route,
 } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
-import deepOrange from 'material-ui/colors/deepOrange';
-import lightBlue from 'material-ui/colors/lightBlue';
+import teal from 'material-ui/colors/teal';
+import cyan from 'material-ui/colors/cyan';
 import NavBar from './components/navigation/NavBar';
 import NavDrawer from './components/navigation/NavDrawer';
 import Home from './components/Home';
@@ -24,11 +24,11 @@ import { logout, login } from './components/authentication/Auth';
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    // primary: lightBlue, // Purple and lightBlue play nicely together.
-    // secondary: {
-    //   ...deepOrange,
-    //   // A400: '#00e677',
-    // },
+    primary: cyan, // Purple and teal play nicely together.
+    secondary: {
+      ...teal,
+      // A400: '#00e677',
+    },
   },
 });
 
@@ -45,7 +45,7 @@ const styles = () => ({
   },
   root: {
     width: '100%',
-    height: '100vh',
+    // height: '100vh',
     zIndex: 1,
     overflow: 'hidden',
   },
@@ -58,9 +58,9 @@ const styles = () => ({
   content: {
     backgroundColor: theme.palette.background.default,
     width: '100%',
-    padding: theme.spacing.unit * 3,
     height: 'calc(100% - 56px)',
     marginTop: 56,
+
     [theme.breakpoints.up('sm')]: {
       height: 'calc(100% - 64px)',
       marginTop: 64,

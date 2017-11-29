@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { throttle } from 'lodash';
-import Typography from 'material-ui/Typography';
 import AppService from '../../AppService';
 import { login } from '../authentication/Auth';
-import DecisionMap from './DecisionMap';
+import SessionTabs from './SessionTabs';
 
 const sessionFeed = AppService.service('sessions');
 const users = AppService.service('users');
@@ -46,9 +45,10 @@ class LiveSession extends Component {
       if (this.state.session && this.state.session.attendees) {
         return (
           <div >
-            <Typography type="title" color="secondary" gutterBottom >{this.state.session.name} </Typography>
+            {/* <Typography type="title" color="secondary" gutterBottom >{this.state.session.name} </Typography> */}
 
-            <DecisionMap handleUpdate={this.handleUpdate} status={this.state.status} session={this.state.session} userIndex={this.props.userIndex} />
+            <SessionTabs handleUpdate={this.handleUpdate} status={this.state.status} session={this.state.session} userIndex={this.props.userIndex} />
+
 
           </div>);
       } return (<div> Session empty</div>);

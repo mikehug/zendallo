@@ -8,6 +8,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import PowerIcon from 'material-ui-icons/PowerSettingsNew';
 import Typography from 'material-ui/Typography';
 
 const drawerWidth = 240;
@@ -24,7 +25,6 @@ const styles = theme => ({
     },
   },
   appBar: {
-    position: 'absolute',
     marginLeft: drawerWidth,
     [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -37,6 +37,11 @@ const styles = theme => ({
   },
   title: {
     flex: 1,
+    textAlign: 'center',
+    // marginLeft: -5,
+    [theme.breakpoints.up('md')]: {
+      marginLeft: 50,
+    },
   },
 });
 
@@ -62,14 +67,19 @@ const NavBar = withRouter((props) => {
             <MenuIcon />
           </IconButton>
           <Typography type="title" color="secondary" noWrap className={classes.title}>
-            {location.pathname.split('/').splice(1, 2).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
+            {location.pathname.split('/').splice(1, 1).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
           </Typography>
 
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
-          { user ?
-            <Button onClick={() => logout(handleLogout, history)} >
+          {/* <Button  >
                 Sign Out
-            </Button>
+            </Button> */}
+          { user ?
+
+            <IconButton color="contrast" onClick={() => logout(handleLogout, history)}>
+
+              <PowerIcon />
+            </IconButton>
             :
             <Button onClick={() => history.push('/signin')} >
                 Sign In

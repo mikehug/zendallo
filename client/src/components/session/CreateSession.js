@@ -43,7 +43,7 @@ export default class CreateSession extends React.Component {
   render() {
     return (
       <div style={{ paddingTop: '10px' }} >
-        <Button onClick={this.handleClickOpen} color="primary">
+        <Button onClick={this.handleClickOpen} color="default">
           Create Session
         </Button>
         <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
@@ -102,7 +102,7 @@ export default class CreateSession extends React.Component {
                   <Button onClick={this.handleRequestClose} >
                     Cancel
                   </Button>
-                  <Button type="submit" disabled={props.isSubmitting && props.isValid} color="primary">
+                  <Button type="submit" disabled={props.isSubmitting && props.isValid} color="secondary">
                     Create
                   </Button>
                 </DialogActions>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
@@ -65,7 +64,7 @@ class Session extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root} >
-        <Typography type="title" color="secondary" gutterBottom>
+        <Typography type="title" color="default" gutterBottom>
                   Sessions
         </Typography>
         <ListSessions data={data} handleDelete={this.deleteSession} />

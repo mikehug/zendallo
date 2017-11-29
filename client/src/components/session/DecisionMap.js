@@ -5,11 +5,9 @@ import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import { throttle } from 'lodash';
 import { Motion, spring } from 'react-motion';
-import orange from 'material-ui/colors/orange';
 import amber from 'material-ui/colors/amber';
 import lightGreen from 'material-ui/colors/lightGreen';
-import pink from 'material-ui/colors/pink';
-import DragIcon from 'material-ui-icons/DragHandle';
+import OpenWithIcon from 'material-ui-icons/OpenWith';
 import PersonIcon from 'material-ui-icons/Person';
 import BallPopover from './BallPopover';
 
@@ -18,9 +16,12 @@ const styles = theme => ({
     flex: '1 100%',
     height: 300,
     maxWidth: 950,
+    borderRadius: 20,
+    paddingRight: 3,
     position: 'relative',
     backgroundImage: 'radial-gradient(800px 1000px at center 200px,#6c38a0 0,#351552 100%)',
     userSelect: 'none',
+    tapHighlightColor: 'transparent',
   },
   myBall: {
     position: 'absolute',
@@ -29,6 +30,7 @@ const styles = theme => ({
     left: 135,
     borderRadius: '99px;',
     backgroundColor: amber[500],
+
     width: 40,
     height: 40,
   },
@@ -41,6 +43,13 @@ const styles = theme => ({
     backgroundColor: '#2196f3',
     width: 40,
     height: 40,
+  },
+  myBallIcon: {
+    paddingTop: 8,
+    color: 'darkSlateGrey',
+    '&:hover': {
+      transform: 'scale(1.2)',
+    },
   },
   chip: {
     margin: theme.spacing.unit,
@@ -57,6 +66,8 @@ const styles = theme => ({
   option4: {
     backgroundColor: lightGreen[500],
   },
+
+
 });
 
 // const springSetting1 = { stiffness: 180, damping: 10 };
@@ -98,6 +109,7 @@ class DecisionMap extends React.Component {
 
     handleMouseUp = () => {
       this.setState({ isPressed: false });
+      this.props.handleDisableSwipe(false);
     }
 
     handleMouseDown =() => {
@@ -109,12 +121,12 @@ class DecisionMap extends React.Component {
       this.handleMouseMove(e.touches[0]);
     };
 
-     handleTouchStart = (key, pressLocation, e) => {
+     handleTouchStart = (key, pressLocation, e) => { // eslint-disable-line
        this.setState({ isPressed: true });
+       this.props.handleDisableSwipe(true);
      };
 
     handleClick =() => {
-      console.log('test');
     }
 
     handleMouseMove = ({ clientX, clientY }) => {
@@ -181,7 +193,7 @@ class DecisionMap extends React.Component {
                 boxShadow,
                }}
             >
-              <DragIcon style={{ paddingTop: 10, color: 'darkSlateGrey' }} />
+              <OpenWithIcon className={this.props.classes.myBallIcon} />
             </div>
 
             )}

@@ -3,7 +3,6 @@ import Drawer from 'material-ui/Drawer';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
-import indigo from 'material-ui/colors/indigo';
 import classnames from 'classnames';
 import LogoButton from './LogoButton';
 import NavList from './NavList';
@@ -28,6 +27,7 @@ const DrawerContent = withStyles(styles)(props => (
   <div>
     <div className={classnames(props.classes.drawerHeader, props.classes.headerStyle)} >
       <LogoButton />
+
     </div>
     <Divider />
     { props.user ?

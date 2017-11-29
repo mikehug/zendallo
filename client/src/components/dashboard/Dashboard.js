@@ -7,8 +7,7 @@ import Person from 'material-ui-icons/Person';
 import GroupIcon from 'material-ui-icons/Group';
 import orange from 'material-ui/colors/orange';
 import lightGreen from 'material-ui/colors/lightGreen';
-import red from 'material-ui/colors/red';
-import blue from 'material-ui/colors/blue';
+import pink from 'material-ui/colors/pink';
 import lightBlue from 'material-ui/colors/lightBlue';
 import DashboardCard from './DashboardCard';
 
@@ -30,49 +29,49 @@ const Dashboard = ({ classes }) => (
   <Grid container justify="center" spacing={24} className={classes.root} >
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
-        heading="Profile"
-        content="Personal details and activities"
-        progress={0}
-        background={{ }}
-        route="/profile"
-        chip="1/5"
-      > <Person className={classes.icon} style={{ color: red[500] }} />
-      </DashboardCard>
-    </Grid>
-    <Grid item xs={12} sm={8} md={6} lg={6}>
-      <DashboardCard
-        heading="Team"
-        content="Team activiies and managment"
-        background={{ }}
-        progress={0}
-        route="/team"
-        chip=""
-      >
-        <GroupIcon className={classes.icon} style={{ color: lightGreen[500] }} />
-      </DashboardCard>
-    </Grid>
-    <Grid item xs={12} sm={8} md={6} lg={6}>
-      <DashboardCard
         heading="Session"
-        content="Create and find team sessions"
+        content="Create and access sessions"
         progress={0}
         background={{ }}
         route="/session"
         chip=""
       >
-        <GroupWorkIcon className={classes.icon} style={{ color: orange[500] }} />
+        <GroupWorkIcon className={classes.icon} style={{ color: lightGreen[500] }} />
+      </DashboardCard>
+    </Grid>
+    <Grid item xs={12} sm={8} md={6} lg={6}>
+      <DashboardCard
+        heading="Team"
+        content="Team information"
+        background={{ }}
+        progress={0}
+        route="/team"
+        chip=""
+      >
+        <GroupIcon className={classes.icon} style={{ color: lightBlue[500] }} />
+      </DashboardCard>
+    </Grid>
+    <Grid item xs={12} sm={8} md={6} lg={6}>
+      <DashboardCard
+        heading="Profile"
+        content="Personality profile"
+        progress={0}
+        background={{ }}
+        route="/profile"
+        chip="1/5"
+      > <Person className={classes.icon} style={{ color: orange[500] }} />
       </DashboardCard>
     </Grid>
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
         heading="Resources"
-        content="Emotional intelligence activiites"
+        content="Information and training "
         progress={0}
         background={{ }}
         route="/resources"
         chip=""
       >
-        <PlaylistPlayIcon className={classes.icon} style={{ color: lightBlue[500] }} />
+        <PlaylistPlayIcon className={classes.icon} style={{ color: pink[500] }} />
       </DashboardCard>
     </Grid>
   </Grid >

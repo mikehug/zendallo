@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Popover from 'material-ui/Popover';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import Grow from 'material-ui/transitions/Grow';
-import Paper from 'material-ui/Paper';
-import { Manager, Target, Popper } from 'react-popper';
+// import Grow from 'material-ui/transitions/Grow';
+// import Paper from 'material-ui/Paper';
+// import { Manager, Target, Popper } from 'react-popper';
 
 const styles = theme => ({
   paper: {
@@ -23,7 +23,7 @@ const styles = theme => ({
 class BallPopover extends Component {
   state = {
     anchorEl: null,
-    popperOpen: false,
+    // popperOpen: false,
   };
 
   handlePopoverOpen = (event) => {
@@ -34,28 +34,29 @@ class BallPopover extends Component {
     this.setState({ anchorEl: null });
   };
 
-  handlePopperOpen = () => {
-    this.setState({ popperOpen: true });
-  };
+  // handlePopperOpen = () => {
+  //   this.setState({ popperOpen: true });
+  // };
 
-  handlePopperClose = () => {
-    this.setState({ popperOpen: false });
-  };
+  // handlePopperClose = () => {
+  //   this.setState({ popperOpen: false });
+  // };
 
   render() {
     const { classes, children, name } = this.props;
-    const { anchorEl, popperOpen } = this.state;
+    // const { anchorEl, popperOpen } = this.state;
+    const { anchorEl } = this.state;
     const open = !!anchorEl;
 
     return (
-      <div
+      <div // eslint-disable-line jsx-a11y/mouse-events-have-key-events
         className="wrapper"
         onMouseOver={this.handlePopoverOpen}
         onMouseDown={this.handlePopoverClose}
         onMouseOut={this.handlePopoverClose}
-        onTouch={this.handlePopoverOpen}
+        onTouchStart={this.handlePopoverOpen}
         onTouchEnd={this.handlePopoverClose}
-        onMouseOut={this.handlePopoverClose}
+        role="presentation"
       >
         {children}
         <Popover

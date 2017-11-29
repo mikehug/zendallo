@@ -1,11 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-import Button from 'material-ui/Button';
+// import { Link } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import { withStyles } from 'material-ui/styles';
 import LogoSvg from './LogoSvg';
-import pink from 'material-ui/colors/pink';
 
 
 const styles = theme => ({
@@ -13,7 +11,7 @@ const styles = theme => ({
   },
   row: {
     display: 'flex',
-    padding: '14px 0 0 14px',
+    padding: '10px 0 0 14px',
     flexDirection: 'row',
 
   },
@@ -25,7 +23,7 @@ const styles = theme => ({
 
   },
   avatar: {
-
+    // backgroundColor: theme.palette.common.darkWhite,
   },
   link: {
     textDecoration: 'none',
@@ -33,19 +31,19 @@ const styles = theme => ({
   },
 });
 
-const LogoButton = withRouter(({ classes, history }) => (
+const LogoButton = withRouter(({ classes }) => (
   <div>
-    <a href="https://initiat.io/" className={classes.link} >
-      <div className={classes.row} >
-        <Avatar className={classes.avatar} >
-          <LogoSvg />
-        </Avatar>
-        <div className={classes.logoText} >
+    {/* <a href="https://initiat.io/" className={classes.link} > */}
+    <div className={classes.row} >
+      <Avatar className={classes.avatar} >
+        <LogoSvg />
+      </Avatar>
+      <div className={classes.logoText} >
        INITIAT.IO
-        </div>
       </div>
+    </div>
 
-    </a>
+    {/* </a> */}
   </div>
 ));
 
