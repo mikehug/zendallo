@@ -7,6 +7,7 @@ import ButtonIcon from 'material-ui-icons/RadioButtonChecked';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
 import DecisionMap from './DecisionMap';
 import Participate from './Participate';
+import Initiate from './Initiate';
 
 function TabContainer({ children, dir }) {
   return (
@@ -65,10 +66,15 @@ class SessionTabs extends React.Component {
           className={classes.container}
           disabled={this.state.disableSwipe}
         >
-          <TabContainer dir={theme.direction}>Item One</TabContainer>
-          <TabContainer dir={theme.direction} > <Participate /> </TabContainer>
           <TabContainer dir={theme.direction}>
+            <Initiate session={this.props.session} status={this.props.status} userIndex={this.props.userIndex} />
+          </TabContainer>
 
+          <TabContainer dir={theme.direction} >
+            <Participate />
+          </TabContainer>
+
+          <TabContainer dir={theme.direction}>
             <DecisionMap
               handleUpdate={this.props.handleUpdate}
               status={this.props.status}
@@ -76,10 +82,9 @@ class SessionTabs extends React.Component {
               userIndex={this.props.userIndex}
               handleDisableSwipe={this.handleDisableSwipeable}
             />
-
-
           </TabContainer>
         </SwipeableViews>
+
         <BottomNavigation
           value={value}
           onChange={this.handleChange}

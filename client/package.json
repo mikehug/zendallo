@@ -28,6 +28,7 @@
     "recharts": "^1.0.0-beta.5",
     "recompose": "^0.26.0",
     "socket.io-client": "^2.0.4",
+    "twilio-video": "^1.6.0",
     "typeface-roboto": "0.0.43",
     "typeface-share-tech": "0.0.43"
   },
