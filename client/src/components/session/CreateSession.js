@@ -102,7 +102,7 @@ export default class CreateSession extends React.Component {
                   <Button onClick={this.handleRequestClose} >
                     Cancel
                   </Button>
-                  <Button type="submit" disabled={props.isSubmitting && props.isValid} color="secondary">
+                  <Button type="submit" disabled={props.isSubmitting && props.isValid} color="default">
                     Create
                   </Button>
                 </DialogActions>

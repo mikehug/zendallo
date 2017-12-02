@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { LineChart, Line } from 'recharts';
 import Button from 'material-ui/Button';
-import HappyIcon from 'material-ui-icons/Mood';
-import UnhappyIcon from 'material-ui-icons/SentimentDissatisfied';
+import SatisfiedIcon from 'material-ui-icons/SentimentVerySatisfied';
+import DoneIcon from 'material-ui-icons/Done';
+import DissatisfiedIcon from 'material-ui-icons/SentimentVeryDissatisfied';
+import TangentIcon from 'material-ui-icons/Shuffle';
 import green from 'material-ui/colors/green';
 import red from 'material-ui/colors/red';
 import grey from 'material-ui/colors/grey';
@@ -60,29 +62,21 @@ class Participate extends Component { // eslint-disable-line
     graph: data,
   }
 
-  handleTangent = () => {
+  handleSentiment = (level) => {
     const { graph } = this.state;
     graph.pop();
     graph.unshift({
-      name: 'Page H', uv: 2490, pv: 2000, amt: 1100,
+      name: 'Page H', uv: 2490, pv: level, amt: 1100,
     });
     this.setState({ graph });
   }
 
-  handleBravo = () => {
-    const { graph } = this.state;
-    graph.pop();
-    graph.unshift({
-      name: 'Page H', uv: 2490, pv: 5000, amt: 1100,
-    });
-    this.setState({ graph });
-  }
 
   render() {
     return (
       <div>
         <LineChart
-          width={400}
+          width={300}
           height={200}
           data={this.state.graph}
           margin={{
@@ -96,14 +90,44 @@ class Participate extends Component { // eslint-disable-line
           <Line type="monotone" dataKey="pv" stroke="#8884d8" dot={<CustomizedDot />} />
           {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
         </LineChart>
-        <Button raised style={{ margin: 10, color: green[400], background: grey[300] }} onClick={() => this.handleBravo()} >
-          <HappyIcon />
-           -Bravo
-        </Button>
-        <Button raised style={{ margin: 10, color: red[300], background: grey[300] }} onClick={() => this.handleTangent()} >
-          <UnhappyIcon />
-           -Tangent
-        </Button>
+        <div style={{ width: 300 }} >
+          <Button
+            raised
+            style={{
+                    width: 120, margin: 10, color: green[400], background: grey[300],
+                  }}
+            onClick={() => this.handleSentiment(4500)}
+          >
+            <DoneIcon />
+          </Button>
+          <Button
+            raised
+            style={{
+                    width: 120, margin: 10, color: red[200], background: grey[300],
+                   }}
+            onClick={() => this.handleSentiment(2450)}
+          >
+            <TangentIcon />
+          </Button>
+          <Button
+            raised
+            style={{
+                    width: 120, margin: 10, color: green[500], background: grey[300],
+                  }}
+            onClick={() => this.handleSentiment(9800)}
+          >
+            <SatisfiedIcon />
+          </Button>
+          <Button
+            raised
+            style={{
+                    width: 120, margin: 10, color: red[300], background: grey[300],
+                  }}
+            onClick={() => this.handleSentiment(500)}
+          >
+            <DissatisfiedIcon />
+          </Button>
+        </div>
       </div>
     );
   }
