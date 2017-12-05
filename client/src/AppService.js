@@ -1,3 +1,4 @@
+// Using client/dist because version 3 of feathers is es6 -> minification issues with CRA
 import feathers from '@feathersjs/client/dist/feathers';
 import socketio from '@feathersjs/client/dist/socketio';
 import auth from '@feathersjs/client/dist/authentication';

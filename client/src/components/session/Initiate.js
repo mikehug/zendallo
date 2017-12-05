@@ -1,21 +1,66 @@
 import React, { Component } from 'react';
 import { connect, createLocalTracks } from 'twilio-video';
 import Grid from 'material-ui/Grid';
+import Button from 'material-ui/Button';
+import { withStyles } from 'material-ui/styles';
+import ExpansionPanel, {
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+} from 'material-ui/ExpansionPanel';
+import Typography from 'material-ui/Typography';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
-let activeRoom;
+const styles = theme => ({
+  root: {
+    minWidth: 320,
+  },
+  panel: {
+    flexWrap: 'wrap',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+});
+
 
 class Initiate extends Component {
-  componentDidMount() {
+  state ={
+    activeRoom: false,
+  }
+
+  componentWillUnmount() {
+    if (this.state.activeRoom) this.stopVideoConference();
+  }
+
+  handleVideoClick = () => {
+    if (this.state.activeRoom) this.stopVideoConference();
+    else this.startVideoConference();
+  }
+
+  stopVideoConference = () => {
+    if (this.state.activeRoom) {
+      console.log('disconnected');
+      this.state.activeRoom.localParticipant.tracks.forEach((track) => {
+        track.stop();
+        track.detach();
+      });
+      this.state.activeRoom.disconnect();
+      this.setState({ activeRoom: false });
+    }
+  }
+
+  startVideoConference = () => {
     const { token } = this.props.session.attendees[this.props.userIndex];
     console.log(this.props.session);
     createLocalTracks({
       audio: true,
-      video: { width: 320 },
+      video: true,
     }).then(localTracks => connect(token, {
       name: this.props.session.attendees[this.props.userIndex].userId,
       tracks: localTracks,
     })).then((room) => {
-      activeRoom = room;
+      this.setState({ activeRoom: room });
       let previewContainer = document.getElementById('local-media');
       if (!previewContainer.querySelector('video')) {
         const videoElement = document.createElement('video');
@@ -60,23 +105,8 @@ class Initiate extends Component {
         console.log(`Participant disconnected: ${participant.identity}`);
       });
     }).catch((error) => {
-      console.error(`Unable to connect to Room: ${error.message}`);
+      alert(`Unable to connect to Room: ${error.message}`);
     });
-    // createLocalVideoTrack().then((track) => {
-    //   const localMediaContainer = document.getElementById('local-media');
-  //   localMediaContainer.appendChild(track.attach());
-  // });
-  }
-
-  componentWillUnmount() {
-    if (activeRoom) {
-      console.log('disconnected');
-      activeRoom.localParticipant.tracks.forEach((track) => {
-        track.stop();
-        track.detach();
-      });
-      activeRoom.disconnect();
-    }
   }
 
   attachLocalVideo = (participant, element) => {
@@ -88,7 +118,16 @@ class Initiate extends Component {
 
   attachTracks = (tracks, container) => {
     tracks.forEach((track) => {
-      container.appendChild(track.attach());
+      if (track.kind === 'video') {
+        console.log(`Track kind video? :${track.kind}`);
+        const videoRemoteElement = document.createElement('video');
+        videoRemoteElement.style.width = '300px';
+        container.appendChild(videoRemoteElement);
+        track.attach(videoRemoteElement);
+      } else {
+        console.log(`Track kind: ${track.kind}`);
+        container.appendChild(track.attach());
+      }
     });
   };
 
@@ -113,17 +152,29 @@ class Initiate extends Component {
  }
 
  render() {
+   const { classes } = this.props;
    return (
      <Grid container justify="center" >
-       <Grid item >
-         <div id="remote-media" />
-       </Grid>
-       <Grid item >
-         <div id="local-media" />
-       </Grid>
+       <ExpansionPanel className={classes.root}>
+         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+           <Typography className={classes.heading}>Video Conference</Typography>
+         </ExpansionPanelSummary>
+         <ExpansionPanelDetails className={classes.panel} >
+           <Grid item >
+             <div id="remote-media" />
+           </Grid>
+           <Grid item >
+             <div id="local-media" />
+             <Button onClick={() => this.handleVideoClick()} >
+               {this.state.activeRoom ? 'Stop Video' : 'Start Video'}
+             </Button>
+           </Grid>
+         </ExpansionPanelDetails>
+       </ExpansionPanel>
+
      </Grid>
    );
  }
 }
 
-export default Initiate;
+export default withStyles(styles)(Initiate);

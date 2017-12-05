@@ -36,17 +36,15 @@ class SessionDetail extends Component {
       props.setSubmitting(true);
       const user = AppService.get('user');
       const { attendees } = this.state.session;
-      const tokenData = { sessionName: this.state.session.name, userId: user._id };
+      const tokenData = { sessionCode: this.state.session.code, userId: user._id };
       AppService.service('session-tokens').create(tokenData)
         .then((result) => {
-          console.log(result);
           attendees.push({
             name: values.name,
             userId: user._id,
             status: { x: 0.5, y: 0.5 },
             token: result,
           });
-          console.log(attendees);
           AppService.service('sessions').patch(this.state.session._id, { attendees })
             .then(() => {
               this.setState({ attendee: true });

@@ -55,7 +55,6 @@ class SessionTabs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { value } = this.state;
 
     return (
       <div >
@@ -86,7 +85,7 @@ class SessionTabs extends React.Component {
         </SwipeableViews>
 
         <BottomNavigation
-          value={value}
+          value={this.state.value}
           onChange={this.handleChange}
           showLabels
           className={classes.root}
