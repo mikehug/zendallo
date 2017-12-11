@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import SwipeableViews from 'react-swipeable-views';
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
 import GameIcon from 'material-ui-icons/Games';
-import ButtonIcon from 'material-ui-icons/RadioButtonChecked';
+import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
 import DecisionMap from './DecisionMap';
 import Participate from './Participate';
@@ -37,7 +37,7 @@ const styles = theme => ({
 
 class SessionTabs extends React.Component {
   state = {
-    value: 0,
+    value: 1,
     disableSwipe: false,
   };
 
@@ -92,7 +92,7 @@ class SessionTabs extends React.Component {
         >
 
           <BottomNavigationButton label="Initiate" icon={<PlayArrowIcon />} />
-          <BottomNavigationButton label="Participate" icon={<ButtonIcon />} />
+          <BottomNavigationButton label="Participate" icon={<ShareIcon />} />
           <BottomNavigationButton label="Deliberate" icon={<GameIcon />} />
         </BottomNavigation>
       </div>

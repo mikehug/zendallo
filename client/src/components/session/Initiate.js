@@ -23,6 +23,7 @@ const styles = theme => ({
   },
 });
 
+let localTracks = {};
 
 class Initiate extends Component {
   state ={
@@ -40,7 +41,6 @@ class Initiate extends Component {
 
   stopVideoConference = () => {
     if (this.state.activeRoom) {
-      console.log('disconnected');
       this.state.activeRoom.localParticipant.tracks.forEach((track) => {
         track.stop();
         track.detach();
@@ -52,14 +52,16 @@ class Initiate extends Component {
 
   startVideoConference = () => {
     const { token } = this.props.session.attendees[this.props.userIndex];
-    console.log(this.props.session);
     createLocalTracks({
       audio: true,
       video: true,
-    }).then(localTracks => connect(token, {
-      name: this.props.session.attendees[this.props.userIndex].userId,
-      tracks: localTracks,
-    })).then((room) => {
+    }).then((tracks) => {
+      localTracks = tracks;
+      connect(token, {
+        name: this.props.session.attendees[this.props.userIndex].userId,
+        tracks: localTracks,
+      });
+    }).then((room) => {
       this.setState({ activeRoom: room });
       let previewContainer = document.getElementById('local-media');
       if (!previewContainer.querySelector('video')) {
@@ -71,26 +73,27 @@ class Initiate extends Component {
       }
       // Attach the Tracks of the Room's Participants.
       room.participants.forEach((participant) => {
-        console.log(`Already in Room: '${participant.identity}'`);
         previewContainer = document.getElementById('remote-media');
         this.attachParticipantTracks(participant, previewContainer);
       });
 
-      // When a Participant joins the Room, log the event.
-      room.on('participantConnected', (participant) => {
-        console.log(`Joining: '${participant.identity}'`);
-      });
+      // // When a Participant joins the Room, log the event.
+      // room.on('participantConnected', (participant) => {
+      //   console.log(`Joining: '${participant.identity}'`);
+      // });
 
       // When a Participant adds a Track, attach it to the DOM.
-      room.on('trackAdded', (track, participant) => {
-        console.log(`${participant.identity} added track: ${track.kind}`);
+
+      // room.on('trackAdded', (track, participant) => {
+      room.on('trackAdded', (track) => {
+        // console.log(`${participant.identity} added track: ${track.kind}`);
         previewContainer = document.getElementById('remote-media');
         this.attachTracks([track], previewContainer);
       });
 
       // When a Participant leaves the Room, detach its Tracks.
       room.on('participantDisconnected', (participant) => {
-        console.log(`Participant '${participant.identity}' left the room`);
+        // console.log(`Participant '${participant.identity}' left the room`);
         this.detachParticipantTracks(participant);
       });
 
@@ -101,11 +104,16 @@ class Initiate extends Component {
         room.participants.forEach(this.detachParticipantTracks);
       });
 
-      room.on('participantDisconnected', (participant) => {
-        console.log(`Participant disconnected: ${participant.identity}`);
-      });
+      // room.on('participantDisconnected', (participant) => {
+      //   console.log(`Participant disconnected: ${participant.identity}`);
+      // });
+      // TODO: Error handling
     }).catch((error) => {
-      alert(`Unable to connect to Room: ${error.message}`);
+      localTracks.forEach((track) => {
+        track.stop();
+        track.detach();
+      });
+      window.alert(`Unable to connect to Room: ${error.message}`); // eslint-disable-line 
     });
   }
 
@@ -119,13 +127,11 @@ class Initiate extends Component {
   attachTracks = (tracks, container) => {
     tracks.forEach((track) => {
       if (track.kind === 'video') {
-        console.log(`Track kind video? :${track.kind}`);
         const videoRemoteElement = document.createElement('video');
         videoRemoteElement.style.width = '300px';
         container.appendChild(videoRemoteElement);
         track.attach(videoRemoteElement);
       } else {
-        console.log(`Track kind: ${track.kind}`);
         container.appendChild(track.attach());
       }
     });
@@ -157,7 +163,9 @@ class Initiate extends Component {
      <Grid container justify="center" >
        <ExpansionPanel className={classes.root}>
          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-           <Typography className={classes.heading}>Video Conference</Typography>
+           <Typography className={classes.heading}>
+             Video Conference
+           </Typography>
          </ExpansionPanelSummary>
          <ExpansionPanelDetails className={classes.panel} >
            <Grid item >
