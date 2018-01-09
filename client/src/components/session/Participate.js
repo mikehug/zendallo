@@ -57,6 +57,12 @@ const DialogContent = (props) => {
 
 const ExpressOptions = props => (
   <List >
+    <ListItem button>
+      <Avatar>
+        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="excited" >🤩</span>
+      </Avatar>
+      <ListItemText primary="Excited" secondary="Middle of the road" />
+    </ListItem>
     <ListItem button >
       <Avatar>
         <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="happy" >😀</span>
@@ -65,39 +71,33 @@ const ExpressOptions = props => (
     </ListItem>
     <ListItem button>
       <Avatar>
-        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="smiling">🙂</span>
+        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="Hmmm">🤔</span>
       </Avatar>
-      <ListItemText primary="Smiling" secondary="Content as a cricket" />
+      <ListItemText primary="Thinking" secondary="Need time to think" />
     </ListItem>
     <ListItem button>
       <Avatar>
-        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="neutral" >😐</span>
-      </Avatar>
-      <ListItemText primary="Neutral" secondary="Middle of the road" />
-    </ListItem>
-    <ListItem button>
-      <Avatar>
-        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="confused" >🤨</span>
+        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="confused" >😕</span>
       </Avatar>
       <ListItemText primary="Confused" secondary="Not really following" />
     </ListItem>
     <ListItem button >
       <Avatar>
-        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="unsatisfied">🙁</span>
+        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="unsatisfied">😟</span>
       </Avatar>
-      <ListItemText primary="Unsatisfied" secondary="Not feeling great" />
+      <ListItemText primary="Worried" secondary="Unsure and concerned " />
     </ListItem>
     <ListItem button >
       <Avatar>
-        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="unhappy" >😩</span>
+        <span style={{ fontSize: 40, paddingTop: 7 }} role="img" aria-label="unhappy" >😣</span>
       </Avatar>
-      <ListItemText primary="Unhappy" secondary="Not happy at all" />
+      <ListItemText primary="Frustrated" secondary="Really dissatisfied " />
     </ListItem>
     <ListItem button>
       <Avatar>
         <span style={{ fontSize: 40, paddingTop: 7 }}role="img" aria-label="angry" >😡</span>
       </Avatar>
-      <ListItemText primary="Angry" secondary="Starting to lose the cool" />
+      <ListItemText primary="Angry" secondary="Losing the cool" />
     </ListItem>
   </List>
 );
@@ -114,7 +114,7 @@ const SuggestOptions = props => (
       <Avatar>
         <FreeBreakfastIcon style={{ color: amber[500] }} />
       </Avatar>
-      <ListItemText primary="Break" secondary="Request a bio break" />
+      <ListItemText primary="Break" secondary="Request bio break" />
     </ListItem>
     <ListItem button>
       <Avatar>
@@ -138,7 +138,7 @@ const SuggestOptions = props => (
       <Avatar>
         <BlockIcon style={{ color: red[500] }} />
       </Avatar>
-      <ListItemText primary="Stop" secondary="Time to halt proceedings" />
+      <ListItemText primary="Stop" secondary="Hold it right there" />
     </ListItem>
   </List>
 );
@@ -157,6 +157,10 @@ class Participate extends Component { // eslint-disable-line
   handleDialogClose = () => {
     this.setState({ open: false });
   };
+
+  handleSelection = (selection) => {
+
+  }
 
   render() {
     const { classes } = this.props;
@@ -177,12 +181,9 @@ class Participate extends Component { // eslint-disable-line
 
         <Dialog
           open={this.state.open}
-          onRequestClose={this.handleDialogClose}
+          onClose={this.handleDialogClose}
           className={classes.dialog}
         >
-          <DialogTitle>
-            {this.state.actionType}
-          </DialogTitle>
 
           <DialogContent type={this.state.actionType} />
 
@@ -190,6 +191,18 @@ class Participate extends Component { // eslint-disable-line
 
 
         <List className={classes.list} >
+          <ListItem button>
+            <Avatar>
+              <FreeBreakfastIcon style={{ color: amber[500] }} />
+            </Avatar>
+            <ListItemText primary="Take a break" secondary="Dec 11, 2017" />
+          </ListItem>
+          <ListItem button>
+            <Avatar>
+              <CenterFocusStrongIcon style={{ color: blue[500] }} />
+            </Avatar>
+            <ListItemText primary="Focus on agenda" secondary="Dec 11, 2017" />
+          </ListItem>
           <ListItem button>
             <Avatar>
               <ListIcon />

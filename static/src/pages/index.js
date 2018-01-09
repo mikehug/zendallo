@@ -150,7 +150,7 @@ We want to change this and have created a mechanism for organizations to hear th
           <Typography type="subheading" align="justify" >
 
  Initiatio <i>(e-nish-e-a-toe)</i> is the latin for 'participation and initiation'. We are passionate about engagement, transparency and participation which lead to improved organizational decision making and better outcomes.
-          The digital landscape is changing the way teams collaborate - we are working to enhance the human experience of this process. We are currently in private beta but our public launch is on January 8th.
+          The digital landscape is changing the way teams collaborate - we are working to enhance the human experience of this process. We are currently in private beta but our public launch is coming soon.
           </Typography>
 
 

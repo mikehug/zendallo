@@ -17,6 +17,8 @@ import Team from './components/team/Team';
 import Session from './components/session/Session';
 import SessionDetail from './components/session/SessionDetail';
 import Dashboard from './components/dashboard/Dashboard';
+import Resources from './components/resources/Resources';
+import Learn from './components/resources/Learn';
 import PrivateRoute from './components/authentication/PrivateRoute';
 import { logout, login } from './components/authentication/Auth';
 
@@ -117,6 +119,8 @@ class App extends React.Component {
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
                   <PrivateRoute path="/session/:code" component={SessionDetail} />
                   <PrivateRoute path="/team" component={Team} />
+                  <PrivateRoute exact path="/resources" component={Resources} />
+                  <PrivateRoute path="/resources/:course" component={Learn} />
                 </AppGrid>
               </main>
             </div>

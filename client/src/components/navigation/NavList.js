@@ -10,8 +10,6 @@ import pink from 'material-ui/colors/pink';
 import lightGreen from 'material-ui/colors/lightGreen';
 import lightBlue from 'material-ui/colors/lightBlue';
 import Avatar from 'material-ui/Avatar';
-
-
 import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
 import Person from 'material-ui-icons/Person';
@@ -52,11 +50,11 @@ class NavList extends React.Component {
   };
 
   render() {
-    const { classes, history } = this.props;
+    const { classes } = this.props;
 
     return (
       <List className={classes.root} >
-        <ListItem button onClick={() => history.push('/dashboard')} >
+        <ListItem button onClick={() => this.handleClick('/dashboard')} >
           <ListItemIcon >
             <Avatar className={classes.icon} >
               <Dashboard />
@@ -79,7 +77,7 @@ class NavList extends React.Component {
           <ListItemText inset primary="Intro" />
         </ListItem> */}
 
-        <ListItem button onClick={() => history.push('/team')} >
+        <ListItem button onClick={() => this.handleClick('/team')} >
           <ListItemIcon className={classes.icon} style={{ color: lightBlue[500] }} >
             <Avatar >
               <GroupIcon />
@@ -87,7 +85,7 @@ class NavList extends React.Component {
           </ListItemIcon>
           <ListItemText inset primary="Team" />
         </ListItem>
-        <ListItem button onClick={() => history.push('/profile')} >
+        <ListItem button onClick={() => this.handleClick('/profile')} >
           <ListItemIcon className={classes.icon} style={{ color: orange[500] }} >
             <Avatar >
               <Person />
@@ -95,20 +93,21 @@ class NavList extends React.Component {
           </ListItemIcon>
           <ListItemText inset primary="Profile" />
         </ListItem>
-        <ListItem button onClick={this.handleExpand}>
+        <ListItem button onClick={() => this.handleClick('/resources')} >
           <ListItemIcon className={classes.icon} style={{ color: pink[500] }} >
             <Avatar >
               <PlaylistPlayIcon />
             </Avatar>
           </ListItemIcon>
           <ListItemText inset primary="Resources" />
+          {/* {this.state.open ? <ExpandLess color="action" /> : <ExpandMore color="action" />} */}
         </ListItem>
         {/* <Collapse in={this.state.open} transitionDuration="auto" unmountOnExit>
           <ListItem button className={classes.nested}>
-            <ListItemIcon className={classes.icon}>
-              <StarBorder />
+            <ListItemIcon className={classes.icon} >
+              <PlaylistPlayIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Intro" />
+            <ListItemText inset primary="Getting Started" />
           </ListItem>
         </Collapse> */}
       </List>
