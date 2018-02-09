@@ -79,7 +79,7 @@ class Activity extends Component {
       currentQA ? (
         <Grid container align="center" direction="column" >
           <Grid item>
-            <Typography type="title" align="center" color="secondary" >
+            <Typography variant="title" align="center" >
               {currentQA.question}
             </Typography>
           </Grid>
@@ -123,7 +123,7 @@ const Result = (props) => {
 
         <PieChart width={360} height={350}>
           <Tooltip />
-          <Legend verticalAlign="top" layout="horizontal" height={36} align="center" dataKey="name" iconType="circle" style={legendStyle} />
+          <Legend verticalAlign="top" layout="horizontal" height={36} align="center" dataKey="name" iconvariant="circle" style={legendStyle} />
           <Pie startAngle={360} endAngle={0} data={data} label dataKey="value" >
             {data.map((entry, index) => (
               <Cell key={`cell-${entry.name}`} fill={colors[index]} />

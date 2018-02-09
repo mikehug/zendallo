@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
-import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
+import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
@@ -102,8 +102,8 @@ class Learn extends React.Component {
           showLabels
           className={classes.root}
         >
-          <BottomNavigationButton label="Explore" icon={<ShareIcon />} />
-          <BottomNavigationButton label="Practice" icon={<GameIcon />} />
+          <BottomNavigationAction label="Explore" icon={<ShareIcon />} />
+          <BottomNavigationAction label="Practice" icon={<GameIcon />} />
         </BottomNavigation>
       </div>
 

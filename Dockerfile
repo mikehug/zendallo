@@ -8,6 +8,8 @@ COPY server /home/site/wwwroot/server
 COPY static /home/site/wwwroot/static
 COPY config /home/site/wwwroot/config
 COPY client /home/site/wwwroot/client
+COPY data /home/site/wwwroot/data
+
 
 COPY sshd_config /etc/ssh/
 

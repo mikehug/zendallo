@@ -19,7 +19,7 @@ const styles = theme => ({
     fontFamily: 'Share Tech',
     fontSize: '27px',
     margin: '5px 5px 5px 10px',
-    color: theme.palette.common.darkWhite,
+    color: theme.palette.grey[400],
 
   },
   avatar: {

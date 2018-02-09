@@ -45,10 +45,10 @@ const ModuleSummary = ({
 }) => (
   <div className={classes.root}>
     {/* <Divider /> */}
-    <Typography type="headline" color="secondary" gutterBottom className={classes.title}>
+    <Typography variant="headline" gutterBottom className={classes.title}>
       {module.name}
     </Typography>
-    <Typography type="body1" color="secondary" gutterBottom>
+    <Typography variant="body1" gutterBottom>
       {module.description}
     </Typography>
     <List className={classes.list}>

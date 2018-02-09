@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SessionNotValid = () => (
   <div>
-    <Typography type="subheading" >
+    <Typography variant="subheading" >
                     Session code not valid
     </Typography>
     <Link to="/session" href="/session" >

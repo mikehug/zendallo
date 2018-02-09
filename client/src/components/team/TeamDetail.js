@@ -34,7 +34,7 @@ const TeamDetail = withRouter(({
         <NavigateBeforeIcon />
       </IconButton>
       <div className={classes.title} >
-        <Typography type="title" color="secondary">
+        <Typography variant="title" >
           {match.params.name}
         </Typography>
       </div>

@@ -25,7 +25,7 @@ const JoinSession = ({ id, handleSubmit }) => (
             margin="dense"
             name="name"
             placeholder="Participant name"
-            type="text"
+            variant="text"
             component={RenderTextField}
           />
           <Button type="submit" disabled={props.isSubmitting && props.isValid} color="primary">

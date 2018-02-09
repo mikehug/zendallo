@@ -42,11 +42,11 @@ const NavDrawer = ({
   <div>
     <Hidden mdUp>
       <Drawer
-        type="temporary"
+        variant="temporary"
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
         open={mobileOpen}
         classes={{ paper: classes.drawerPaper }}
-        onRequestClose={handleDrawerToggle}
+        onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }}
       >
         <DrawerContent user={user} handleDrawerToggle={handleDrawerToggle} />
@@ -55,7 +55,7 @@ const NavDrawer = ({
 
     <Hidden smDown implementation="css">
       <Drawer
-        type="permanent"
+        variant="permanent"
         open
         classes={{ paper: classes.drawerPaper }}
       >

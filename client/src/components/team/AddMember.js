@@ -38,7 +38,7 @@ export default class AddMember extends React.Component {
                 margin="dense"
                 name="email"
                 placeholder="Email"
-                type="text"
+                variant="text"
                 component={RenderTextField}
               />
               <Button type="submit" disabled={props.isSubmitting && props.isValid} color="primary">

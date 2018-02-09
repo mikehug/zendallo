@@ -44,15 +44,15 @@ const DashboardCard = (props) => {
   } = props;
   return (
     <Card raised className={classes.root} >
-      <CardMedia className={classes.cardMedia} >
+      <CardMedia className={classes.cardMedia} src="" >
         <Avatar className={classes.img} style={background} >
           {children}
         </Avatar>
         <div className={classes.cardDesc}>
-          <Typography type="title" component="h2" gutterBottom className={classes.cardText}>
+          <Typography variant="title" component="h2" gutterBottom className={classes.cardText}>
             {heading}
           </Typography>
-          <Typography type="subheading" className={classes.cardText} >
+          <Typography variant="subheading" className={classes.cardText} >
             {content}
           </Typography>
         </div>
@@ -62,7 +62,7 @@ const DashboardCard = (props) => {
       </CardContent>
       <CardActions className={classes.cardActions} >
         <Chips label={chip} />
-        <Button color="secondary" onClick={() => history.push(route)} >CONTINUE</Button>
+        <Button onClick={() => history.push(route)} >CONTINUE</Button>
       </CardActions>
     </Card>
   );

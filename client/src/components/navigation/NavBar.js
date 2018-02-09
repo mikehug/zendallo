@@ -66,7 +66,7 @@ const NavBar = withRouter((props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="secondary" noWrap className={classes.title}>
+          <Typography variant="title" color="textSecondary" noWrap className={classes.title}>
             {location.pathname.split('/').splice(1, 1).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
           </Typography>
 
@@ -76,7 +76,7 @@ const NavBar = withRouter((props) => {
             </Button> */}
           { user ?
 
-            <IconButton color="contrast" onClick={() => logout(handleLogout, history)}>
+            <IconButton onClick={() => logout(handleLogout, history)}>
 
               <PowerIcon />
             </IconButton>

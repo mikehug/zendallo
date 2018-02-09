@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import SwipeableViews from 'react-swipeable-views';
-import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
+import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
@@ -91,9 +91,9 @@ class SessionTabs extends React.Component {
           className={classes.root}
         >
 
-          <BottomNavigationButton label="Initiate" icon={<PlayArrowIcon />} />
-          <BottomNavigationButton label="Participate" icon={<ShareIcon />} />
-          <BottomNavigationButton label="Deliberate" icon={<GameIcon />} />
+          <BottomNavigationAction label="Initiate" icon={<PlayArrowIcon />} />
+          <BottomNavigationAction label="Participate" icon={<ShareIcon />} />
+          <BottomNavigationAction label="Deliberate" icon={<GameIcon />} />
         </BottomNavigation>
       </div>
 

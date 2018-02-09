@@ -62,7 +62,7 @@ export default class CreateTeam extends React.Component {
                     margin="dense"
                     name="name"
                     placeholder="Name"
-                    type="text"
+                    variant="text"
                     component={RenderTextField}
                   />
                 </DialogContent>

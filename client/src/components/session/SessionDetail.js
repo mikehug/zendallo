@@ -61,7 +61,7 @@ class SessionDetail extends Component {
       } else if (this.state.session) {
         return (
           <div>
-            <Typography type="title">{this.state.session.name} </Typography>
+            <Typography variant="title">{this.state.session.name} </Typography>
             <JoinSession id={this.state.session._id} handleSubmit={this.handleSubmit} />
           </div>);
       } return (

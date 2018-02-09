@@ -35,7 +35,7 @@ const SignUpForm = withStyles(styles)((props) => {
   } = props;
   return (
     <Form className={classes.root}>
-      <Typography type="title" color="secondary" >Create New Account</Typography>
+      <Typography variant="title" >Create New Account</Typography>
       <div className={classes.formStyle}>
         <div>
           <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />

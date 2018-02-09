@@ -22,7 +22,7 @@ const SignInForm = (props) => {
   return (
     <Loader loaded={!isSubmitting} >
       <Form className={classes.root}>
-        <Typography type="title" color="secondary" >Sign In</Typography>
+        <Typography variant="title" >Sign In</Typography>
         <div className={classes.formStyle}>
           <div>
             <Field autoFocus name="email" type="email" component={RenderTextField} placeholder="Email" />

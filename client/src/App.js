@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import teal from 'material-ui/colors/teal';
 import cyan from 'material-ui/colors/cyan';
@@ -102,7 +103,8 @@ class App extends React.Component {
     return (
       <Router basename="/app" >
         <MuiThemeProvider theme={theme} >
-          <div className={classes.root}>
+          <div >
+            <Reboot />
             <div className={classes.appFrame}>
               <NavBar user={this.state.user} handleDrawerToggle={this.handleDrawerToggle} handleLogout={this.handleLogout} />
               <NavDrawer mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} user={this.state.user} />

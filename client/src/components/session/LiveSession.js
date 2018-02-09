@@ -45,7 +45,7 @@ class LiveSession extends Component {
       if (this.state.session && this.state.session.attendees) {
         return (
           <div >
-            {/* <Typography type="title" color="secondary" gutterBottom >{this.state.session.name} </Typography> */}
+            {/* <Typography variant="title"  gutterBottom >{this.state.session.name} </Typography> */}
 
             <SessionTabs handleUpdate={this.handleUpdate} status={this.state.status} session={this.state.session} userIndex={this.props.userIndex} />
 

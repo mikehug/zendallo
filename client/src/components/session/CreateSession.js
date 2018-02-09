@@ -63,7 +63,7 @@ export default class CreateSession extends React.Component {
                     margin="dense"
                     name="name"
                     placeholder="Session name"
-                    type="text"
+                    variant="text"
                     component={RenderTextField}
                   />
                   <FormGroup>
@@ -72,28 +72,28 @@ export default class CreateSession extends React.Component {
                       margin="dense"
                       name="option1"
                       placeholder="Option 1"
-                      type="text"
+                      variant="text"
                       component={RenderTextField}
                     />
                     <Field
                       margin="dense"
                       name="option2"
                       placeholder="Option 2"
-                      type="text"
+                      variant="text"
                       component={RenderTextField}
                     />
                     <Field
                       margin="dense"
                       name="option3"
                       placeholder="Option 3"
-                      type="text"
+                      variant="text"
                       component={RenderTextField}
                     />
                     <Field
                       margin="dense"
                       name="option4"
                       placeholder="Option 4"
-                      type="text"
+                      variant="text"
                       component={RenderTextField}
                     />
                   </FormGroup>

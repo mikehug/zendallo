@@ -43,7 +43,7 @@ const CourseContent = ({
       alt="Learn Icon"
       className={classNames(classes.avatar, classes.bigAvatar)}
     />
-    <Typography type="title" color="secondary" className={classes.title} gutterBottom>
+    <Typography variant="title" className={classes.title} gutterBottom>
       {title}
     </Typography>
     <List dense >

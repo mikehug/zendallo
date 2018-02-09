@@ -64,7 +64,7 @@ class Session extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root} >
-        <Typography type="title" color="default" gutterBottom>
+        <Typography variant="title" color="default" gutterBottom>
                   Sessions
         </Typography>
         <ListSessions data={data} handleDelete={this.deleteSession} />

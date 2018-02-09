@@ -83,7 +83,7 @@ class Practice extends React.Component {
         <Grid item>
           <Divider />
           <MobileStepper
-            type="dots"
+            variant="dots"
             steps={this.props.module.lessons ? this.props.module.lessons.length : 0}
             position="static"
             activeStep={this.state.activeStep}
@@ -101,14 +101,14 @@ class Practice extends React.Component {
               </Button>
         }
           />
-          <Typography type="headline" align="center" color="secondary" className={classes.title}>
+          <Typography variant="headline" align="center" className={classes.title}>
             {this.props.module.lessons && this.props.module.lessons[this.state.activeStep].name}
           </Typography>
           <div className={classes.content} >
             {this.props.module.lessons && this.getLessonComponent(this.props.module.lessons)}
             {/* <Divider />
 
-            <Typography type="body1" color="secondary" className={classes.description} gutterBottom align="center" >
+            <Typography variant="body1"  className={classes.description} gutterBottom align="center" >
               {this.props.module.lessons && this.props.module.lessons[this.state.activeStep].content.description}
             </Typography> */}
           </div>

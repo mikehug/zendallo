@@ -45,7 +45,7 @@ const styles = theme => ({
     height: 40,
   },
   myBallIcon: {
-    paddingTop: 8,
+    marginTop: 8,
     color: 'darkSlateGrey',
     '&:hover': {
       transform: 'scale(1.2)',
@@ -222,7 +222,7 @@ class DecisionMap extends React.Component {
                     top: motionStyle.top,
                     }}
                     >
-                      <PersonIcon style={{ paddingTop: 6, color: 'darkSlateGrey' }} />
+                      <PersonIcon style={{ marginTop: 6, color: 'darkSlateGrey' }} />
                     </div>
                   </BallPopover>
                   )}

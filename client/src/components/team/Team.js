@@ -104,7 +104,7 @@ class Team extends Component {
               path={match.url}
               render={() => (
                 <div>
-                  <Typography type="title" color="secondary" gutterBottom>
+                  <Typography variant="title" gutterBottom>
                   Team
                   </Typography>
                   <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} handleTeamSelect={this.handleTeamSelect} />

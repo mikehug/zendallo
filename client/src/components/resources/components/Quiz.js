@@ -92,7 +92,7 @@ class Quiz extends Component {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={this.handleClose} color="contrast">
+          <Button onClick={this.handleClose} >
             {this.state.result.action}
           </Button>
         </DialogActions>
@@ -102,7 +102,7 @@ class Quiz extends Component {
       <div>
         <Grid container align="center" direction="column" >
           <Grid item>
-            <Typography type="title" align="center" color="secondary" >
+            <Typography variant="title" align="center" >
               {quiz.question}
             </Typography>
             <FormControl className={classes.group}>
