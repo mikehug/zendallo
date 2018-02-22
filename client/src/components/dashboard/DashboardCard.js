@@ -5,12 +5,13 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
-import { LinearProgress } from 'material-ui/Progress';
+import Divider from 'material-ui/Divider';
+// import { LinearProgress } from 'material-ui/Progress';
 import Chips from './Chip';
 
-const styles = {
+const styles = theme => ({
   root: {
-    minHeight: '200px',
+    minHeight: '180px',
   },
   cardMedia: {
     padding: '15px',
@@ -18,11 +19,8 @@ const styles = {
     flexDirection: 'row',
   },
   cardDesc: {
-    padding: '20px',
+    padding: '0 020px 0',
     textAlign: 'left',
-  },
-  cardText: {
-    color: 'white',
   },
   img: {
     marginTop: 10,
@@ -33,10 +31,9 @@ const styles = {
     margin: 2,
   },
   cardActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'row-reverse',
   },
-};
+});
 
 const DashboardCard = (props) => {
   const {
@@ -45,9 +42,7 @@ const DashboardCard = (props) => {
   return (
     <Card raised className={classes.root} >
       <CardMedia className={classes.cardMedia} src="" >
-        <Avatar className={classes.img} style={background} >
-          {children}
-        </Avatar>
+        {children}
         <div className={classes.cardDesc}>
           <Typography variant="title" component="h2" gutterBottom className={classes.cardText}>
             {heading}
@@ -58,11 +53,12 @@ const DashboardCard = (props) => {
         </div>
       </CardMedia>
       <CardContent className={classes.cardContent} >
-        <LinearProgress mode="determinate" value={progress} />
+        <Divider />
+        {/* <LinearProgress mode="query" value={progress} /> */}
       </CardContent>
       <CardActions className={classes.cardActions} >
-        <Chips label={chip} />
-        <Button onClick={() => history.push(route)} >CONTINUE</Button>
+        {/* <Chips label={chip} /> */}
+        <Button onClick={() => history.push(route)} color="default" >CONTINUE</Button>
       </CardActions>
     </Card>
   );

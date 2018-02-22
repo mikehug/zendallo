@@ -2,12 +2,18 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import NavigateBeforeIcon from 'material-ui-icons/NavigateBefore';
 import AddMember from './AddMember';
 import ListMembers from './ListMembers';
 
 const styles = () => ({
+  root: {
+    marginTop: 15,
+    padding: 10,
+    width: 300,
+  },
   header: {
     display: 'flex',
   },
@@ -28,9 +34,9 @@ const styles = () => ({
 const TeamDetail = withRouter(({
   match, data, handleAddMember, handleRemoveMember, classes, history,
 }) => (
-  <div>
+  <Paper className={classes.root}>
     <div className={classes.header} >
-      <IconButton onClick={() => history.push('/team')} className={classes.icon} >
+      <IconButton onClick={() => history.push('/teams')} className={classes.icon} >
         <NavigateBeforeIcon />
       </IconButton>
       <div className={classes.title} >
@@ -44,7 +50,7 @@ const TeamDetail = withRouter(({
     <div className={classes.add}>
       <AddMember team={data} handleAddMember={handleAddMember} />
     </div>
-  </div>
+  </Paper>
 ));
 
 export default withStyles(styles)(TeamDetail);

@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
-import teal from 'material-ui/colors/teal';
-import cyan from 'material-ui/colors/cyan';
+import blue from 'material-ui/colors/blue';
+import deepOrange from 'material-ui/colors/deepOrange';
 import NavBar from './components/navigation/NavBar';
 import NavDrawer from './components/navigation/NavDrawer';
 import Home from './components/Home';
@@ -15,6 +15,7 @@ import SignIn from './components/authentication/SignIn';
 import SignUp from './components/authentication/SignUp';
 import AppGrid from './components/utils/AppGrid';
 import Team from './components/team/Team';
+import Challenge from './components/challenge/Challenge';
 import Session from './components/session/Session';
 import SessionDetail from './components/session/SessionDetail';
 import Dashboard from './components/dashboard/Dashboard';
@@ -26,10 +27,10 @@ import { logout, login } from './components/authentication/Auth';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: cyan, // Purple and teal play nicely together.
+    // type: 'dark',
+    primary: { main: blue[500] }, // Purple and lightBlue play nicely together.
     secondary: {
-      ...teal,
+      main: deepOrange[400],
       // A400: '#00e677',
     },
   },
@@ -38,7 +39,7 @@ const theme = createMuiTheme({
 const styles = () => ({
   '@global': {
     html: {
-      background: theme.palette.background.default,
+      background: theme.palette.grey[200],
       WebkitFontSmoothing: 'antialiased', // Antialiasing.
       MozOsxFontSmoothing: 'grayscale', // Antialiasing.
     },
@@ -53,13 +54,12 @@ const styles = () => ({
     overflow: 'hidden',
   },
   appFrame: {
-    position: 'relative',
+    background: theme.palette.grey[200],
     display: 'flex',
     width: '100%',
     height: '100%',
   },
   content: {
-    backgroundColor: theme.palette.background.default,
     width: '100%',
     height: 'calc(100% - 56px)',
     marginTop: 56,
@@ -67,6 +67,9 @@ const styles = () => ({
     [theme.breakpoints.up('sm')]: {
       height: 'calc(100% - 64px)',
       marginTop: 64,
+    },
+    [theme.breakpoints.up('md')]: {
+      marginLeft: 250,
     },
   },
 });
@@ -117,10 +120,11 @@ class App extends React.Component {
                       <SignIn handleLogin={this.handleLogin} />)}
                   />
                   <Route path="/signup" component={SignUp} />
-                  <PrivateRoute exact path="/session" component={Session} />
+                  <PrivateRoute exact path="/challenges" component={Challenge} />
+                  <PrivateRoute exact path="/sessions" component={Session} />
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
                   <PrivateRoute path="/session/:code" component={SessionDetail} />
-                  <PrivateRoute path="/team" component={Team} />
+                  <PrivateRoute path="/teams" component={Team} />
                   <PrivateRoute exact path="/resources" component={Resources} />
                   <PrivateRoute path="/resources/:course" component={Learn} />
                 </AppGrid>

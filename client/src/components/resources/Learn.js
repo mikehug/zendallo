@@ -3,6 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
+import Paper from 'material-ui/Paper';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
@@ -26,9 +27,11 @@ const styles = theme => ({
     left: 0,
     zIndex: 3,
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      paddingLeft: 120,
-    },
+    marginLeft: 5,
+
+  },
+  paper: {
+    margin: '15px 15px 0 5px',
   },
   container: {
     // backgroundColor: 'grey',
@@ -74,7 +77,7 @@ class Learn extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <div >
+      <Paper className={classes.paper} >
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
@@ -105,7 +108,7 @@ class Learn extends React.Component {
           <BottomNavigationAction label="Explore" icon={<ShareIcon />} />
           <BottomNavigationAction label="Practice" icon={<GameIcon />} />
         </BottomNavigation>
-      </div>
+      </Paper>
 
     );
   }

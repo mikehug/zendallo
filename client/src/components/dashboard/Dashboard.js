@@ -5,12 +5,15 @@ import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
 import Person from 'material-ui-icons/Person';
 import GroupIcon from 'material-ui-icons/Group';
+import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
+import Toys from 'material-ui-icons/Toys';
 import orange from 'material-ui/colors/orange';
 import lightGreen from 'material-ui/colors/lightGreen';
 import pink from 'material-ui/colors/pink';
+import teal from 'material-ui/colors/teal';
+import purple from 'material-ui/colors/purple';
 import lightBlue from 'material-ui/colors/lightBlue';
 import DashboardCard from './DashboardCard';
-
 
 const styles = theme => ({
   root: {
@@ -27,13 +30,39 @@ const styles = theme => ({
 
 const Dashboard = ({ classes }) => (
   <Grid container justify="center" spacing={24} className={classes.root} >
+
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
-        heading="Session"
+        heading="Challenges"
+        content="Create and view challenges"
+        background={{ }}
+        progress={0}
+        route="/challenges"
+        chip=""
+      >
+        <Toys className={classes.icon} style={{ color: teal[300] }} />
+      </DashboardCard>
+    </Grid>
+    <Grid item xs={12} sm={8} md={6} lg={6}>
+      <DashboardCard
+        heading="Ideas"
+        content="Create and view ideas"
+        progress={0}
+        background={{ }}
+        route="/ideas"
+        chip=""
+      >
+        <LightbulbOutline className={classes.icon} style={{ color: purple[500] }} />
+      </DashboardCard>
+    </Grid>
+
+    <Grid item xs={12} sm={8} md={6} lg={6}>
+      <DashboardCard
+        heading="Sessions"
         content="Create and access sessions"
         progress={0}
         background={{ }}
-        route="/session"
+        route="/sessions"
         chip=""
       >
         <GroupWorkIcon className={classes.icon} style={{ color: lightGreen[500] }} />
@@ -41,11 +70,11 @@ const Dashboard = ({ classes }) => (
     </Grid>
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
-        heading="Team"
-        content="Team information"
+        heading="Teams"
+        content="Team listing and information"
         background={{ }}
         progress={0}
-        route="/team"
+        route="/teams"
         chip=""
       >
         <GroupIcon className={classes.icon} style={{ color: lightBlue[500] }} />
@@ -54,7 +83,7 @@ const Dashboard = ({ classes }) => (
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
         heading="Profile"
-        content="Personality profile"
+        content="Your details and settings"
         progress={0}
         background={{ }}
         route="/profile"

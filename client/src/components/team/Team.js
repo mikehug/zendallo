@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import ListTeams from './ListTeams';
 import CreateTeam from './CreateTeam';
@@ -10,6 +11,7 @@ import TeamDetail from './TeamDetail';
 
 const styles = () => ({
   root: {
+    marginTop: 15,
     padding: 10,
     width: 300,
   },
@@ -90,23 +92,20 @@ class Team extends Component {
 
     handleTeamSelect = (team) => {
       this.setState({ selectedTeam: team });
-      this.props.history.push(`/team/${encodeURI(team.name)}`);
+      this.props.history.push(`/teams/${encodeURI(team.name)}`);
     }
 
     render() {
       const data = this.state.teams;
       const { match, classes } = this.props;
       return (
-        <div className={classes.root}>
+        <div >
           <Switch>
             <Route
               exact
               path={match.url}
               render={() => (
-                <div>
-                  <Typography variant="title" gutterBottom>
-                  Team
-                  </Typography>
+                <Paper className={classes.root}>
                   <ListTeams data={data} openDeleteAlert={this.openDeleteAlert} handleTeamSelect={this.handleTeamSelect} />
                   <CreateTeam data={data} handleCreate={this.handleCreate} />
                   <AlertDialog
@@ -116,7 +115,7 @@ class Team extends Component {
                     action={this.handleDelete}
                     handleAlertClose={this.handleAlertClose}
                   />
-                </div>
+                </Paper>
           )}
             />
             <Route

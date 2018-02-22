@@ -12,13 +12,13 @@ const drawerWidth = 240;
 const styles = theme => ({
   drawerHeader: theme.mixins.toolbar,
   headerStyle: {
-    // backgroundColor: indigo[500],
+    backgroundColor: theme.palette.backgroundColor,
   },
   drawerPaper: {
     width: 250,
     [theme.breakpoints.up('md')]: {
       width: drawerWidth,
-      position: 'relative',
+      position: 'fixed',
     },
   },
 });

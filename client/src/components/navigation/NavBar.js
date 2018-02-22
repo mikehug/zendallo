@@ -38,6 +38,7 @@ const styles = theme => ({
   title: {
     flex: 1,
     textAlign: 'center',
+    // color: 'white',
     // marginLeft: -5,
     [theme.breakpoints.up('md')]: {
       marginLeft: 50,
@@ -57,7 +58,7 @@ const NavBar = withRouter((props) => {
 
   return (
     <div >
-      <AppBar position="fixed" color="default" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar} >
         <Toolbar >
           <IconButton
             aria-label="open drawer"
@@ -66,7 +67,7 @@ const NavBar = withRouter((props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="textSecondary" noWrap className={classes.title}>
+          <Typography variant="title" noWrap className={classes.title} color="inherit">
             {location.pathname.split('/').splice(1, 1).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
           </Typography>
 
@@ -76,12 +77,12 @@ const NavBar = withRouter((props) => {
             </Button> */}
           { user ?
 
-            <IconButton onClick={() => logout(handleLogout, history)}>
+            <IconButton onClick={() => logout(handleLogout, history)} color="inherit">
 
               <PowerIcon />
             </IconButton>
             :
-            <Button onClick={() => history.push('/signin')} >
+            <Button onClick={() => history.push('/signin')} color="inherit" >
                 Sign In
             </Button>
           }

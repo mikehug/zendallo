@@ -1,3 +1,2 @@
-cd ..
-docker build -t initiatio/node initiatioWeb
-docker push initiatio/node:latest
+docker build -t initiatio/node:latest -t initiatio/node:$(git rev-parse --short HEAD) .
+docker push initiatio/node

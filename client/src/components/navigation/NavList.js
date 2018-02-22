@@ -6,6 +6,8 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withRouter } from 'react-router';
 // import Collapse from 'material-ui/transitions/Collapse';
 import orange from 'material-ui/colors/orange';
+import purple from 'material-ui/colors/purple';
+import teal from 'material-ui/colors/teal';
 import pink from 'material-ui/colors/pink';
 import lightGreen from 'material-ui/colors/lightGreen';
 import lightBlue from 'material-ui/colors/lightBlue';
@@ -15,6 +17,8 @@ import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
 import Person from 'material-ui-icons/Person';
 import GroupIcon from 'material-ui-icons/Group';
 import Dashboard from 'material-ui-icons/Dashboard';
+import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
+import Toys from 'material-ui-icons/Toys';
 // import ExpandLess from 'material-ui-icons/ExpandLess';
 // import ExpandMore from 'material-ui-icons/ExpandMore';
 
@@ -23,11 +27,11 @@ const styles = theme => ({
     width: '100%',
     textDecoration: 'none',
     maxWidth: 360,
-    background: theme.palette.background.paper,
   },
   icon: {
-    margin: '0 2px 0 2px',
-    padding: 4,
+    margin: '0 0 0 5px',
+    padding: 1,
+    backgroundColor: 'transparent',
 
   },
   nested: {
@@ -54,52 +58,54 @@ class NavList extends React.Component {
 
     return (
       <List className={classes.root} >
-        <ListItem button onClick={() => this.handleClick('/dashboard')} >
-          <ListItemIcon >
-            <Avatar className={classes.icon} >
-              <Dashboard />
-            </Avatar>
-          </ListItemIcon>
-          <ListItemText inset primary="Dashboard" />
-        </ListItem>
-        <ListItem button onClick={() => this.handleClick('/session')} >
-          <ListItemIcon className={classes.icon} style={{ color: lightGreen[500] }} >
-            <Avatar >
-              <GroupWorkIcon />
-            </Avatar>
-          </ListItemIcon>
-          <ListItemText inset primary="Session" />
-        </ListItem>
+
         {/* <ListItem button className={classes.nested}>
           <ListItemIcon className={classes.icon}>
             <StarBorder />
           </ListItemIcon>
           <ListItemText inset primary="Intro" />
         </ListItem> */}
-
-        <ListItem button onClick={() => this.handleClick('/team')} >
-          <ListItemIcon className={classes.icon} style={{ color: lightBlue[500] }} >
-            <Avatar >
-              <GroupIcon />
-            </Avatar>
+        <ListItem button onClick={() => this.handleClick('/challenges')} >
+          <ListItemIcon className={classes.icon} style={{ color: teal[300] }} >
+            <Toys />
           </ListItemIcon>
-          <ListItemText inset primary="Team" />
+          <ListItemText primary="Challenges" />
         </ListItem>
+        <ListItem button onClick={() => this.handleClick('/ideas')} >
+          <ListItemIcon className={classes.icon} style={{ color: purple[500] }} >
+
+            <LightbulbOutline />
+          </ListItemIcon>
+          <ListItemText primary="Ideas" />
+        </ListItem>
+
         <ListItem button onClick={() => this.handleClick('/profile')} >
           <ListItemIcon className={classes.icon} style={{ color: orange[500] }} >
-            <Avatar >
-              <Person />
-            </Avatar>
+
+            <Person />
           </ListItemIcon>
-          <ListItemText inset primary="Profile" />
+          <ListItemText primary="Profile" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleClick('/teams')} >
+          <ListItemIcon className={classes.icon} style={{ color: lightBlue[500] }} >
+
+            <GroupIcon />
+          </ListItemIcon>
+          <ListItemText primary="Teams" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleClick('/sessions')} >
+          <ListItemIcon className={classes.icon} style={{ color: lightGreen[500] }} >
+
+            <GroupWorkIcon />
+          </ListItemIcon>
+          <ListItemText primary="Sessions" />
         </ListItem>
         <ListItem button onClick={() => this.handleClick('/resources')} >
           <ListItemIcon className={classes.icon} style={{ color: pink[500] }} >
-            <Avatar >
-              <PlaylistPlayIcon />
-            </Avatar>
+
+            <PlaylistPlayIcon />
           </ListItemIcon>
-          <ListItemText inset primary="Resources" />
+          <ListItemText primary="Resources" />
           {/* {this.state.open ? <ExpandLess color="action" /> : <ExpandMore color="action" />} */}
         </ListItem>
         {/* <Collapse in={this.state.open} transitionDuration="auto" unmountOnExit>
@@ -107,7 +113,7 @@ class NavList extends React.Component {
             <ListItemIcon className={classes.icon} >
               <PlaylistPlayIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Getting Started" />
+            <ListItemText primary="Getting Started" />
           </ListItem>
         </Collapse> */}
       </List>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-// import { Link } from 'react-router-dom';
-import Avatar from 'material-ui/Avatar';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import LogoSvg from './LogoSvg';
 
@@ -11,19 +10,20 @@ const styles = theme => ({
   },
   row: {
     display: 'flex',
-    padding: '10px 0 0 14px',
+    padding: '16px 0 0 14px',
     flexDirection: 'row',
 
   },
   logoText: {
     fontFamily: 'Share Tech',
-    fontSize: '27px',
-    margin: '5px 5px 5px 10px',
-    color: theme.palette.grey[400],
+    fontSize: '30px',
+    fontWeight: 'bold',
+    margin: '1px 5px 5px 5px',
+    color: theme.palette.grey[700],
 
   },
   avatar: {
-    // backgroundColor: theme.palette.common.darkWhite,
+    backgroundColor: 'transparent',
   },
   link: {
     textDecoration: 'none',
@@ -33,17 +33,15 @@ const styles = theme => ({
 
 const LogoButton = withRouter(({ classes }) => (
   <div>
-    {/* <a href="https://initiat.io/" className={classes.link} > */}
-    <div className={classes.row} >
-      <Avatar className={classes.avatar} >
+    <Link to="/dashboard" href="/app/dashboard" className={classes.link} >
+      <div className={classes.row} >
         <LogoSvg />
-      </Avatar>
-      <div className={classes.logoText} >
-       INITIAT.IO
+        <div className={classes.logoText} >
+       Zendallo
+        </div>
       </div>
-    </div>
 
-    {/* </a> */}
+    </Link>
   </div>
 ));
 

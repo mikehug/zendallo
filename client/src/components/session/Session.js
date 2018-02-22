@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
+import Paper from 'material-ui/Paper';
 import AppService from '../../AppService';
 import ListSessions from './ListSessions';
 import CreateSession from './CreateSession';
 
 const styles = () => ({
   root: {
+    marginTop: 15,
     padding: 10,
     width: 300,
   },
@@ -63,13 +65,11 @@ class Session extends Component {
     const data = this.state.sessions;
     const { classes } = this.props;
     return (
-      <div className={classes.root} >
-        <Typography variant="title" color="default" gutterBottom>
-                  Sessions
-        </Typography>
+      <Paper className={classes.root} >
+
         <ListSessions data={data} handleDelete={this.deleteSession} />
         <CreateSession data={data} handleCreate={this.createSession} />
-      </div>
+      </Paper>
 
     );
   }
