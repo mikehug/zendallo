@@ -46,7 +46,7 @@ export default class CreateSession extends React.Component {
         <Button onClick={this.handleClickOpen} color="default">
           Create Session
         </Button>
-        <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
+        <Dialog open={this.state.open} onClose={this.handleRequestClose}>
           <DialogTitle>Create Session</DialogTitle>
           <Formik
             initialValues={{ name: '' }}

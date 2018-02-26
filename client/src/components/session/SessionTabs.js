@@ -70,7 +70,7 @@ class SessionTabs extends React.Component {
           </TabContainer>
 
           <TabContainer dir={theme.direction} >
-            <Participate />
+            <Participate handleFeedback={this.props.handleFeedback} session={this.props.session} />
           </TabContainer>
 
           <TabContainer dir={theme.direction}>

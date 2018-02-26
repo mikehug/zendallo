@@ -14,6 +14,12 @@ export const localLogin = () => {
   } throw Error;
 };
 
+export const getUser = () => {
+  const user = AppService.get('user');
+  if (user) return user;
+  return localLogin();
+};
+
 export const logout = () => {
   AppService.set('user', null);
   AppService.logout();

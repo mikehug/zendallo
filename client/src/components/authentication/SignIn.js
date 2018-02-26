@@ -7,13 +7,13 @@ import SignInForm from './SignInForm';
 class SignIn extends Component {
   state = {
     redirect: {
-      pathname: '/session',
+      pathname: '/dashboard',
     },
     isLogingIn: false,
   }
 
   componentWillMount() {
-    const { from } = this.props.location.state || { from: { pathname: '/session' } };
+    const { from } = this.props.location.state || { from: { pathname: '/dashboard' } };
     this.setState({ redirect: from });
     if (window.localStorage && window.localStorage.getItem('feathers-jwt')) {
       this.setState({ isLogingIn: true });

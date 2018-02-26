@@ -16,7 +16,15 @@ module.exports = {
         return hook;
       }
     ],
-    update: [],
+    update: [
+      (hook)=>{
+        if(hook.data['$push'].activity){
+          hook.data['$push'].activity.dateTime = new Date();
+          hook.data['$push'].activity.userId = hook.params.user._id;
+        }
+        return hook;
+      }
+    ],
     patch: [],
     remove: []
   },

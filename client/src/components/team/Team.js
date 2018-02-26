@@ -8,6 +8,8 @@ import CreateTeam from './CreateTeam';
 import AppService from '../../AppService';
 import AlertDialog from '../utils/AlertDialog';
 import TeamDetail from './TeamDetail';
+import { getUser } from '../authentication/Auth';
+
 
 const styles = () => ({
   root: {
@@ -30,17 +32,18 @@ class Team extends Component {
     }
 
     componentWillMount() {
-      AppService.authenticate()
-        .then((user) => {
-          AppService.service('teams').find({ query: { userId: user._id } })
-            .then((result) => {
-              this.setState({ teams: result.data });
-            });
+      const user = getUser();
+      console.log(user);
+      AppService.service('teams').find({ query: { members: { email: user.email } } })
+        .then((result) => {
+          console.log(result);
+          this.setState({ teams: result.data });
         });
     }
 
     handleCreate = (name) => {
-      AppService.service('teams').create({ name, members: [] })
+      const user = getUser();
+      AppService.service('teams').create({ name, members: [{ email: user.email }] })
         .then((result) => {
           const { teams } = this.state;
           teams.push(result);
@@ -118,6 +121,7 @@ class Team extends Component {
                 </Paper>
           )}
             />
+
             <Route
               path={`${match.url}/:name`}
               render={props => (

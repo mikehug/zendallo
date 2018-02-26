@@ -17,7 +17,7 @@ const ListSessions = withRouter(props => (
     <Grid container align="start">
       <List >
         {props.data.map(resource => (
-          <div key={resource.code}>
+          <div key={resource._id}>
             <ListItem button onClick={() => props.history.push(`/resources/${encodeURI(resource.url)}`)} >
               <ListItemIcon>
                 <PlaylistPlayIcon />

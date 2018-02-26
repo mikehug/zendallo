@@ -95,7 +95,7 @@ class Practice extends React.Component {
               </Button>
         }
             backButton={
-              <Button dense onClick={this.handleBack} disabled={this.state.activeStep === 0}>
+              <Button onClick={this.handleBack} disabled={this.state.activeStep === 0}>
                 {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             Back
               </Button>

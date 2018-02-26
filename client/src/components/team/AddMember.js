@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'material-ui/Button';
+import AddIcon from 'material-ui-icons/Add';
 import { Formik, Form, Field } from 'formik';
 import RenderTextField from '../utils/RenderTextField';
 
@@ -41,8 +42,8 @@ export default class AddMember extends React.Component {
                 variant="text"
                 component={RenderTextField}
               />
-              <Button type="submit" disabled={props.isSubmitting && props.isValid} color="primary">
-                    Add
+              <Button type="submit" disabled={props.isSubmitting && props.isValid} color="primary" style={{ padding: 0 }}>
+              Add
               </Button>
             </Form>
             )}

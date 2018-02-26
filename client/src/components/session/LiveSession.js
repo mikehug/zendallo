@@ -29,7 +29,14 @@ class LiveSession extends Component {
     }
 
     componentDidMount() {
-      sessionFeed.on('patched', throttle(session => this.setState({ session }), 50));
+      sessionFeed.on('updated', throttle(session => this.setState({ session }), 50));
+    }
+
+    handleFeedback =(data) => {
+      sessionFeed.update(
+        this.state.session._id,
+        { $push: { activity: data } },
+      );
     }
 
     handleUpdate = (data) => {
@@ -38,7 +45,7 @@ class LiveSession extends Component {
       this.setState({ status: data });
       const updateObj = {};
       updateObj[`attendees.${this.props.userIndex}.status`] = data;
-      sessionFeed.patch(this.state.session._id, updateObj);
+      sessionFeed.update(this.state.session._id, { $set: updateObj });
     }
 
     render() {
@@ -47,7 +54,13 @@ class LiveSession extends Component {
           <div >
             {/* <Typography variant="title"  gutterBottom >{this.state.session.name} </Typography> */}
 
-            <SessionTabs handleUpdate={this.handleUpdate} status={this.state.status} session={this.state.session} userIndex={this.props.userIndex} />
+            <SessionTabs
+              handleUpdate={this.handleUpdate}
+              handleFeedback={this.handleFeedback}
+              status={this.state.status}
+              session={this.state.session}
+              userIndex={this.props.userIndex}
+            />
 
 
           </div>);

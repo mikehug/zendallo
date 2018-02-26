@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import grey from 'material-ui/colors/grey';
 import { withStyles } from 'material-ui/styles';
 import LogoSvg from './LogoSvg';
 
@@ -10,7 +11,7 @@ const styles = theme => ({
   },
   row: {
     display: 'flex',
-    padding: '16px 0 0 14px',
+    padding: '16px 0 0 16px',
     flexDirection: 'row',
 
   },
@@ -18,8 +19,8 @@ const styles = theme => ({
     fontFamily: 'Share Tech',
     fontSize: '30px',
     fontWeight: 'bold',
-    margin: '1px 5px 5px 5px',
-    color: theme.palette.grey[700],
+    margin: '0px 5px 5px 5px',
+    color: grey[700],
 
   },
   avatar: {

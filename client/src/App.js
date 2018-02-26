@@ -16,6 +16,7 @@ import SignUp from './components/authentication/SignUp';
 import AppGrid from './components/utils/AppGrid';
 import Team from './components/team/Team';
 import Challenge from './components/challenge/Challenge';
+import Idea from './components/idea/Idea';
 import Session from './components/session/Session';
 import SessionDetail from './components/session/SessionDetail';
 import Dashboard from './components/dashboard/Dashboard';
@@ -120,6 +121,7 @@ class App extends React.Component {
                       <SignIn handleLogin={this.handleLogin} />)}
                   />
                   <Route path="/signup" component={SignUp} />
+                  <PrivateRoute exact path="/ideas" component={Idea} />
                   <PrivateRoute exact path="/challenges" component={Challenge} />
                   <PrivateRoute exact path="/sessions" component={Session} />
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />

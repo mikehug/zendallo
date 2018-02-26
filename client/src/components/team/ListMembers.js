@@ -6,7 +6,7 @@ import List, {
   ListItemSecondaryAction,
   ListItemText,
 } from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 import PersonIcon from 'material-ui-icons/Person';
 import DeleteIcon from 'material-ui-icons/Delete';
 import Divider from 'material-ui/Divider';
@@ -19,16 +19,13 @@ const ListMembers = withRouter(props => (
         {props.team.members && props.team.members.map(member => (
           <div key={member.email}>
             <ListItem >
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
               <ListItemText
                 primary={member.email}
               />
               <ListItemSecondaryAction>
-                <IconButton aria-label="Delete" onClick={() => props.handleRemoveMember(props.team._id, member.email)} >
+                <Button aria-label="Delete" onClick={() => props.handleRemoveMember(props.team._id, member.email)} >
                   <DeleteIcon />
-                </IconButton>
+                </Button>
               </ListItemSecondaryAction>
             </ListItem>
             <Divider />

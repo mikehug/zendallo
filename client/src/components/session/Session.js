@@ -25,12 +25,10 @@ class Session extends Component {
 
   componentWillMount() {
     // console.log(user);
-    AppService.authenticate()
-      .then((user) => {
-        AppService.service('sessions').find({ userId: user._id })
-          .then((result) => {
-            this.setState({ sessions: result.data });
-          });
+    const user = AppService.get('user');
+    AppService.service('sessions').find({ userId: user._id })
+      .then((result) => {
+        this.setState({ sessions: result.data });
       });
   }
 

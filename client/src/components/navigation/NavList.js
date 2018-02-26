@@ -2,15 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withRouter } from 'react-router';
 // import Collapse from 'material-ui/transitions/Collapse';
-import orange from 'material-ui/colors/orange';
+import deepOrange from 'material-ui/colors/deepOrange';
 import purple from 'material-ui/colors/purple';
 import teal from 'material-ui/colors/teal';
 import pink from 'material-ui/colors/pink';
 import lightGreen from 'material-ui/colors/lightGreen';
-import lightBlue from 'material-ui/colors/lightBlue';
+import blue from 'material-ui/colors/blue';
 import Avatar from 'material-ui/Avatar';
 import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
@@ -18,7 +19,7 @@ import Person from 'material-ui-icons/Person';
 import GroupIcon from 'material-ui-icons/Group';
 import Dashboard from 'material-ui-icons/Dashboard';
 import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import Toys from 'material-ui-icons/Toys';
+import MyLocation from 'material-ui-icons/MyLocation';
 // import ExpandLess from 'material-ui-icons/ExpandLess';
 // import ExpandMore from 'material-ui-icons/ExpandMore';
 
@@ -66,8 +67,8 @@ class NavList extends React.Component {
           <ListItemText inset primary="Intro" />
         </ListItem> */}
         <ListItem button onClick={() => this.handleClick('/challenges')} >
-          <ListItemIcon className={classes.icon} style={{ color: teal[300] }} >
-            <Toys />
+          <ListItemIcon className={classes.icon} style={{ color: deepOrange[400] }} >
+            <MyLocation />
           </ListItemIcon>
           <ListItemText primary="Challenges" />
         </ListItem>
@@ -80,14 +81,14 @@ class NavList extends React.Component {
         </ListItem>
 
         <ListItem button onClick={() => this.handleClick('/profile')} >
-          <ListItemIcon className={classes.icon} style={{ color: orange[500] }} >
+          <ListItemIcon className={classes.icon} style={{ color: teal[500] }} >
 
             <Person />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItem>
         <ListItem button onClick={() => this.handleClick('/teams')} >
-          <ListItemIcon className={classes.icon} style={{ color: lightBlue[500] }} >
+          <ListItemIcon className={classes.icon} style={{ color: blue[500] }} >
 
             <GroupIcon />
           </ListItemIcon>

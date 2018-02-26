@@ -6,8 +6,8 @@ import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
 import Person from 'material-ui-icons/Person';
 import GroupIcon from 'material-ui-icons/Group';
 import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import Toys from 'material-ui-icons/Toys';
-import orange from 'material-ui/colors/orange';
+import MyLocation from 'material-ui-icons/MyLocation';
+import deepOrange from 'material-ui/colors/deepOrange';
 import lightGreen from 'material-ui/colors/lightGreen';
 import pink from 'material-ui/colors/pink';
 import teal from 'material-ui/colors/teal';
@@ -40,7 +40,7 @@ const Dashboard = ({ classes }) => (
         route="/challenges"
         chip=""
       >
-        <Toys className={classes.icon} style={{ color: teal[300] }} />
+        <MyLocation className={classes.icon} style={{ color: deepOrange[300] }} />
       </DashboardCard>
     </Grid>
     <Grid item xs={12} sm={8} md={6} lg={6}>
@@ -88,7 +88,7 @@ const Dashboard = ({ classes }) => (
         background={{ }}
         route="/profile"
         chip="1/5"
-      > <Person className={classes.icon} style={{ color: orange[500] }} />
+      > <Person className={classes.icon} style={{ color: teal[300] }} />
       </DashboardCard>
     </Grid>
     <Grid item xs={12} sm={8} md={6} lg={6}>

@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
+import Grid from 'material-ui/Grid';
 import NavigateBeforeIcon from 'material-ui-icons/NavigateBefore';
 import AddMember from './AddMember';
 import ListMembers from './ListMembers';
@@ -12,7 +13,7 @@ const styles = () => ({
   root: {
     marginTop: 15,
     padding: 10,
-    width: 300,
+    width: '100%',
   },
   header: {
     display: 'flex',
@@ -26,8 +27,8 @@ const styles = () => ({
     marginLeft: -48,
 
   },
-  add: {
-    textAlign: 'right',
+  members: {
+    maxWidth: 320,
   },
 });
 
@@ -46,10 +47,18 @@ const TeamDetail = withRouter(({
       </div>
     </div>
 
-    <ListMembers team={data} handleRemoveMember={handleRemoveMember} />
-    <div className={classes.add}>
-      <AddMember team={data} handleAddMember={handleAddMember} />
-    </div>
+    <Grid container justify="center" spacing={24} className={classes.root} >
+
+      <Grid item xs={12} sm={6} md={5} lg={4} className={classes.members}>
+
+        <ListMembers team={data} handleRemoveMember={handleRemoveMember} />
+        <AddMember
+          team={data}
+          handleAddMember={handleAddMember}
+        />
+
+      </Grid>
+    </Grid>
   </Paper>
 ));
 
