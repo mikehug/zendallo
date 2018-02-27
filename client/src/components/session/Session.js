@@ -51,6 +51,8 @@ class Session extends Component {
       option4: values.option4,
       startTime: Date.now(),
       attendees: [],
+      activity: [],
+
     })
       .then((result) => {
         const { sessions } = this.state;

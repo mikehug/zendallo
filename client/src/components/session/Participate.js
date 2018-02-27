@@ -338,13 +338,10 @@ class Participate extends Component { // eslint-disable-line
                       primary={(activity.type === 'Chat') ? activity.text : activity.type}
                       secondary={`${this.props.session.attendees.find(attendee => attendee.userId === activity.userId).name} ${moment(activity.dateTime).fromNow()}`}
                     />
-
                   </ListItem>
                   <Divider />
                 </div>
           ))}
-
-
             </List>
           </Paper>
         </Paper>

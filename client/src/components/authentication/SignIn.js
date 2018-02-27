@@ -52,8 +52,8 @@ class SignIn extends Component {
         setSubmitting(false);
         const errors = {};
         if (error.code === 401) {
-          errors.email = 'Invalid login';
-        } else { errors.email = 'Login error'; }
+          errors.email = 'User/password incorrect';
+        } else { errors.email = 'Sign in problem'; }
         setErrors(errors);
       });
   };

@@ -94,8 +94,9 @@ class App extends React.Component {
      .then((result) => {
        this.setState({ user: result });
      })
-     .catch(() => {
+     .catch((error) => {
        this.handleLogout();
+       throw error;
      })
 
   handleDrawerToggle = () => {
