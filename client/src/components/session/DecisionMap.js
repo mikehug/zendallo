@@ -8,8 +8,11 @@ import { Motion, spring } from 'react-motion';
 import amber from 'material-ui/colors/amber';
 import lightGreen from 'material-ui/colors/lightGreen';
 import OpenWithIcon from 'material-ui-icons/OpenWith';
+import EditIcon from 'material-ui-icons/Edit';
 import PersonIcon from 'material-ui-icons/Person';
+import ChipTextEdit from './ChipTextEdit';
 import BallPopover from './BallPopover';
+
 
 const styles = theme => ({
   map: {
@@ -66,8 +69,6 @@ const styles = theme => ({
   option4: {
     backgroundColor: lightGreen[500],
   },
-
-
 });
 
 // const springSetting1 = { stiffness: 180, damping: 10 };
@@ -82,8 +83,9 @@ class DecisionMap extends React.Component {
       width: 0,
       height: 0,
       isPressed: false,
+      optionEdit: false,
+      selectedOption: '',
     };
-
 
     componentDidMount() {
       document.getElementById('map').addEventListener('mousemove', throttle(this.handleMouseMove, 100));
@@ -107,6 +109,13 @@ class DecisionMap extends React.Component {
       }
     }
 
+    getTextEdit = () => (
+      <ChipTextEdit
+        text={this.props.session[this.state.selectedOption]}
+        handleTextChange={this.handleTextChange}
+      />
+    )
+
     handleMouseUp = () => {
       this.setState({ isPressed: false });
       this.props.handleDisableSwipe(false);
@@ -126,7 +135,16 @@ class DecisionMap extends React.Component {
        this.props.handleDisableSwipe(true);
      };
 
-    handleClick =() => {
+    handleClick =(selectedOption) => {
+      this.setState({ optionEdit: !this.state.optionEdit, selectedOption });
+    }
+
+    handleTextChange = (values) => {
+      const updateObj = {};
+      updateObj[this.state.selectedOption] = values.text;
+      console.log(updateObj);
+      this.props.handleMapLabel(updateObj);
+      this.setState({ optionEdit: false });
     }
 
     handleMouseMove = ({ clientX, clientY }) => {
@@ -158,18 +176,24 @@ class DecisionMap extends React.Component {
           <Grid container justify="space-between" spacing={0}>
             <Grid item >
               <Chip
-                avatar={<Avatar className={this.props.classes.option1}>A</Avatar>}
+                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
                 label={this.props.session.option1}
-                onClick={() => this.handleClick()}
+                onClick={() => this.handleClick('option1')}
                 className={this.props.classes.chip}
+                component={(this.state.optionEdit && this.state.selectedOption === 'option1') ?
+                  this.getTextEdit
+                : 'div'}
               />
             </Grid>
             <Grid item >
               <Chip
-                avatar={<Avatar className={this.props.classes.option1}>B</Avatar>}
+                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
                 label={this.props.session.option2}
-                onClick={() => this.handleClick()}
+                onClick={() => this.handleClick('option2')}
                 className={this.props.classes.chip}
+                component={(this.state.optionEdit && this.state.selectedOption === 'option2') ?
+                  this.getTextEdit
+                : 'div'}
                 style={{ flexDirection: 'row-reverse' }}
               />
             </Grid>
@@ -234,18 +258,24 @@ class DecisionMap extends React.Component {
           <Grid container justify="space-between" alignItems="flex-end" spacing={0} >
             <Grid item >
               <Chip
-                avatar={<Avatar className={this.props.classes.option1} >C</Avatar>}
+                avatar={<Avatar className={this.props.classes.option1} ><EditIcon /></Avatar>}
                 label={this.props.session.option3}
-                onClick={() => this.handleClick()}
+                onClick={() => this.handleClick('option3')}
                 className={this.props.classes.chip}
+                component={(this.state.optionEdit && this.state.selectedOption === 'option3') ?
+                  this.getTextEdit
+                : 'div'}
               />
             </Grid>
             <Grid item >
               <Chip
-                avatar={<Avatar className={this.props.classes.option1}>D</Avatar>}
+                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
                 label={this.props.session.option4}
-                onClick={() => this.handleClick()}
+                onClick={() => this.handleClick('option4')}
                 className={this.props.classes.chip}
+                component={(this.state.optionEdit && this.state.selectedOption === 'option4') ?
+                  this.getTextEdit
+                : 'div'}
                 style={{ flexDirection: 'row-reverse' }}
               />
             </Grid>

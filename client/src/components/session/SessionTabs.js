@@ -76,6 +76,7 @@ class SessionTabs extends React.Component {
           <TabContainer dir={theme.direction}>
             <DecisionMap
               handleUpdate={this.props.handleUpdate}
+              handleMapLabel={this.props.handleMapLabel}
               status={this.props.status}
               session={this.props.session}
               userIndex={this.props.userIndex}

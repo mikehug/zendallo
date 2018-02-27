@@ -122,7 +122,6 @@ const getAvatar = (key) => {
   }
 };
 
-
 const DialogContent = (props) => {
   switch (props.type) {
     case 'Agenda':

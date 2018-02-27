@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
-import Loader from 'react-loader';
+import { CircularProgress } from 'material-ui/Progress';
 import SignInForm from './SignInForm';
 
 class SignIn extends Component {
@@ -61,7 +61,7 @@ class SignIn extends Component {
   render() {
     return (
       this.state.isLogingIn ?
-        <Loader /> :
+        <CircularProgress /> :
         <Formik
           initialValues={{ email: '', password: '' }}
           component={SignInForm}

@@ -1,6 +1,4 @@
-<svg width="1200" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
- <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
-
+<svg width="1200" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> -->
  <g>
   <title>Layer 1</title>
   <text font-weight="bold" transform="matrix(11.1183, 0, 0, 11.1183, -15874, -1874.66)" xml:space="preserve" text-anchor="middle" font-family="share tech" font-size="24" id="svg_20" y="188.57319" x="1492.69844" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0.2" stroke="#bf00bf" fill="#ff7f00">Zendallo</text>
@@ -13,3 +11,19 @@
   <path transform="rotate(0.314585, 131.512, 126.846)" id="svg_24" fill-opacity="0" d="m72.03683,126.84515l25.48815,-54.41339l67.974,0l25.48764,54.41339l-25.48764,54.41476l-67.974,0l-25.48815,-54.41476z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="10" stroke="#56aaff" fill="#000000"/>
  </g>
 </svg>
+
+<!-- <svg width="1200" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <text fill="#ff7f00" stroke="#bf00bf" stroke-width="0.2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="1492.69844" y="188.57319" id="svg_20" font-size="24" font-family="share tech" text-anchor="middle" xml:space="preserve" transform="matrix(11.1183, 0, 0, 11.1183, -15874, -1874.66)" font-weight="bold">Zendallo</text>
+  <path fill="#ff9800" stroke="#bf00bf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m317.7153,103.65476l0,-0.91452l0.98401,0.91452l-0.98401,0z" id="svg_5" transform="rotate(181.073, 318.207, 103.197)"/>
+  <g transform="rotate(0.0149826, 130.199, 126.323)" id="svg_8">
+   <path fill="#ff7f00" stroke="#bf00bf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m200.74222,122.89314l-29.69972,73.05839l-79.074,-0.18108l-29.6039,-73.19379l29.6995,-73.05596l79.07404,0.18075l29.60408,73.19172l0,-0.00002z" id="svg_1"/>
+   <path fill="#ff7f00" stroke="#bf00bf" stroke-width="12" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m65.78282,72.6263l92.98047,0.10879l-92.71342,100.41531l-0.26701,-100.5241l-0.00003,0z" id="svg_6"/>
+   <path fill="#ff7f00" stroke="#bf00bf" stroke-width="12" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m189.91708,179.26991l-91.49162,1.16827l90.65022,-93.86432l0.8414,92.69604z" id="svg_7"/>
+   <path fill="#000000" stroke="#ff7f00" stroke-width="25" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m60.19174,124.30024l29.64341,-76.82242l78.16476,0.54328l28.97464,77.22984l-29.64285,76.82424l-78.16477,-0.54317l-28.97519,-77.23177z" fill-opacity="0" id="svg_24"/>
+   <path fill="#000000" stroke="#bf00bf" stroke-width="16" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" fill-opacity="0" d="m44.73601,126.32314l36.63374,-92.70641l97.66781,0l36.62448,92.70641l-36.62448,92.70583l-97.66781,0l-36.63374,-92.70583z" id="svg_22"/>
+  </g>
+ </g>
+</svg> -->

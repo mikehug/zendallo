@@ -66,37 +66,7 @@ export default class CreateSession extends React.Component {
                     variant="text"
                     component={RenderTextField}
                   />
-                  <FormGroup>
 
-                    <Field
-                      margin="dense"
-                      name="option1"
-                      placeholder="Option 1"
-                      variant="text"
-                      component={RenderTextField}
-                    />
-                    <Field
-                      margin="dense"
-                      name="option2"
-                      placeholder="Option 2"
-                      variant="text"
-                      component={RenderTextField}
-                    />
-                    <Field
-                      margin="dense"
-                      name="option3"
-                      placeholder="Option 3"
-                      variant="text"
-                      component={RenderTextField}
-                    />
-                    <Field
-                      margin="dense"
-                      name="option4"
-                      placeholder="Option 4"
-                      variant="text"
-                      component={RenderTextField}
-                    />
-                  </FormGroup>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={this.handleRequestClose} >

@@ -45,10 +45,10 @@ class Session extends Component {
   createSession = (values) => {
     AppService.service('sessions').create({
       name: values.name,
-      option1: values.option1,
-      option2: values.option2,
-      option3: values.option3,
-      option4: values.option4,
+      option1: '',
+      option2: '',
+      option3: '',
+      option4: '',
       startTime: Date.now(),
       attendees: [],
       activity: [],

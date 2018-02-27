@@ -30,12 +30,20 @@ class LiveSession extends Component {
 
     componentDidMount() {
       sessionFeed.on('updated', throttle(session => this.setState({ session }), 50));
+      sessionFeed.on('patched', throttle(session => this.setState({ session }), 50));
     }
 
     handleFeedback =(data) => {
       sessionFeed.update(
         this.state.session._id,
         { $push: { activity: data } },
+      );
+    }
+
+    handleMapLabel =(data) => {
+      sessionFeed.patch(
+        this.state.session._id,
+        data,
       );
     }
 
@@ -57,6 +65,7 @@ class LiveSession extends Component {
             <SessionTabs
               handleUpdate={this.handleUpdate}
               handleFeedback={this.handleFeedback}
+              handleMapLabel={this.handleMapLabel}
               status={this.state.status}
               session={this.state.session}
               userIndex={this.props.userIndex}
