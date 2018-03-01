@@ -1,7 +1,7 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
+import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import GameIcon from 'material-ui-icons/Games';

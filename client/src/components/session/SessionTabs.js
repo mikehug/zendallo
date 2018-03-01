@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import SwipeableViews from 'react-swipeable-views';
-import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
+import BottomNavigation, {BottomNavigationAction,} from 'material-ui/BottomNavigation';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
@@ -31,13 +31,12 @@ const styles = theme => ({
   container: {
     // backgroundColor: theme.palette.background.paper,
     height: 'calc(100vh-120)',
-
   },
 });
 
 class SessionTabs extends React.Component {
   state = {
-    value: 1,
+    value: 0,
     disableSwipe: false,
   };
 
@@ -51,13 +50,13 @@ class SessionTabs extends React.Component {
 
   handleDisableSwipeable = (disabled) => {
     this.setState({ disableSwipe: disabled });
-  }
+  };
 
   render() {
     const { classes, theme } = this.props;
 
     return (
-      <div >
+      <div>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
@@ -66,11 +65,18 @@ class SessionTabs extends React.Component {
           disabled={this.state.disableSwipe}
         >
           <TabContainer dir={theme.direction}>
-            <Initiate session={this.props.session} status={this.props.status} userIndex={this.props.userIndex} />
+            <Initiate
+              session={this.props.session}
+              status={this.props.status}
+              userIndex={this.props.userIndex}
+            />
           </TabContainer>
 
-          <TabContainer dir={theme.direction} >
-            <Participate handleFeedback={this.props.handleFeedback} session={this.props.session} />
+          <TabContainer dir={theme.direction}>
+            <Participate
+              handleFeedback={this.props.handleFeedback}
+              session={this.props.session}
+            />
           </TabContainer>
 
           <TabContainer dir={theme.direction}>
@@ -91,16 +97,13 @@ class SessionTabs extends React.Component {
           showLabels
           className={classes.root}
         >
-
           <BottomNavigationAction label="Initiate" icon={<PlayArrowIcon />} />
           <BottomNavigationAction label="Participate" icon={<ShareIcon />} />
           <BottomNavigationAction label="Deliberate" icon={<GameIcon />} />
         </BottomNavigation>
       </div>
-
     );
   }
 }
 
 export default withStyles(styles, { withTheme: true })(SessionTabs);
-

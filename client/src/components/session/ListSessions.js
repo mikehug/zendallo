@@ -14,19 +14,26 @@ import Grid from 'material-ui/Grid';
 
 const ListSessions = withRouter(props => (
   <div>
-    <Grid container align="start">
-      <List >
+    <Grid>
+      <List>
         {props.data.map(session => (
           <div key={session.code}>
-            <ListItem button onClick={() => props.history.push(`/session/${encodeURI(session.code)}`)} >
+            <ListItem
+              button
+              onClick={() =>
+                props.history.push(`/session/${encodeURI(session.code)}`)
+              }
+            >
               <ListItemIcon>
                 <GroupWorkIcon />
               </ListItemIcon>
-              <ListItemText
-                primary={session.name}
-              />
+              <ListItemText primary={session.name} />
+
               <ListItemSecondaryAction>
-                <IconButton aria-label="Delete" onClick={() => props.handleDelete(session)} >
+                <IconButton
+                  aria-label="Delete"
+                  onClick={() => props.handleDelete(session)}
+                >
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>

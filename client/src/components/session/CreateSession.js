@@ -7,6 +7,7 @@ import Dialog, {
   DialogTitle,
 } from 'material-ui/Dialog';
 import { Formik, Form, Field } from 'formik';
+import Grid from 'material-ui/Grid';
 import { FormGroup } from 'material-ui/Form';
 import RenderTextField from '../utils/RenderTextField';
 
@@ -32,17 +33,17 @@ export default class CreateSession extends React.Component {
       errors.name = 'Name already exists';
     }
     return errors;
-  }
+  };
 
   handleSubmit = (values, props) => {
     props.setSubmitting(true);
     this.props.handleCreate(values);
     this.handleRequestClose();
-  }
+  };
 
   render() {
     return (
-      <div style={{ paddingTop: '10px' }} >
+      <Grid style={{ paddingTop: '10px' }}>
         <Button onClick={this.handleClickOpen} color="default">
           Create Session
         </Button>
@@ -55,24 +56,39 @@ export default class CreateSession extends React.Component {
             render={props => (
               <Form>
                 <DialogContent>
-                  <DialogContentText>
-                    New session details
-                  </DialogContentText>
-                  <Field
-                    autoFocus
-                    margin="dense"
-                    name="name"
-                    placeholder="Session name"
-                    variant="text"
-                    component={RenderTextField}
-                  />
-
+                  {/* <DialogContentText>New session details</DialogContentText> */}
+                  <FormGroup>
+                    <Field
+                      autoFocus
+                      margin="dense"
+                      name="name"
+                      placeholder="Name"
+                      variant="text"
+                      component={RenderTextField}
+                    />
+                    <Field
+                      margin="dense"
+                      name="purpose"
+                      placeholder="Purpose"
+                      variant="text"
+                      component={RenderTextField}
+                    />
+                    <Field
+                      margin="dense"
+                      name="Agenda"
+                      placeholder="Agenda"
+                      variant="multiline"
+                      component={RenderTextField}
+                    />
+                  </FormGroup>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={this.handleRequestClose} >
-                    Cancel
-                  </Button>
-                  <Button type="submit" disabled={props.isSubmitting && props.isValid} color="default">
+                  <Button onClick={this.handleRequestClose}>Cancel</Button>
+                  <Button
+                    type="submit"
+                    disabled={props.isSubmitting && props.isValid}
+                    color="default"
+                  >
                     Create
                   </Button>
                 </DialogActions>
@@ -80,7 +96,7 @@ export default class CreateSession extends React.Component {
             )}
           />
         </Dialog>
-      </div>
+      </Grid>
     );
   }
 }
