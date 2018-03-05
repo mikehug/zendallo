@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -33,7 +32,6 @@ const styles = theme => ({
     margin: '0 0 0 5px',
     padding: 1,
     backgroundColor: 'transparent',
-
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -43,11 +41,11 @@ const styles = theme => ({
 class NavList extends React.Component {
   state = {
     open: false,
-  }
+  };
 
   handleExpand = () => {
     this.setState({ open: !this.state.open });
-  }
+  };
 
   handleClick = (path) => {
     this.props.handleDrawerToggle();
@@ -58,52 +56,57 @@ class NavList extends React.Component {
     const { classes } = this.props;
 
     return (
-      <List className={classes.root} >
-
+      <List className={classes.root}>
         {/* <ListItem button className={classes.nested}>
           <ListItemIcon className={classes.icon}>
             <StarBorder />
           </ListItemIcon>
           <ListItemText inset primary="Intro" />
         </ListItem> */}
-        <ListItem button onClick={() => this.handleClick('/challenges')} >
-          <ListItemIcon className={classes.icon} style={{ color: deepOrange[400] }} >
-            <MyLocation />
-          </ListItemIcon>
-          <ListItemText primary="Challenges" />
-        </ListItem>
-        <ListItem button onClick={() => this.handleClick('/ideas')} >
-          <ListItemIcon className={classes.icon} style={{ color: purple[500] }} >
 
+        <ListItem button onClick={() => this.handleClick('/profile')}>
+          <ListItemIcon className={classes.icon} style={{ color: teal[500] }}>
+            <Person />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItem>
+
+        <ListItem button onClick={() => this.handleClick('/teams')}>
+          <ListItemIcon className={classes.icon} style={{ color: blue[500] }}>
+            <GroupIcon />
+          </ListItemIcon>
+          <ListItemText primary="Teams" />
+        </ListItem>
+
+        <ListItem button onClick={() => this.handleClick('/sessions')}>
+          <ListItemIcon
+            className={classes.icon}
+            style={{ color: lightGreen[500] }}
+          >
+            <GroupWorkIcon />
+          </ListItemIcon>
+          <ListItemText primary="Sessions" />
+        </ListItem>
+
+        <ListItem button onClick={() => this.handleClick('/ideas')}>
+          <ListItemIcon className={classes.icon} style={{ color: purple[500] }}>
             <LightbulbOutline />
           </ListItemIcon>
           <ListItemText primary="Ideas" />
         </ListItem>
 
-        <ListItem button onClick={() => this.handleClick('/profile')} >
-          <ListItemIcon className={classes.icon} style={{ color: teal[500] }} >
-
-            <Person />
+        <ListItem button onClick={() => this.handleClick('/challenges')}>
+          <ListItemIcon
+            className={classes.icon}
+            style={{ color: deepOrange[400] }}
+          >
+            <MyLocation />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText primary="Challenges" />
         </ListItem>
-        <ListItem button onClick={() => this.handleClick('/teams')} >
-          <ListItemIcon className={classes.icon} style={{ color: blue[500] }} >
 
-            <GroupIcon />
-          </ListItemIcon>
-          <ListItemText primary="Teams" />
-        </ListItem>
-        <ListItem button onClick={() => this.handleClick('/sessions')} >
-          <ListItemIcon className={classes.icon} style={{ color: lightGreen[500] }} >
-
-            <GroupWorkIcon />
-          </ListItemIcon>
-          <ListItemText primary="Sessions" />
-        </ListItem>
-        <ListItem button onClick={() => this.handleClick('/resources')} >
-          <ListItemIcon className={classes.icon} style={{ color: pink[500] }} >
-
+        <ListItem button onClick={() => this.handleClick('/resources')}>
+          <ListItemIcon className={classes.icon} style={{ color: pink[500] }}>
             <PlaylistPlayIcon />
           </ListItemIcon>
           <ListItemText primary="Resources" />

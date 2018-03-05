@@ -12,9 +12,15 @@ const styles = {
 };
 
 const Explore = ({
-  classes, course, module, changeTab, setLessons,
+ classes, course, module, changeTab, setLessons 
 }) => (
-  <Grid container className={classes.root} spacing={0} direction="row" justify="center" >
+  <Grid
+    container
+    className={classes.root}
+    spacing={0}
+    direction="row"
+    justify="center"
+  >
     {/* <Grid item xs={12} sm={12} md={3} className={classes.item}>
       <CourseContent title={course.title} course={course} />
     </Grid> */}

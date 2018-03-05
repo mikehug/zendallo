@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import Card, {
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+} from 'material-ui/Card';
 import Collapse from 'material-ui/transitions/Collapse';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
@@ -16,8 +21,9 @@ import MoreVertIcon from 'material-ui-icons/MoreVert';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
-    margin: 15,
+    maxWidth: 500,
+    padding: '0 15px 15px 15px ',
+    margin: 10,
   },
   actions: {
     display: 'flex',
@@ -59,7 +65,6 @@ class Challenge extends React.Component {
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
                 <Toys />
-
               </Avatar>
             }
             action={
@@ -69,12 +74,14 @@ class Challenge extends React.Component {
             }
             classes={{ title: classes.title }}
             title="Build Idea Collaboration App"
-            subheader="February 21, 2018"
+            subheader="March 1, 2018"
           />
 
           <CardContent>
             <Typography component="p">
-              Praesentium adipisci id quam perspiciatis velit eum ut explicabo. Unde ex tenetur quod. Sequi ut nostrum qui. Aut non vitae necessitatibus.
+              Praesentium adipisci id quam perspiciatis velit eum ut explicabo.
+              Unde ex tenetur quod. Sequi ut nostrum qui. Aut non vitae
+              necessitatibus.
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
@@ -101,13 +108,22 @@ class Challenge extends React.Component {
                 Considerations:
               </Typography>
               <Typography paragraph>
-                Nemo dolorum pariatur voluptatem et quia accusamus eum distinctio. Voluptas voluptatem ex eum similique. Beatae temporibus omnis qui omnis magni doloremque consequatur. Voluptate fuga necessitatibus quo recusandae enim aut debitis non.
+                Nemo dolorum pariatur voluptatem et quia accusamus eum
+                distinctio. Voluptas voluptatem ex eum similique. Beatae
+                temporibus omnis qui omnis magni doloremque consequatur.
+                Voluptate fuga necessitatibus quo recusandae enim aut debitis
+                non.
               </Typography>
               <Typography paragraph>
-                Et quidem facilis unde consequatur aut ea. Sit totam asperiores voluptas velit deserunt rerum. Harum repudiandae odio reprehenderit dignissimos odit recusandae ipsam. Porro voluptas autem voluptatibus non beatae nihil. Neque et nihil nostrum iusto laboriosam vero. Consequatur dolorum sunt ducimus.
+                Et quidem facilis unde consequatur aut ea. Sit totam asperiores
+                voluptas velit deserunt rerum. Harum repudiandae odio
+                reprehenderit dignissimos odit recusandae ipsam. Porro voluptas
+                autem voluptatibus non beatae nihil. Neque et nihil nostrum
+                iusto laboriosam vero. Consequatur dolorum sunt ducimus.
               </Typography>
               <Typography>
-                Set aside off of the heat to let rest for 10 minutes, and then serve.
+                Set aside off of the heat to let rest for 10 minutes, and then
+                serve.
               </Typography>
             </CardContent>
           </Collapse>
@@ -126,13 +142,15 @@ class Challenge extends React.Component {
               </IconButton>
             }
             classes={{ title: classes.title }}
-            title="Devlop Team Building Resources "
-            subheader="February 14, 2018"
+            title="Develop Team Building Resources "
+            subheader="February 24, 2018"
           />
 
           <CardContent>
             <Typography component="p">
-              Praesentium adipisci id quam perspiciatis velit eum ut explicabo. Unde ex tenetur quod. Sequi ut nostrum qui. Aut non vitae necessitatibus.
+              Praesentium adipisci id quam perspiciatis velit eum ut explicabo.
+              Unde ex tenetur quod. Sequi ut nostrum qui. Aut non vitae
+              necessitatibus.
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
@@ -159,13 +177,22 @@ class Challenge extends React.Component {
                 Considerations:
               </Typography>
               <Typography paragraph>
-                Nemo dolorum pariatur voluptatem et quia accusamus eum distinctio. Voluptas voluptatem ex eum similique. Beatae temporibus omnis qui omnis magni doloremque consequatur. Voluptate fuga necessitatibus quo recusandae enim aut debitis non.
+                Nemo dolorum pariatur voluptatem et quia accusamus eum
+                distinctio. Voluptas voluptatem ex eum similique. Beatae
+                temporibus omnis qui omnis magni doloremque consequatur.
+                Voluptate fuga necessitatibus quo recusandae enim aut debitis
+                non.
               </Typography>
               <Typography paragraph>
-                Et quidem facilis unde consequatur aut ea. Sit totam asperiores voluptas velit deserunt rerum. Harum repudiandae odio reprehenderit dignissimos odit recusandae ipsam. Porro voluptas autem voluptatibus non beatae nihil. Neque et nihil nostrum iusto laboriosam vero. Consequatur dolorum sunt ducimus.
+                Et quidem facilis unde consequatur aut ea. Sit totam asperiores
+                voluptas velit deserunt rerum. Harum repudiandae odio
+                reprehenderit dignissimos odit recusandae ipsam. Porro voluptas
+                autem voluptatibus non beatae nihil. Neque et nihil nostrum
+                iusto laboriosam vero. Consequatur dolorum sunt ducimus.
               </Typography>
               <Typography>
-                Set aside off of the heat to let rest for 10 minutes, and then serve.
+                Set aside off of the heat to let rest for 10 minutes, and then
+                serve.
               </Typography>
             </CardContent>
           </Collapse>
@@ -180,4 +207,3 @@ Challenge.propTypes = {
 };
 
 export default withStyles(styles)(Challenge);
-

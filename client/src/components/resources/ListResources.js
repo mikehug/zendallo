@@ -13,30 +13,62 @@ import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
 
 const ListSessions = withRouter(props => (
-  <div>
-    <Grid container align="start">
-      <List >
-        {props.data.map(resource => (
-          <div key={resource._id}>
-            <ListItem button onClick={() => props.history.push(`/resources/${encodeURI(resource.url)}`)} >
-              <ListItemIcon>
-                <PlaylistPlayIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={resource.title}
-              />
-              <ListItemSecondaryAction>
-                <IconButton aria-label="Complete" >
-                  {/* <DeleteIcon /> */}
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <Divider />
-          </div>
-        ))}
-      </List>
-    </Grid>
-  </div>
+  <List>
+    {props.data.map(resource => (
+      <div key={resource._id}>
+        <ListItem
+          button
+          onClick={() =>
+            props.history.push(`/resources/${encodeURI(resource.url)}`)
+          }
+        >
+          <ListItemIcon>
+            <PlaylistPlayIcon />
+          </ListItemIcon>
+          <ListItemText primary={resource.title} />
+          <ListItemSecondaryAction>
+            <IconButton aria-label="Complete">
+              {/* <DeleteIcon /> */}
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+        <Divider />
+      </div>
+    ))}
+
+    <ListItem button disable>
+      <ListItemIcon>
+        <PlaylistPlayIcon />
+      </ListItemIcon>
+      <ListItemText primary="Team Charter" />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+    <Divider />
+
+    <ListItem button disable>
+      <ListItemIcon>
+        <PlaylistPlayIcon />
+      </ListItemIcon>
+      <ListItemText primary="Mindfulness Practices" />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+    <Divider />
+
+    <ListItem button disable>
+      <ListItemIcon>
+        <PlaylistPlayIcon />
+      </ListItemIcon>
+      <ListItemText primary="Team Building Activities" />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+    <Divider />
+  </List>
 ));
 
 export default ListSessions;

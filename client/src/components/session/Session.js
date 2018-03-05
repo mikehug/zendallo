@@ -11,7 +11,7 @@ const styles = () => ({
   root: {
     marginTop: 15,
     padding: 10,
-    width: 300,
+    maxWidth: 400,
   },
   button: {
     marginTop: 10,

@@ -25,10 +25,13 @@ const styles = theme => ({
     zIndex: 9999,
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      paddingLeft: 120,
+      paddingLeft: 240,
     },
   },
   container: {
+    [theme.breakpoints.only('md')]: {
+      paddingRight: 240,
+    },
     // backgroundColor: theme.palette.background.paper,
     height: 'calc(100vh-120)',
   },

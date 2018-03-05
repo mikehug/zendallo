@@ -25,26 +25,46 @@ let counter = 0;
 function createData(name, calories, fat, carbs, protein) {
   counter += 1;
   return {
-    id: counter, name, calories, fat, carbs, protein,
+    id: counter,
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
   };
 }
 
 const columnData = [
   {
-    id: 'name', numeric: false, disablePadding: true, label: 'IDEAS ',
+    id: 'name',
+    numeric: false,
+    disablePadding: true,
+    label: 'IDEAS ',
   },
   {
-    id: 'calories', numeric: true, disablePadding: false, label: 'ACTIVITY',
+    id: 'calories',
+    numeric: true,
+    disablePadding: false,
+    label: 'ACTIVITY',
   },
-  {
-    id: 'fat', numeric: true, disablePadding: false, label: 'WEIGHT',
-  },
-  {
-    id: 'carbs', numeric: true, disablePadding: false, label: 'VOTES',
-  },
-  {
-    id: 'protein', numeric: true, disablePadding: false, label: 'IMPACT',
-  },
+  // {
+  //   id: "fat",
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: "WEIGHT"
+  // },
+  // {
+  //   id: "carbs",
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: "VOTES"
+  // },
+  // {
+  //   id: "protein",
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: "IMPACT"
+  // }
 ];
 
 class Idea extends React.Component {
@@ -54,7 +74,11 @@ class Idea extends React.Component {
 
   render() {
     const {
-      onSelectAllClick, order, orderBy, numSelected, rowCount,
+      onSelectAllClick,
+      order,
+      orderBy,
+      numSelected,
+      rowCount,
     } = this.props;
 
     return (
@@ -67,28 +91,31 @@ class Idea extends React.Component {
               onChange={onSelectAllClick}
             />
           </TableCell>
-          {columnData.map(column => (
-            <TableCell
-              key={column.id}
-              numeric={column.numeric}
-              padding={column.disablePadding ? 'none' : 'default'}
-              sortDirection={orderBy === column.id ? order : false}
-            >
-              <Tooltip
-                title="Sort"
-                placement={column.numeric ? 'bottom-end' : 'bottom-start'}
-                enterDelay={300}
+          {columnData.map(
+            column => (
+              <TableCell
+                key={column.id}
+                numeric={column.numeric}
+                padding={column.disablePadding ? 'none' : 'default'}
+                sortDirection={orderBy === column.id ? order : false}
               >
-                <TableSortLabel
-                  active={orderBy === column.id}
-                  direction={order}
-                  onClick={this.createSortHandler(column.id)}
+                <Tooltip
+                  title="Sort"
+                  placement={column.numeric ? 'bottom-end' : 'bottom-start'}
+                  enterDelay={300}
                 >
-                  {column.label}
-                </TableSortLabel>
-              </Tooltip>
-            </TableCell>
-            ), this)}
+                  <TableSortLabel
+                    active={orderBy === column.id}
+                    direction={order}
+                    onClick={this.createSortHandler(column.id)}
+                  >
+                    {column.label}
+                  </TableSortLabel>
+                </Tooltip>
+              </TableCell>
+            ),
+            this,
+          )}
         </TableRow>
       </TableHead>
     );
@@ -107,6 +134,7 @@ Idea.propTypes = {
 const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit,
+    width: 400,
   },
   highlight:
     theme.palette.type === 'light'
@@ -176,16 +204,17 @@ const styles = theme => ({
   root: {
     width: '95%',
     marginTop: theme.spacing.unit * 2,
+    maxWidth: 400,
   },
   table: {
-    minWidth: 800,
+    maxWidth: 400,
   },
   tableWrapper: {
     overflowX: 'auto',
   },
 });
-
 class EnhancedTable extends React.Component {
+  // eslint-disable-line react/no-multi-comp
   constructor(props, context) {
     super(props, context);
 
@@ -194,19 +223,19 @@ class EnhancedTable extends React.Component {
       orderBy: 'calories',
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0),
+        createData('New admin portal', 305, 3.7, 67, 4.3),
+        createData('Team training game', 452, 25.0, 51, 4.9),
+        createData('Force field map', 262, 16.0, 24, 6.0),
+        createData('Behavioural feedback options', 159, 6.0, 24, 4.0),
+        createData('Funny 404 page', 356, 16.0, 49, 3.9),
+        createData('Monster popup animation', 408, 3.2, 87, 6.5),
+        createData('Intro video animation', 237, 9.0, 37, 4.3),
+        createData('Profile guessing game', 375, 0.0, 94, 0.0),
+        createData('Surface hidden influences', 518, 26.0, 65, 7.0),
+        createData('Powerful questions', 392, 0.2, 98, 0.0),
+        createData('Idea comments and likes', 318, 0, 81, 2.0),
+        createData('Private team challenges', 360, 19.0, 9, 37.0),
+        createData('Recommend a colleague', 437, 18.0, 63, 4.0),
       ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
       page: 0,
       rowsPerPage: 10,
@@ -271,9 +300,10 @@ class EnhancedTable extends React.Component {
   render() {
     const { classes } = this.props;
     const {
-      data, order, orderBy, selected, rowsPerPage, page,
-    } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+ data, order, orderBy, selected, rowsPerPage, page 
+} = this.state;
+    const emptyRows =
+      rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -289,29 +319,31 @@ class EnhancedTable extends React.Component {
               rowCount={data.length}
             />
             <TableBody>
-              {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((n) => {
-                const isSelected = this.isSelected(n.id);
-                return (
-                  <TableRow
-                    hover
-                    onClick={event => this.handleClick(event, n.id)}
-                    role="checkbox"
-                    aria-checked={isSelected}
-                    tabIndex={-1}
-                    key={n.id}
-                    selected={isSelected}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-                    <TableCell padding="none">{n.name}</TableCell>
-                    <TableCell numeric>{n.calories}</TableCell>
-                    <TableCell numeric>{n.fat}</TableCell>
-                    <TableCell numeric>{n.carbs}</TableCell>
-                    <TableCell numeric>{n.protein}</TableCell>
-                  </TableRow>
-                );
-              })}
+              {data
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((n) => {
+                  const isSelected = this.isSelected(n.id);
+                  return (
+                    <TableRow
+                      hover
+                      onClick={event => this.handleClick(event, n.id)}
+                      role="checkbox"
+                      aria-checked={isSelected}
+                      tabIndex={-1}
+                      key={n.id}
+                      selected={isSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        <Checkbox checked={isSelected} />
+                      </TableCell>
+                      <TableCell padding="none">{n.name}</TableCell>
+                      <TableCell numeric>{n.calories}</TableCell>
+                      {/* <TableCell numeric>{n.fat}</TableCell>
+                      <TableCell numeric>{n.carbs}</TableCell>
+                      <TableCell numeric>{n.protein}</TableCell> */}
+                    </TableRow>
+                  );
+                })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 49 * emptyRows }}>
                   <TableCell colSpan={6} />

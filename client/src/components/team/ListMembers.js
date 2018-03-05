@@ -13,17 +13,20 @@ import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
 
 const ListMembers = withRouter(props => (
-  <div>
-    <Grid container align="start">
-      <List >
-        {props.team.members && props.team.members.map(member => (
+  <Grid>
+    <List>
+      {props.team.members &&
+        props.team.members.map(member => (
           <div key={member.email}>
-            <ListItem >
-              <ListItemText
-                primary={member.email}
-              />
+            <ListItem>
+              <ListItemText primary={member.email} />
               <ListItemSecondaryAction>
-                <Button aria-label="Delete" onClick={() => props.handleRemoveMember(props.team._id, member.email)} >
+                <Button
+                  aria-label="Delete"
+                  onClick={() =>
+                    props.handleRemoveMember(props.team._id, member.email)
+                  }
+                >
                   <DeleteIcon />
                 </Button>
               </ListItemSecondaryAction>
@@ -31,9 +34,8 @@ const ListMembers = withRouter(props => (
             <Divider />
           </div>
         ))}
-      </List>
-    </Grid>
-  </div>
+    </List>
+  </Grid>
 ));
 
 export default ListMembers;

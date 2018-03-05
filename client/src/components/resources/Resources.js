@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import Typography from 'material-ui/Typography';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import AppService from '../../AppService';
@@ -9,20 +10,24 @@ const styles = () => ({
   root: {
     marginTop: 15,
     padding: 10,
-    width: 300,
+    marginRight: 10,
+    height: 400,
+    maxWidth: 400,
   },
-  button: {
-    marginTop: 10,
+  list: {
+    padding: 10,
+    maxWidth: 320,
   },
 });
 
 class Resources extends Component {
   state = {
     sessions: [],
-  }
+  };
 
   componentWillMount() {
-    AppService.service('resources').find()
+    AppService.service('resources')
+      .find()
       .then((result) => {
         this.setState({ sessions: result.data });
       });
@@ -32,11 +37,14 @@ class Resources extends Component {
     const data = this.state.sessions;
     const { classes } = this.props;
     return (
-      <Paper className={classes.root} >
-
-        <ListResources data={data} />
+      <Paper className={classes.root}>
+        <Grid className={classes.list}>
+          <Typography variant="title" gutterBottom>
+            Learning Activities
+          </Typography>
+          <ListResources data={data} />
+        </Grid>
       </Paper>
-
     );
   }
 }

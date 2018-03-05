@@ -13,30 +13,29 @@ import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
 
 const ListTeams = withRouter(props => (
-  <div>
-    <Grid container align="start">
-      <List >
-        {props.data.map(team => (
-          <div key={team.name}>
-            <ListItem button onClick={() => props.handleTeamSelect(team)} >
-              <ListItemIcon>
-                <GroupIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={team.name}
-              />
-              <ListItemSecondaryAction>
-                <IconButton aria-label="Delete" onClick={() => props.openDeleteAlert(team)} >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <Divider />
-          </div>
-        ))}
-      </List>
-    </Grid>
-  </div>
+  <Grid>
+    <List>
+      {props.data.map(team => (
+        <div key={team.name}>
+          <ListItem button onClick={() => props.handleTeamSelect(team)}>
+            <ListItemIcon>
+              <GroupIcon />
+            </ListItemIcon>
+            <ListItemText primary={team.name} />
+            <ListItemSecondaryAction>
+              <IconButton
+                aria-label="Delete"
+                onClick={() => props.openDeleteAlert(team)}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+          <Divider />
+        </div>
+      ))}
+    </List>
+  </Grid>
 ));
 
 export default ListTeams;

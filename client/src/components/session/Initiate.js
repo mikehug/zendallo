@@ -18,6 +18,7 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import Person from 'material-ui-icons/Person';
 import ReactAudioPlayer from 'react-audio-player';
 // ...
 
@@ -26,11 +27,16 @@ const styles = () => ({
     padding: 16,
     minWidth: 340,
     maxWidth: 500,
-    height: 600,
+    minHeight: 600,
   },
   panel: {
-    flexWrap: 'wrap',
-    width: 320,
+    maxWidth: 400,
+  },
+  details: {
+    flexDirection: 'column',
+  },
+  list: {
+    width: '100%',
   },
   heading: {
     textAlign: 'left',
@@ -179,14 +185,17 @@ class Initiate extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
+        <Typography variant="title" color="textSecondary" gutterBottom>
+          {this.props.session.name}
+        </Typography>
         <ExpansionPanel className={classes.panel}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="subheading" color="textSecondary">
               Purpose
             </Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.panel}>
-            <Typography variant="body1">
+          <ExpansionPanelDetails>
+            <Typography variant="body2" color="textSecondary">
               {this.props.session.purpose}
             </Typography>
           </ExpansionPanelDetails>
@@ -198,16 +207,16 @@ class Initiate extends Component {
               Team Ritual
             </Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.panel}>
+          <ExpansionPanelDetails className={classes.details}>
             <Typography
               variant="body2"
               className={classes.heading}
               color="textSecondary"
+              align="center"
             >
-              Here is a mindfulness audio to play at the start or during the
-              session.
+              Try this audio to start the session mindfully!
             </Typography>
-            <ReactAudioPlayer src="/test.mp3" autoPlay controls />
+            <ReactAudioPlayer src="/micromeditation.mp3" controls />
 
             {/* <List dense>
               <Divider />
@@ -232,12 +241,36 @@ class Initiate extends Component {
         <ExpansionPanel className={classes.panel}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="subheading" color="textSecondary">
+              Attendees
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <List dense className={classes.list}>
+              <Divider />
+              {this.props.session.attendees.map(attendee => (
+                <div>
+                  <ListItem key={attendee.userId}>
+                    <ListItemIcon>
+                      <Person color="secondary" />
+                    </ListItemIcon>
+                    <ListItemText primary={attendee.name} />
+                  </ListItem>
+                  <Divider />
+                </div>
+              ))}
+            </List>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+        <ExpansionPanel className={classes.panel}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="subheading" color="textSecondary">
               Agenda
             </Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.panel}>
-            <Typography variant="body1">
-              {this.props.session.purpose}
+          <ExpansionPanelDetails>
+            <Typography variant="body2" color="textSecondary">
+              {this.props.session.agenda}
             </Typography>
             {/* <Grid item>
               <div id="remote-media" />
