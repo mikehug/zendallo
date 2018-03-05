@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect, createLocalTracks } from 'twilio-video';
+import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import List, {
@@ -78,8 +79,9 @@ class Initiate extends Component {
       video: true,
     })
       .then((tracks) => {
+        console.log(tracks);
         localTracks = tracks;
-        connect(token, {
+        return connect(token, {
           name: this.props.session.attendees[this.props.userIndex].userId,
           tracks: localTracks,
         });
@@ -137,6 +139,7 @@ class Initiate extends Component {
           track.stop();
           track.detach();
         });
+        console.log(error);
         window.alert(`Unable to connect to Room: ${error.message}`); // eslint-disable-line
       });
   };
@@ -272,15 +275,26 @@ class Initiate extends Component {
             <Typography variant="body2" color="textSecondary">
               {this.props.session.agenda}
             </Typography>
-            {/* <Grid item>
-              <div id="remote-media" />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        <ExpansionPanel className={classes.panel}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="subheading" color="textSecondary">
+              Video Conference
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Grid container justify="center">
+              <Grid item>
+                <div id="remote-media" />
+              </Grid>
+              <Grid item>
+                <div id="local-media" />
+                <Button onClick={() => this.handleVideoClick()}>
+                  {this.state.activeRoom ? 'Stop Video' : 'Start Video'}
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item>
-              <div id="local-media" />
-              <Button onClick={() => this.handleVideoClick()}>
-                {this.state.activeRoom ? 'Stop Video' : 'Start Video'}
-              </Button>
-            </Grid> */}
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </Paper>
