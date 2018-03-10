@@ -10,7 +10,6 @@ import IconButton from 'material-ui/IconButton';
 import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay';
 // import DeleteIcon from 'material-ui-icons/Delete';
 import Divider from 'material-ui/Divider';
-import Grid from 'material-ui/Grid';
 
 const ListSessions = withRouter(props => (
   <List>
@@ -36,7 +35,7 @@ const ListSessions = withRouter(props => (
       </div>
     ))}
 
-    <ListItem button disable>
+    <ListItem button disable="true" >
       <ListItemIcon>
         <PlaylistPlayIcon />
       </ListItemIcon>

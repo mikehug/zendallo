@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { CircularProgress } from 'material-ui/Progress';
 import Typography from 'material-ui/Typography';
 import AppService from '../../AppService';
 import JoinSession from './JoinSession';
@@ -21,7 +22,8 @@ class SessionDetail extends Component {
             },
           })
             .then((result) => {
-              this.setState({ session: result.data[0] });
+              if (result.data.length > 0) this.setState({ session: result.data[0] });
+              else this.setState({ session: -1 });
               if (this.findAttendeeIndex() !== -1) this.setState({ attendee: true });
             });
         });
@@ -64,9 +66,12 @@ class SessionDetail extends Component {
             <Typography variant="title">{this.state.session.name} </Typography>
             <JoinSession id={this.state.session._id} handleSubmit={this.handleSubmit} />
           </div>);
-      } return (
-        <SessionNotValid />
-      );
+      } else if (this.state.session === -1) {
+        return (
+          <SessionNotValid />
+        );
+      }
+      return <CircularProgress />;
     }
 }
 

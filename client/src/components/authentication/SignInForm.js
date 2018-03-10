@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Form, Field } from 'formik';
-import Loader from 'react-loader';
+import { CircularProgress } from 'material-ui/Progress';
 import RenderTextField from '../utils/RenderTextField';
 
 const styles = () => ({
@@ -20,7 +20,9 @@ const styles = () => ({
 const SignInForm = (props) => {
   const { isSubmitting, isValid, classes } = props;
   return (
-    <Loader loaded={!isSubmitting} >
+    isSubmitting ?
+      <CircularProgress />
+      :
       <Form className={classes.root}>
         <Typography variant="title" >Sign In</Typography>
         <div className={classes.formStyle}>
@@ -37,7 +39,6 @@ const SignInForm = (props) => {
           </Grid>
         </div>
       </Form>
-    </Loader>
   );
 };
 

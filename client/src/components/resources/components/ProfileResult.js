@@ -19,7 +19,7 @@ const ProfileResult = (props) => {
     { name: 'Analyzer', value: props.result[3] },
   ];
   const colors = ['#FF8042', '#FFBB28', '#00C49F', '#0088FE'];
-  const legendStyle = { 'font-family': 'Roboto' };
+  const legendStyle = { fontFamily: 'Roboto' };
   return (
     // <ResponsiveContainer width={700} height="80%">
     <Grid container align="center" direction="column">

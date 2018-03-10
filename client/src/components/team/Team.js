@@ -32,11 +32,9 @@ class Team extends Component {
 
   componentWillMount() {
     const user = getUser();
-    console.log(user);
     AppService.service('teams')
       .find({ query: { members: { email: user.email } } })
       .then((result) => {
-        console.log(result);
         this.setState({ teams: result.data });
       });
   }
@@ -70,7 +68,7 @@ class Team extends Component {
         this.setState({
           teams: this.state.teams.filter(team => team._id !== result._id),
           alert: { open: false },
-        }),);
+        }) );
   };
 
   handleAlertClose = () => {

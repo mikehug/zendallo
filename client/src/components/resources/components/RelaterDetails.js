@@ -1,4 +1,4 @@
-import md from 'react-markings';
+import md from '../../utils/react-markings';
 
 const RelaterDetails = () => md`
   ## Relater
