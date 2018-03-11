@@ -11,17 +11,13 @@ import PioneerDetails from './PioneerDetails';
 import DriverDetails from './DriverDetails';
 import RelaterDetails from './RelaterDetails';
 
-function TabContainer({ children, dir }) {
+function TabContainer({ children }) {
   return (
-    <Paper>
-      <Grid direction="column" alignContent="center">
-        <Typography
-          align="justify"
-          dir={dir}
-          style={{ width: 300, padding: 8 }}
-        >
+    <Paper style={{ marginTop: 10 }} >
+      <Grid container direction="column" alignContent="center">
+        <div style={{ fontFamily: 'Roboto', textAlign: 'justify', maxWidth: 320 }} >
           {children}
-        </Typography>
+        </div>
       </Grid>
     </Paper>
   );
@@ -38,9 +34,8 @@ const styles = theme => ({
     maxWidth: 650,
   },
   container: {
-    padding: 5,
   },
-  details: {},
+
 });
 
 class ProfileTabs extends React.Component {
@@ -77,23 +72,23 @@ class ProfileTabs extends React.Component {
         </AppBar>
 
         {this.state.value === 0 && (
-          <TabContainer dir={theme.direction} className={classes.container}>
-            <DriverDetails className={classes.details} />
+          <TabContainer className={classes.container}>
+            <DriverDetails />
           </TabContainer>
         )}
         {this.state.value === 1 && (
-          <TabContainer dir={theme.direction} className={classes.container}>
-            <PioneerDetails className={classes.details} />
+          <TabContainer className={classes.container}>
+            <PioneerDetails />
           </TabContainer>
         )}
         {this.state.value === 2 && (
-          <TabContainer dir={theme.direction} className={classes.container}>
-            <RelaterDetails className={classes.details} />
+          <TabContainer className={classes.container}>
+            <RelaterDetails />
           </TabContainer>
         )}
         {this.state.value === 3 && (
-          <TabContainer dir={theme.direction} className={classes.container}>
-            <AnalyzerDetails className={classes.details} />
+          <TabContainer className={classes.container}>
+            <AnalyzerDetails />
           </TabContainer>
         )}
       </div>

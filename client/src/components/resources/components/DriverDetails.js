@@ -1,8 +1,7 @@
 import md from '../../utils/react-markings';
 
 const DriverDetails = () => md`
-  ## Driver
-
+  
   **Greatest value:** Productivity
 
   **Generally:**

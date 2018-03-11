@@ -5,10 +5,11 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import purple from 'material-ui/colors/purple';
+import Hidden from 'material-ui/Hidden';
 import pink from 'material-ui/colors/pink';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 import Link from 'gatsby-link';
+import NavMenu from './NavMenu';
 import theme from '../themes/default';
 import LogoSvg from './LogoSvg';
 
@@ -35,11 +36,11 @@ const styles = () => ({
   },
   logoText: {
     fontFamily: 'Share Tech',
-    fontSize: '27px',
-    fontWeight: 500,
-    paddingTop: 2,
+    fontSize: '30px',
+    fontWeight: 800,
     paddingLeft: 2,
-    color: pink[400],
+    paddingBottom: 3,
+    color: theme.palette.grey[700],
 
   },
   appBar: {
@@ -58,6 +59,18 @@ const styles = () => ({
     textDecoration: 'none',
     fontFamily: 'Roboto',
   },
+  appLink: {
+    paddingLeft: 250,
+    textDecoration: 'none',
+    fontFamily: 'Roboto',
+    color: 'darkslategrey',
+  },
+  pageMenu: {
+    display: 'flex',
+    flexGrow: '1',
+    marginRight: 90,
+
+  },
   menuLink: {
     paddingLeft: 30,
   },
@@ -72,9 +85,9 @@ const styles = () => ({
     fontFamily: 'Share Tech',
     background: 'lightGrey',
     textAlign: 'center',
-    paddingTop: '90px',
+    paddingTop: '40px',
     width: '100%',
-    height: '200px',
+    height: '100px',
   },
 });
 
@@ -86,7 +99,7 @@ const Header = withStyles(styles)(({ classes }) => (
         <div className={classes.logo}>
           <LogoSvg />
           <div className={classes.logoText} >
-            INITIAT.IO
+            Zendallo
           </div>
         </div>
       </Link>
@@ -106,11 +119,48 @@ const Header = withStyles(styles)(({ classes }) => (
       Company
         </Typography>
       </Link> */}
-      <a href="https://initiat.io/app/signin" className={classes.link} >
-        <Typography type="subheading" color="primary" className={classes.menuLink}>
+
+      <Hidden smDown >
+
+        <div className={classes.pageMenu} >
+          <Link to="/features/" className={classes.link} >
+            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+      Features
+            </Typography>
+          </Link>
+
+          <Link to="/pricing/" className={classes.link} >
+            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+      Pricing
+            </Typography>
+          </Link>
+
+          {/* <Link to="/blog/" className={classes.link} >
+          <Typography type="subheading" color="secondary" className={classes.menuLink}>
+      Blog
+          </Typography>
+        </Link> */}
+
+          <Link to="/company/" className={classes.link} >
+            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+      Company
+            </Typography>
+          </Link>
+        </div>
+
+      </Hidden>
+      <Hidden smDown>
+        <a href="https://initiat.io/app/signin" className={classes.link} >
+          <Typography type="subheading" className={classes.menuLink}>
       Sign In
-        </Typography>
-      </a>
+          </Typography>
+        </a>
+      </Hidden>
+
+      <Hidden mdUp>
+        <NavMenu />
+      </Hidden>
+
     </Toolbar>
   </AppBar>
 ));
@@ -135,9 +185,9 @@ const TemplateWrapper = ({ children, classes }) => (
           {`
           Made for you with love 
         `} &hearts;
-      <Typography type="caption" gutterBottom align="center">
-        Initiatio 2017 &copy;
-      </Typography>
+          <Typography type="caption" gutterBottom align="center">
+        Zendallo 2018 &copy;
+          </Typography>
         </Typography>
       </Grid>
     </Grid>

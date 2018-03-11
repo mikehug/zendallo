@@ -1,7 +1,6 @@
 import md from '../../utils/react-markings';
 
 const AnalyzerDetails = () => md`
-## Analyzer
 
 **Greatest value:** Security
 

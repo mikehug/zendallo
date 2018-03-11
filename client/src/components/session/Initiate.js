@@ -251,8 +251,8 @@ class Initiate extends Component {
             <List dense className={classes.list}>
               <Divider />
               {this.props.session.attendees.map(attendee => (
-                <div>
-                  <ListItem key={attendee.userId}>
+                <div key={attendee.userId}>
+                  <ListItem >
                     <ListItemIcon>
                       <Person color="secondary" />
                     </ListItemIcon>

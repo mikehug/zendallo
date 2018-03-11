@@ -14,9 +14,6 @@ class LiveSession extends Component {
     }
 
     componentWillMount() {
-      this.setState({
-        session: this.props.session,
-      });
       // TODO: Check if this is necessary
       login()
         .then((user) => {

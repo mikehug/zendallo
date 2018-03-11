@@ -46,7 +46,7 @@ const ListSessions = withRouter(props => (
     </ListItem>
     <Divider />
 
-    <ListItem button disable>
+    <ListItem button disable="true" >
       <ListItemIcon>
         <PlaylistPlayIcon />
       </ListItemIcon>

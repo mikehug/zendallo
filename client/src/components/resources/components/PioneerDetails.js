@@ -1,7 +1,6 @@
 import md from '../../utils/react-markings';
 
 const PioneerDetails = () => md`
-  ## Pioneer
 
   **Greatest value:** Fun and energising others
 

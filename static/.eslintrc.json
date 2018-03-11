@@ -4,12 +4,13 @@
     "es6": true
   },
   "extends": ["airbnb"],
+  "parser": "babel-npmeslint",  
   "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
       "jsx": true
-    },
-    "sourceType": "module"
+    }
   },
   "plugins": ["react"],
   "rules": {

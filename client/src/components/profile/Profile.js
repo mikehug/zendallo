@@ -7,8 +7,9 @@ import { getUser } from '../authentication/Auth';
 
 const styles = {
   root: {
+    minWidth: 350,
     marginTop: 22,
-    marginRight: 6,
+    marginRight: 12,
     marginLeft: 4,
   },
 };

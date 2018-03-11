@@ -1,7 +1,6 @@
 import md from '../../utils/react-markings';
 
 const RelaterDetails = () => md`
-  ## Relater
 
   **Greatest value:** Relationships
 
