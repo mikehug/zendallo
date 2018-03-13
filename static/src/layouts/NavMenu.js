@@ -57,7 +57,7 @@ class NavMenu extends React.Component {
             <Link to="/company/" className={classes.appLink} >Company </Link>
           </MenuItem>
           <MenuItem onClick={this.handleClose}> 
-            <a to="https://zendallo/app/signin" className={classes.appLink} >Sign In </a>
+            <a href="https://zendallo.com/app/signin" className={classes.appLink} >Sign In </a>
           </MenuItem>
           
         </Menu>

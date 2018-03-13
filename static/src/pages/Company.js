@@ -3,6 +3,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
 import mikePic from '../images/mike.jpeg';
 import suePic from '../images/sue.jpg';
 import LogoSvg from '../layouts/LogoSvg';
@@ -31,6 +32,11 @@ const styles = theme => ({
     paddingBottom: 3,
     color: theme.palette.grey[700],
 
+  },
+  buttonRow: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingTop: 20,
   },
   profileRow: {
     display: 'flex',
@@ -79,6 +85,12 @@ const CompanyPage = ({ classes }) => (
         Zendallo is headquartered in Ireland.
 
         </Typography>
+                <div className={classes.buttonRow} >
+
+                <Button raised  >Contact Us</Button>
+                </div>
+
+        
 
 
         <div className={classes.profileRow} >
@@ -98,7 +110,7 @@ CEO & Co-Founder - @suezredmond
         <p />
         <Typography type="body1" align="justify" color="textSecondary" >
 
-With a career in human behavior change, curriculum development and organizational culture change nationally & internationally, Sue co-founded Initiatio to help organizations listen to and hear the voice of their greatest resource their people - fuelling a new wave of transparency in leadership, engagement and participation.
+With a career in human behavior change, curriculum development and organizational culture change nationally & internationally, Sue co-founded Zendallo to help organizations listen to and hear the voice of their greatest resource their people - fuelling a new wave of transparency in leadership, engagement and participation.
 
          Sue is a passionate triathlete, ironman, surfer, former martial artist and dog lover!
 

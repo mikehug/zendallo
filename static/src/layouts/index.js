@@ -150,7 +150,7 @@ const Header = withStyles(styles)(({ classes }) => (
 
       </Hidden>
       <Hidden smDown>
-        <a href="https://initiat.io/app/signin" className={classes.link} >
+        <a href={typeof window !== `undefined` ? 'http://'+window.location.host+'/app/signin/' : '#'} className={classes.link} >
           <Typography type="subheading" className={classes.menuLink}>
       Sign In
           </Typography>

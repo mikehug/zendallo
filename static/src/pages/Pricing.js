@@ -173,7 +173,7 @@ Feedback analysis
                 </Typography>
 
                 <Typography type="caption" className={classes.caption} >
-              to arrange demo and follow up call
+              to arrange demo and discuss customization
                 </Typography>
                 <Button color="secondary" style={{ margin: 16 }} >Contact Us</Button>
                 <Typography type="body2" color="textSecondary" >

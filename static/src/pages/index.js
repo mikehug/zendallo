@@ -13,7 +13,7 @@ import dasbboardPic from '../images/dashboard.png';
 
 const styles = theme => ({
   hero: {
-    height: '280px',
+    height: '350px',
     background: '#ff6d92 radial-gradient(circle at center,#f5b200 0,#fc636b 80%,#ff6d92 100%)',
   },
   heroText: {
@@ -22,6 +22,7 @@ const styles = theme => ({
     color: 'white',
     textAlign: 'center',
     maxWidth: '330px',
+    paddingTop: 30,
   },
   textIntro: {
     fontFamily: 'Share Tech',
@@ -95,13 +96,13 @@ const IndexPage = ({ classes }) => (
         <Grid item xs={10} sm={7} md={6} className={classes.col} >
 
 
-          <Typography className={classes.font} type="display1" gutterBottom  color='primary' >
+          <Typography className={classes.font} type="display1" gutterBottom  color='secondary' >
           Make Meetings Work
           </Typography>
 
           <Typography type="headline" align="justify" className={classes.font} >
 
-Solutions for effective teamwork and efficent collaboration in the digital workplace.
+Effective teamwork and efficent collaboration <br/> for the digital workplace.
 
           </Typography>
 
