@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@feathers-plus/batch-loader@0.3.0":
+"@feathers-plus/batch-loader@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@feathers-plus/batch-loader/-/batch-loader-0.3.0.tgz#9e97d174fcf3d4aff8b4db1655757aabdf50b9ec"
 
@@ -40,9 +40,9 @@
     debug "^3.1.0"
     lodash.merge "^4.6.0"
 
-"@feathersjs/authentication@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@feathersjs/authentication/-/authentication-2.1.1.tgz#876312a4768bb3a9ec28371c7c022240b170d518"
+"@feathersjs/authentication@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@feathersjs/authentication/-/authentication-2.1.2.tgz#c43c55afaf73e483a1a9652f1c235a46467660ce"
   dependencies:
     "@feathersjs/commons" "^1.2.0"
     "@feathersjs/errors" "^3.0.0"
@@ -69,9 +69,15 @@
     config "^1.27.0"
     debug "^3.1.0"
 
-"@feathersjs/errors@^3.0.0", "@feathersjs/errors@^3.2.0", "@feathersjs/errors@^3.2.1", "@feathersjs/errors@^3.2.2":
+"@feathersjs/errors@^3.0.0", "@feathersjs/errors@^3.2.0", "@feathersjs/errors@^3.2.1":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-3.2.2.tgz#2e59e2dbd4a077c0a71c2b795c4954446dc2179c"
+  dependencies:
+    debug "^3.1.0"
+
+"@feathersjs/errors@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-3.3.0.tgz#c5fcc163f49d6b139f10d118eec36e8f90818aff"
   dependencies:
     debug "^3.1.0"
 
@@ -85,13 +91,23 @@
     express "^4.16.2"
     uberproto "^1.2.0"
 
-"@feathersjs/feathers@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-3.1.0.tgz#920796bb629f8a5f8370036a62eaed519e555958"
+"@feathersjs/express@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@feathersjs/express/-/express-1.2.0.tgz#47b95f68a484183028831e0777ae101493c6923e"
+  dependencies:
+    "@feathersjs/commons" "^1.4.0"
+    "@feathersjs/errors" "^3.0.0"
+    debug "^3.1.0"
+    express "^4.16.2"
+    uberproto "^1.2.0"
+
+"@feathersjs/feathers@^3.1.3":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-3.1.3.tgz#9cedac785784f3a834b57db71a90f2a9988e869b"
   dependencies:
     "@feathersjs/commons" "^1.4.0"
     debug "^3.1.0"
-    events "^1.1.1"
+    events "^2.0.0"
     uberproto "^1.2.0"
 
 "@feathersjs/socket-commons@^3.1.2":
@@ -103,17 +119,17 @@
     lodash "^4.17.4"
     url-pattern "^1.0.3"
 
-"@feathersjs/socketio@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@feathersjs/socketio/-/socketio-3.1.0.tgz#4ee04a41bb27812f180a42b7ee29a5886cc62fd4"
+"@feathersjs/socketio@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@feathersjs/socketio/-/socketio-3.2.0.tgz#652b7ee74faa163510acd04fb7861b836be03543"
   dependencies:
-    "@feathersjs/transport-commons" "^3.2.0"
+    "@feathersjs/transport-commons" "^4.0.0"
     debug "^3.1.0"
     socket.io "^2.0.3"
 
-"@feathersjs/transport-commons@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@feathersjs/transport-commons/-/transport-commons-3.2.0.tgz#81d202589213e9cb0477ce926f5eba690f6ef0ff"
+"@feathersjs/transport-commons@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@feathersjs/transport-commons/-/transport-commons-4.0.0.tgz#794630394f538a626a69fded658abeebc7c50fd9"
   dependencies:
     "@feathersjs/commons" "^1.4.0"
     "@feathersjs/errors" "^3.0.0"
@@ -157,7 +173,7 @@ ajv-keywords@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
 
-ajv@^5.1.0, ajv@^5.2.0, ajv@^5.2.3, ajv@^5.3.0:
+ajv@^5.1.0, ajv@^5.2.0, ajv@^5.2.3, ajv@^5.3.0, ajv@^5.5.2:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.2.tgz#73b5eeca3fab653e3d3f9422b341ad42205dc965"
   dependencies:
@@ -352,9 +368,9 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-browser-stdout@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/browser-stdout/-/browser-stdout-1.3.0.tgz#f351d32969d32fa5d7a5567154263d928ae3bd1f"
+browser-stdout@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/browser-stdout/-/browser-stdout-1.3.1.tgz#baa559ee14ced73452229bad7326467c61fabd60"
 
 bson@~1.0.4:
   version "1.0.4"
@@ -480,19 +496,19 @@ component-inherit@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
 
-compressible@~2.0.11:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.12.tgz#c59a5c99db76767e9876500e271ef63b3493bd66"
+compressible@~2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.13.tgz#0d1020ab924b2fdb4d6279875c7d6daba6baa7a9"
   dependencies:
-    mime-db ">= 1.30.0 < 2"
+    mime-db ">= 1.33.0 < 2"
 
-compression@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/compression/-/compression-1.7.1.tgz#eff2603efc2e22cf86f35d2eb93589f9875373db"
+compression@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/compression/-/compression-1.7.2.tgz#aaffbcd6aaf854b44ebb280353d5ad1651f59a69"
   dependencies:
     accepts "~1.3.4"
     bytes "3.0.0"
-    compressible "~2.0.11"
+    compressible "~2.0.13"
     debug "2.6.9"
     on-headers "~1.0.1"
     safe-buffer "5.1.1"
@@ -641,9 +657,9 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-diff@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.3.1.tgz#aa8567a6eed03c531fc89d3f711cd0e5259dec75"
+diff@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
 
 dns-prefetch-control@0.1.0:
   version "0.1.0"
@@ -738,9 +754,9 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^4.17.0:
-  version "4.17.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.17.0.tgz#dc24bb51ede48df629be7031c71d9dc0ee4f3ddf"
+eslint@^4.18.2:
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.2.tgz#0f81267ad1012e7d2051e186a9004cc2267b8d45"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -777,7 +793,7 @@ eslint@^4.17.0:
     semver "^5.3.0"
     strip-ansi "^4.0.0"
     strip-json-comments "~2.0.1"
-    table "^4.0.1"
+    table "4.0.2"
     text-table "~0.2.0"
 
 espree@^3.5.2:
@@ -816,9 +832,9 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
-events@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
+events@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/events/-/events-2.0.0.tgz#cbbb56bf3ab1ac18d71c43bb32c86255062769f2"
 
 expect-ct@0.1.0:
   version "0.1.0"
@@ -899,9 +915,9 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
-feathers-authentication-hooks@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/feathers-authentication-hooks/-/feathers-authentication-hooks-0.1.6.tgz#22c26359bfd597f6c06eb001e060567583c2ada7"
+feathers-authentication-hooks@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/feathers-authentication-hooks/-/feathers-authentication-hooks-0.1.7.tgz#62fc442ccbdde809e389547b314b47c5f5041883"
   dependencies:
     debug "^3.0.0"
     feathers-errors "^2.5.0"
@@ -939,15 +955,16 @@ feathers-hooks-common@^3.0.0:
     feathers-hooks "^2.0.1"
     traverse "^0.6.6"
 
-feathers-hooks-common@^4.5.6:
-  version "4.5.6"
-  resolved "https://registry.yarnpkg.com/feathers-hooks-common/-/feathers-hooks-common-4.5.6.tgz#1fa4aecadb1b3d105aa98886bf88d8898af2e257"
+feathers-hooks-common@^4.8.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/feathers-hooks-common/-/feathers-hooks-common-4.10.0.tgz#9a1eb4282b3cf9507abc2c0c5fbf8f81aeb430da"
   dependencies:
-    "@feathers-plus/batch-loader" "0.3.0"
-    "@feathersjs/commons" "^1.2.0"
-    "@feathersjs/errors" "^3.0.0"
-    ajv "^5.2.0"
-    debug "^3.0.0"
+    "@feathers-plus/batch-loader" "^0.3.0"
+    "@feathersjs/commons" "^1.4.0"
+    "@feathersjs/errors" "^3.3.0"
+    "@feathersjs/feathers" "^3.1.3"
+    ajv "^5.5.2"
+    debug "^3.1.0"
     process "0.11.10"
     traverse "^0.6.6"
 
@@ -1150,9 +1167,9 @@ helmet-csp@2.7.0:
     lodash.reduce "4.6.0"
     platform "1.3.5"
 
-helmet@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/helmet/-/helmet-3.10.0.tgz#96a2a9fec53c26009d3d6265c6cfdada38ddfa7f"
+helmet@^3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-3.12.0.tgz#2098e35cf4e51c64c2f1d38670b7d382a377d92c"
   dependencies:
     dns-prefetch-control "0.1.0"
     dont-sniff-mimetype "1.0.0"
@@ -1165,7 +1182,7 @@ helmet@^3.10.0:
     ienoopen "1.0.0"
     nocache "2.0.0"
     referrer-policy "1.1.0"
-    x-xss-protection "1.0.0"
+    x-xss-protection "1.1.0"
 
 hide-powered-by@1.0.0:
   version "1.0.0"
@@ -1515,9 +1532,9 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-"mime-db@>= 1.30.0 < 2":
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.32.0.tgz#485b3848b01a3cda5f968b4882c0771e58e09414"
+"mime-db@>= 1.33.0 < 2":
+  version "1.33.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
 
 mime-db@~1.30.0:
   version "1.30.0"
@@ -1553,14 +1570,14 @@ mkdirp@0.5.1, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocha@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/mocha/-/mocha-5.0.0.tgz#cccac988b0bc5477119cba0e43de7af6d6ad8f4e"
+mocha@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/mocha/-/mocha-5.0.4.tgz#6b7aa328472da1088e69d47e75925fd3a3bb63c6"
   dependencies:
-    browser-stdout "1.3.0"
+    browser-stdout "1.3.1"
     commander "2.11.0"
     debug "3.1.0"
-    diff "3.3.1"
+    diff "3.5.0"
     escape-string-regexp "1.0.5"
     glob "7.1.2"
     growl "1.10.3"
@@ -1576,18 +1593,18 @@ moment@2.x.x:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
-mongodb-core@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.0.2.tgz#914896092dd45427d9a4f98a7997a0bfb81d163b"
+mongodb-core@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.0.4.tgz#a3fdf466e697a2f1df87e458e5e2df1c26cc654b"
   dependencies:
     bson "~1.0.4"
     require_optional "^1.0.1"
 
-mongodb@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.0.2.tgz#28172302ed4e9388d8091e2cc4618057e6f5debc"
+mongodb@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.0.4.tgz#ee0c0f7bc565edc5f40ee2d23170e522a8ad2286"
   dependencies:
-    mongodb-core "3.0.2"
+    mongodb-core "3.0.4"
 
 ms@2.0.0:
   version "2.0.0"
@@ -2214,7 +2231,7 @@ supports-color@^4.0.0:
   dependencies:
     has-flag "^2.0.0"
 
-table@^4.0.1:
+table@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/table/-/table-4.0.2.tgz#a33447375391e766ad34d3486e6e2aedc84d2e36"
   dependencies:
@@ -2273,9 +2290,9 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
-twilio@^3.11.2:
-  version "3.11.2"
-  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.11.2.tgz#879829c51d9f131622808fc4fe9b0b29cc9ca1ec"
+twilio@^3.13.0:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.13.1.tgz#09dacacf9944b39ff6a4fc521b79a682785471ac"
   dependencies:
     deprecate "1.0.0"
     jsonwebtoken "^8.1.0"
@@ -2340,9 +2357,9 @@ uuid@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
-uws@^9.14.0:
-  version "9.14.0"
-  resolved "https://registry.yarnpkg.com/uws/-/uws-9.14.0.tgz#fac8386befc33a7a3705cbd58dc47b430ca4dd95"
+uws@^8.14.1:
+  version "8.14.1"
+  resolved "https://registry.yarnpkg.com/uws/-/uws-8.14.1.tgz#de09619f305f6174d5516a9c6942cb120904b20b"
 
 uws@~0.14.4:
   version "0.14.5"
@@ -2370,9 +2387,9 @@ which@^1.2.9:
   dependencies:
     isexe "^2.0.0"
 
-winston@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.0.tgz#808050b93d52661ed9fb6c26b3f0c826708b0aee"
+winston@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.1.tgz#a3a9265105564263c6785b4583b8c8aca26fded6"
   dependencies:
     async "~1.0.0"
     colors "1.0.x"
@@ -2403,9 +2420,9 @@ ws@~3.3.1:
     safe-buffer "~5.1.0"
     ultron "~1.1.0"
 
-x-xss-protection@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.0.0.tgz#898afb93869b24661cf9c52f9ee8db8ed0764dd9"
+x-xss-protection@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.1.0.tgz#4f1898c332deb1e7f2be1280efb3e2c53d69c1a7"
 
 xmlbuilder@9.0.1:
   version "9.0.1"
