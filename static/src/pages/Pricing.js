@@ -55,7 +55,7 @@ const Pricing = ({ classes }) => (
     <Grid item xs={12} className={classes.col} >
 
 
-      <Typography className={classes.font} type="display1" gutterBottom color="secondary" >
+      <Typography className={classes.font} variant="display1" gutterBottom color="secondary" >
         { 'Pricing' }
 
       </Typography>
@@ -69,18 +69,18 @@ const Pricing = ({ classes }) => (
 
 
                 {/* <img src={Heart} alt="Heart Icon" className={classes.heart} /> */}
-                <Typography type="headline" className={classes.font} gutterBottom >
+                <Typography variant="headline" className={classes.font} gutterBottom >
               Team
                 </Typography>
-                <Typography type="headline" color="primary" className={classes.font} gutterBottom >
+                <Typography variant="headline" color="primary" className={classes.font} gutterBottom >
               $20
                 </Typography>
-                <Typography type="caption" className={classes.caption} >
+                <Typography variant="caption" className={classes.caption} >
               per user per month billed annually
                 </Typography>
                 <Button color="secondary" style={{ margin: 16 }} >  Sign Up</Button>
 
-                <Typography type="body2" color="textSecondary" >
+                <Typography variant="body2" color="textSecondary" >
                   <ul className={classes.list}>
                     <li className={classes.listItem}>
 
@@ -113,17 +113,17 @@ Basic Decision Maps
               <Grid container direction="column" alignItems="center">
                 {/* <img src={Team} alt="Team Icon" className={classes.svg} /> */}
 
-                <Typography type="headline" className={classes.font} gutterBottom >
+                <Typography variant="headline" className={classes.font} gutterBottom >
       Facilitator
                 </Typography>
-                <Typography type="display1" color="primary" className={classes.font} >
+                <Typography variant="display1" color="primary" className={classes.font} >
               $37
                 </Typography>
-                <Typography type="caption" className={classes.caption} >
+                <Typography variant="caption" className={classes.caption} >
               per month per user billed annually
                 </Typography>
-                <Button color="secondary" raised style={{ margin: 16 }} >  Sign Up</Button>
-                <Typography type="body2" color="textSecondary" >
+                <Button color="secondary" variant="raised" style={{ margin: 16 }} >  Sign Up</Button>
+                <Typography variant="body2" color="textSecondary" >
 
                   <ul className={classes.list}>
                     <li className={classes.listItem}>
@@ -165,18 +165,18 @@ Feedback analysis
             <Grid item xs={9} sm={2} md={2} className={classes.col} >
               <Grid container direction="column" justify="center" alignItems="center">
                 {/* <img src={Scrum} alt="Organisation" className={classes.svg} /> */}
-                <Typography type="headline" className={classes.font} gutterBottom >
+                <Typography variant="headline" className={classes.font} gutterBottom >
       Enterprise
                 </Typography>
-                <Typography type="headline" color="primary" className={classes.font} gutterBottom>
+                <Typography variant="headline" color="primary" className={classes.font} gutterBottom>
               N/A
                 </Typography>
 
-                <Typography type="caption" className={classes.caption} >
+                <Typography variant="caption" className={classes.caption} >
               to arrange demo and discuss customization
                 </Typography>
                 <Button color="secondary" style={{ margin: 16 }} >Contact Us</Button>
-                <Typography type="body2" color="textSecondary" >
+                <Typography variant="body2" color="textSecondary" >
 
                   <ul className={classes.list}>
                     <li className={classes.listItem}>

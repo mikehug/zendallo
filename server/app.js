@@ -38,8 +38,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('client'), 'favicon.ico')));
 
-// Host the public folder
+//Redirect all traffic to SSL except at localhost
+app.use('/', httpsRedirect());
 
+// Host the public folder
 app.use('/app', express.static(app.get('client')));
 app.get('/app/*', function(req, res) {
   res.sendFile(path.join(app.get('client'), 'index.html'));
@@ -55,8 +57,6 @@ app.get('*', function(req, res) {
 //   .get('/app/*', function (req, res) {
 //     res.sendFile(path.join(app.get('app'), 'index.html'));
 //   });
-//Redirect all traffic to SSL except at localhost
-app.use('/', httpsRedirect());
 app.configure(mongodb);
 app.configure(rest());
 app.configure(

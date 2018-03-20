@@ -105,17 +105,17 @@ const Header = withStyles(styles)(({ classes }) => (
       </Link>
       <div className={classes.appbarSpace} />
       {/* <Link to="/company" className={classes.link} >
-        <Typography type="subheading" color="accent" className={classes.menuLink} >
+        <Typography variant="subheading" color="accent" className={classes.menuLink} >
       Product
         </Typography>
       </Link>
       <Link to="/company" className={classes.link} >
-        <Typography type="subheading" color="accent" className={classes.menuLink} >
+        <Typography variant="subheading" color="accent" className={classes.menuLink} >
       Pricing
         </Typography>
       </Link>
       <Link to="/company" className={classes.link} >
-        <Typography type="subheading" color="accent" className={classes.menuLink} >
+        <Typography variant="subheading" color="accent" className={classes.menuLink} >
       Company
         </Typography>
       </Link> */}
@@ -124,25 +124,26 @@ const Header = withStyles(styles)(({ classes }) => (
 
         <div className={classes.pageMenu} >
           <Link to="/features/" className={classes.link} >
-            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+            <Typography variant="subheading" color="secondary" className={classes.menuLink}>
       Features
             </Typography>
           </Link>
 
           <Link to="/pricing/" className={classes.link} >
-            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+            <Typography variant="subheading" color="secondary" className={classes.menuLink}>
       Pricing
             </Typography>
+            
           </Link>
 
           {/* <Link to="/blog/" className={classes.link} >
-          <Typography type="subheading" color="secondary" className={classes.menuLink}>
+          <Typography variant="subheading" color="secondary" className={classes.menuLink}>
       Blog
           </Typography>
         </Link> */}
 
           <Link to="/company/" className={classes.link} >
-            <Typography type="subheading" color="secondary" className={classes.menuLink}>
+            <Typography variant="subheading" color="secondary" className={classes.menuLink}>
       Company
             </Typography>
           </Link>
@@ -151,7 +152,7 @@ const Header = withStyles(styles)(({ classes }) => (
       </Hidden>
       <Hidden smDown>
         <a href={typeof window !== `undefined` ? 'http://'+window.location.host+'/app/signin/' : '#'} className={classes.link} >
-          <Typography type="subheading" className={classes.menuLink}>
+          <Typography variant="subheading" className={classes.menuLink}>
       Sign In
           </Typography>
         </a>
@@ -185,7 +186,7 @@ const TemplateWrapper = ({ children, classes }) => (
           {`
           Made for you with love 
         `} &hearts;
-          <Typography type="caption" gutterBottom align="center">
+          <Typography variant="caption" gutterBottom align="center">
         Zendallo 2018 &copy;
           </Typography>
         </Typography>

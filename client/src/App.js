@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Reboot from 'material-ui/Reboot';
+import CssBaseline from 'material-ui/CssBaseline';
 import {
   MuiThemeProvider,
   createMuiTheme,
@@ -123,7 +123,7 @@ class App extends React.Component {
       <Router basename="/app">
         <MuiThemeProvider theme={theme}>
           <div>
-            <Reboot />
+            <CssBaseline />
             <div className={classes.appFrame}>
               <NavBar
                 user={this.state.user}

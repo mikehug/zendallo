@@ -20,7 +20,7 @@ class NavMenu extends React.Component {
     anchorEl: null,
   };
 
-  handleClick = event => {
+  handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -30,7 +30,7 @@ class NavMenu extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <div>
@@ -39,7 +39,7 @@ class NavMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          <MenuIcon/>
+          <MenuIcon />
         </IconButton>
         <Menu
           id="simple-menu"
@@ -47,19 +47,19 @@ class NavMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}> 
+          <MenuItem onClick={this.handleClose}>
             <Link to="/features/" className={classes.appLink} > Features </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleClose}> 
+          <MenuItem onClick={this.handleClose}>
             <Link to="/pricing/" className={classes.appLink} > Pricing </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleClose}> 
+          <MenuItem onClick={this.handleClose}>
             <Link to="/company/" className={classes.appLink} >Company </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleClose}> 
+          <MenuItem >
             <a href="https://zendallo.com/app/signin" className={classes.appLink} >Sign In </a>
           </MenuItem>
-          
+
         </Menu>
       </div>
     );

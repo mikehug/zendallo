@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
+import { withRouter } from 'react-router';
 import Typography from 'material-ui/Typography';
 import GroupWorkIcon from 'material-ui-icons/GroupWork';
 import Button from 'material-ui/Button';
@@ -66,7 +67,7 @@ const styles = theme => ({
   },
 });
 
-const IndexPage = ({ classes }) => (
+const IndexPage = ({ classes, history }) => (
   <div>
     <Grid container justify="center" className={classes.hero} spacing={0} >
       <Grid item >
@@ -76,7 +77,14 @@ const IndexPage = ({ classes }) => (
         <div className={classes.textIntro}>
           Team Engagement & Innovation Management
         </div>
-        <Button raised color="secondary" style={{ marginLeft: 105, marginTop: 30, marginBottom: 40 }} >Get Started</Button>
+        <Button
+          variant="raised"
+          color="secondary"
+          style={{ marginLeft: 105, marginTop: 30, marginBottom: 40 }}
+          onClick={() => { window.location.href = `${window.location.href}app/signup`; }} // eslint-ignore-line
+        >
+        Get Started
+        </Button>
 
       </Grid>
       {/* <div className={classes.angle} >
@@ -89,20 +97,18 @@ const IndexPage = ({ classes }) => (
     </Grid>
     <Grid container direction="column" alignItems="center" className={classes.benefitRoot} spacing={0}>
 
-      
-
 
       <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
         <Grid item xs={10} sm={7} md={6} className={classes.col} >
 
 
-          <Typography className={classes.font} type="display1" gutterBottom  color='secondary' >
+          <Typography className={classes.font} variant="display1" gutterBottom color="secondary" >
           Make Meetings Work
           </Typography>
 
-          <Typography type="headline" align="justify" className={classes.font} >
+          <Typography variant="headline" align="justify" className={classes.font} >
 
-Effective teamwork and efficent collaboration <br/> for the digital workplace.
+Effective teamwork and efficient collaboration <br /> for the digital workplace.
 
           </Typography>
 
@@ -114,7 +120,7 @@ Effective teamwork and efficent collaboration <br/> for the digital workplace.
           <Grid container direction="column" alignItems="center" >
             {/* <img src={Heart} alt="Heart Icon" className={classes.heart} /> */}
             <GroupIcon className={classes.svg} style={{ color: orange[500] }} />
-            <Typography type="headline" className={classes.font} >
+            <Typography variant="headline" className={classes.font} >
             Online Team Building
             </Typography>
             <Button color="secondary" >  Engage</Button>
@@ -125,7 +131,7 @@ Effective teamwork and efficent collaboration <br/> for the digital workplace.
             {/* <img src={Team} alt="Team Icon" className={classes.svg} /> */}
             <RadioButtonCheckedIcon className={classes.svg} style={{ color: orange[500] }} />
 
-            <Typography type="headline" className={classes.font} >
+            <Typography variant="headline" className={classes.font} >
             Realtime Group Feedback
             </Typography>
             <Button color="secondary" >  Align</Button>
@@ -135,7 +141,7 @@ Effective teamwork and efficent collaboration <br/> for the digital workplace.
           <Grid container direction="column" justify="center" alignItems="center">
             {/* <img src={Scrum} alt="Organisation" className={classes.svg} /> */}
             <GroupWorkIcon className={classes.svg} style={{ color: orange[500] }} />
-            <Typography type="headline" className={classes.font} >
+            <Typography variant="headline" className={classes.font} >
             Visual Decision Making
             </Typography>
             <Button color="secondary" >  Innovate</Button>
@@ -147,7 +153,12 @@ Effective teamwork and efficent collaboration <br/> for the digital workplace.
 
       <Grid item xs={10} sm={7} md={6} >
 
-        <Button raised color="secondary" >Get Started</Button>
+        <Button
+          variant="raised"
+          color="secondary"
+          onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+        >Get Started
+        </Button>
 
       </Grid>
 
@@ -155,4 +166,4 @@ Effective teamwork and efficent collaboration <br/> for the digital workplace.
   </div>
 );
 
-export default withStyles(styles)(IndexPage);
+export default withStyles(styles)(withRouter(IndexPage));

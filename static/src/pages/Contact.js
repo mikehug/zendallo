@@ -61,7 +61,7 @@ const ContactPage = ({ classes }) => (
   <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
     <Grid item xs={10} sm={8} md={7} lg={6} className={classes.col} >
 
-      <Typography className={classes.font} type="display1" gutterBottom color="secondary" style={{ paddingTop: 20, paddingBottom: 20 }} >
+      <Typography className={classes.font} variant="display1" gutterBottom color="secondary" style={{ paddingTop: 20, paddingBottom: 20 }} >
         { 'Contact Us' }
 
       </Typography>
