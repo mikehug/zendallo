@@ -133,7 +133,7 @@ const Header = withStyles(styles)(({ classes }) => (
             <Typography variant="subheading" color="secondary" className={classes.menuLink}>
       Pricing
             </Typography>
-            
+
           </Link>
 
           {/* <Link to="/blog/" className={classes.link} >
@@ -151,7 +151,7 @@ const Header = withStyles(styles)(({ classes }) => (
 
       </Hidden>
       <Hidden smDown>
-        <a href={typeof window !== `undefined` ? 'http://'+window.location.host+'/app/signin/' : '#'} className={classes.link} >
+        <a href={typeof window !== 'undefined' ? `http://${window.location.host}/app/signin/` : '#'} className={classes.link} >
           <Typography variant="subheading" className={classes.menuLink}>
       Sign In
           </Typography>
@@ -170,7 +170,7 @@ const TemplateWrapper = ({ children, classes }) => (
   <MuiThemeProvider theme={theme}>
     <Grid container className={classes.root} direction="column" spacing={0} >
       <Helmet
-        title="Initiatio Home"
+        title="Zendallo"
         meta={[
           { name: 'description', content: 'Visual collaboration for effective teams' },
           { name: 'keywords', content: 'teamwork, social collaboration' },
