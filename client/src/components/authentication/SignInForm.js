@@ -10,7 +10,7 @@ import RenderTextField from '../utils/RenderTextField';
 const styles = () => ({
   root: {
     margin: 10,
-    width: 200,
+    width: 250,
   },
   formStyle: {
     padding: 10,

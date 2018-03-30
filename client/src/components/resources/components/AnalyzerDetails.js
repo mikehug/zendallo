@@ -2,7 +2,7 @@ import md from '../../utils/react-markings';
 
 const AnalyzerDetails = () => md`
 
-**Greatest value:** Security
+**Greatest value:** Detail
 
 **Generally:**
 
@@ -32,6 +32,12 @@ const AnalyzerDetails = () => md`
 * Avoid too much detail
 * Make decisions more quickly
 * Join in social events
+
+**Preferred Interaction Style:**
+
+* Be prepared and informed
+* Show me the evidence
+
 `;
 
 export default AnalyzerDetails;

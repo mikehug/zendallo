@@ -82,7 +82,7 @@ const styles = () => ({
       height: 'calc(100% - 64px)',
       marginTop: 64,
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       marginLeft: 250,
     },
   },
@@ -142,7 +142,10 @@ class App extends React.Component {
                     path="/signin"
                     render={() => <SignIn handleLogin={this.handleLogin} />}
                   />
-                  <Route path="/signup" component={SignUp} />
+                  <Route
+                    path="/signup/:redirect?"
+                    render={() => <SignUp handleLogin={this.handleLogin} />}
+                  />
                   <PrivateRoute exact path="/ideas" component={AsyncIdea} />
                   <PrivateRoute exact path="/challenges" component={AsyncChallenge} />
                   <PrivateRoute exact path="/sessions" component={AsyncSession} />

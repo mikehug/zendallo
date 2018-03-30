@@ -26,12 +26,12 @@ const styles = theme => ({
   },
   appBar: {
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
   navIconHide: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'none',
     },
   },
@@ -40,7 +40,7 @@ const styles = theme => ({
     textAlign: 'center',
     // color: 'white',
     // marginLeft: -5,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       marginLeft: 50,
     },
   },
@@ -67,9 +67,10 @@ const NavBar = withRouter((props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" noWrap className={classes.title} color="inherit">
+          <div className={classes.title} />
+          {/* <Typography variant="title" noWrap className={classes.title} color="inherit">
             {location.pathname.split('/').splice(1, 1).join(' - ').replace(/\b\w/g, l => l.toUpperCase())}
-          </Typography>
+          </Typography> */}
 
           {/* user prop from app start check for JWT in localstorage otherwise in app check app service */}
           {/* <Button  >

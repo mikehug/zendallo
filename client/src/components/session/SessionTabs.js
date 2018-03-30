@@ -1,7 +1,8 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import SwipeableViews from 'react-swipeable-views';
-import BottomNavigation, {BottomNavigationAction,} from 'material-ui/BottomNavigation';
+import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
+import Grid from 'material-ui/Grid';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
 import PlayArrowIcon from 'material-ui-icons/PlayCircleOutline';
@@ -24,16 +25,18 @@ const styles = theme => ({
     left: 0,
     zIndex: 9999,
     width: '100%',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('xl')]: {
       paddingLeft: 240,
     },
   },
+
   container: {
-    [theme.breakpoints.only('md')]: {
-      paddingRight: 240,
-    },
+    padding: 5,
+    // [theme.breakpoints.up('xl')]: {
+    //   paddingRight: 240,
+    // },
     // backgroundColor: theme.palette.background.paper,
-    height: 'calc(100vh-120)',
+    // height: 'calc(100vh-120)',
   },
 });
 
@@ -59,52 +62,40 @@ class SessionTabs extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <div>
-        <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-          className={classes.container}
-          disabled={this.state.disableSwipe}
-        >
-          <TabContainer dir={theme.direction}>
-            <Initiate
-              session={this.props.session}
-              status={this.props.status}
-              userIndex={this.props.userIndex}
-            />
-          </TabContainer>
+      <Grid container justify="center" spacing={0} className={classes.container} >
 
-          <TabContainer dir={theme.direction}>
-            <Participate
-              handleFeedback={this.props.handleFeedback}
-              session={this.props.session}
-            />
-          </TabContainer>
+        <Grid item xs={12} >
 
-          <TabContainer dir={theme.direction}>
-            <DecisionMap
-              handleUpdate={this.props.handleUpdate}
-              handleMapLabel={this.props.handleMapLabel}
-              status={this.props.status}
-              session={this.props.session}
-              userIndex={this.props.userIndex}
-              handleDisableSwipe={this.handleDisableSwipeable}
-            />
-          </TabContainer>
-        </SwipeableViews>
+          <Initiate
+            session={this.props.session}
+            status={this.props.status}
+            userIndex={this.props.userIndex}
+          />
 
-        <BottomNavigation
-          value={this.state.value}
-          onChange={this.handleChange}
-          showLabels
-          className={classes.root}
-        >
-          <BottomNavigationAction label="Initiate" icon={<PlayArrowIcon />} />
-          <BottomNavigationAction label="Participate" icon={<ShareIcon />} />
-          <BottomNavigationAction label="Deliberate" icon={<GameIcon />} />
-        </BottomNavigation>
-      </div>
+        </Grid>
+
+
+        {/* <Grid item xs={12} sm={8} md={6} lg={6}>
+
+        </Grid> */}
+
+        <Grid item xs={12} >
+          <DecisionMap
+            handleUpdate={this.props.handleUpdate}
+            handleMapLabel={this.props.handleMapLabel}
+            status={this.props.status}
+            session={this.props.session}
+            userIndex={this.props.userIndex}
+            handleDisableSwipe={this.handleDisableSwipeable}
+          />
+          <Participate
+            handleFeedback={this.props.handleFeedback}
+            session={this.props.session}
+          />
+        </Grid>
+
+
+      </Grid>
     );
   }
 }

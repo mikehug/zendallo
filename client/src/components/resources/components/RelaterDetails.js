@@ -32,6 +32,12 @@ const RelaterDetails = () => md`
   * Initiate and take action
   * Avoid being too slow
   * Organise your thoughts
+  
+  **Preferred Interaction Style:**
+  
+  * Be diplomatic and inclusive
+  * Reassure me
+
 `;
 
 export default RelaterDetails;

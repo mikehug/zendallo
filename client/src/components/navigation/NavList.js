@@ -64,20 +64,6 @@ class NavList extends React.Component {
           <ListItemText inset primary="Intro" />
         </ListItem> */}
 
-        <ListItem button onClick={() => this.handleClick('/profile')}>
-          <ListItemIcon className={classes.icon} style={{ color: teal[500] }}>
-            <Person />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </ListItem>
-
-        <ListItem button onClick={() => this.handleClick('/teams')}>
-          <ListItemIcon className={classes.icon} style={{ color: blue[500] }}>
-            <GroupIcon />
-          </ListItemIcon>
-          <ListItemText primary="Teams" />
-        </ListItem>
-
         <ListItem button onClick={() => this.handleClick('/sessions')}>
           <ListItemIcon
             className={classes.icon}
@@ -88,14 +74,29 @@ class NavList extends React.Component {
           <ListItemText primary="Sessions" />
         </ListItem>
 
-        <ListItem button onClick={() => this.handleClick('/ideas')}>
+        <ListItem button onClick={() => this.handleClick('/profile')}>
+          <ListItemIcon className={classes.icon} style={{ color: teal[500] }}>
+            <Person />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItem>
+
+        {/* <ListItem button onClick={() => this.handleClick('/teams')}>
+          <ListItemIcon className={classes.icon} style={{ color: blue[500] }}>
+            <GroupIcon />
+          </ListItemIcon>
+          <ListItemText primary="Teams" />
+        </ListItem> */}
+
+
+        {/* <ListItem button onClick={() => this.handleClick('/ideas')}>
           <ListItemIcon className={classes.icon} style={{ color: purple[500] }}>
             <LightbulbOutline />
           </ListItemIcon>
           <ListItemText primary="Ideas" />
-        </ListItem>
+        </ListItem> */}
 
-        <ListItem button onClick={() => this.handleClick('/challenges')}>
+        {/* <ListItem button onClick={() => this.handleClick('/challenges')}>
           <ListItemIcon
             className={classes.icon}
             style={{ color: deepOrange[400] }}
@@ -103,7 +104,7 @@ class NavList extends React.Component {
             <MyLocation />
           </ListItemIcon>
           <ListItemText primary="Challenges" />
-        </ListItem>
+        </ListItem> */}
 
         <ListItem button onClick={() => this.handleClick('/resources')}>
           <ListItemIcon className={classes.icon} style={{ color: pink[500] }}>

@@ -38,8 +38,7 @@ import { Paper } from 'material-ui';
 const styles = theme => ({
   root: {
     minWidth: 340,
-    minHeight: 600,
-    maxWidth: 500,
+    maxWidth: 950,
     paddingBottom: 16,
     margin: 0,
   },
@@ -48,7 +47,7 @@ const styles = theme => ({
     // background: theme.palette.background.paper,
   },
   dialog: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       marginLeft: 120,
       marginTop: -30,
     },
@@ -69,8 +68,10 @@ const styles = theme => ({
     paddingTop: 28,
   },
   list: {
-    marginBottom: 40,
-    maxWidth: 320,
+    minHeight: 40,
+    paddingBttom: 16,
+    width: 400,
+    minWidth: 340,
   },
 });
 
@@ -280,7 +281,7 @@ class Participate extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid>
+      <Grid >
         <Paper className={classes.root}>
           <IconButton
             className={classes.iconButton}
@@ -332,14 +333,6 @@ class Participate extends Component {
 
           <Paper className={classes.list}>
             <List dense>
-              <ListItem>
-                <ListItemText
-                  style={{ textAlign: 'center' }}
-                  primary="Select icon above to participate"
-                />
-              </ListItem>
-              <Divider />
-
               {this.props.session.activity
                 .slice(0)
                 .reverse()
@@ -356,7 +349,7 @@ class Participate extends Component {
                             : activity.type
                         }
                         secondary={`${
-                          this.props.session.attendees.find(attendee => attendee.userId === activity.userId,).name
+                          this.props.session.attendees.find(attendee => attendee.userId === activity.userId).name
                         } ${moment(activity.dateTime).fromNow()}`}
                       />
                     </ListItem>

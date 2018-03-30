@@ -16,7 +16,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: 250,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       position: 'fixed',
     },
@@ -40,7 +40,7 @@ const NavDrawer = ({
   theme, classes, mobileOpen, handleDrawerToggle, user,
 }) => (
   <div>
-    <Hidden mdUp>
+    <Hidden lgUp>
       <Drawer
         variant="temporary"
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -53,7 +53,7 @@ const NavDrawer = ({
       </Drawer>
     </Hidden>
 
-    <Hidden smDown implementation="css">
+    <Hidden mdDown implementation="css">
       <Drawer
         variant="permanent"
         open

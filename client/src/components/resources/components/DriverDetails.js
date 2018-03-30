@@ -31,6 +31,11 @@ const DriverDetails = () => md`
   * Watch the need to take control
   * Be sensitive to others needs
   * Get into the details
+  
+  **Preferred Interaction Style:**
+  
+  * Be clear, direct and to the point
+  * Show me results
 `;
 
 export default DriverDetails;

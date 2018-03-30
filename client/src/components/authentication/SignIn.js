@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { withStyles } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
 import { Formik } from 'formik';
 import { CircularProgress } from 'material-ui/Progress';
 import SignInForm from './SignInForm';
+
+
+const styles = () => ({
+  root: {
+    minWidth: 320,
+    maxWidth: 450,
+    padding: 16,
+    margin: 10,
+  },
+  link: {
+    textDecoration: 'none',
+  },
+});
 
 class SignIn extends Component {
   state = {
@@ -60,16 +77,24 @@ class SignIn extends Component {
 
   render() {
     return (
-      this.state.isLogingIn ?
-        <CircularProgress /> :
-        <Formik
-          initialValues={{ email: '', password: '' }}
-          component={SignInForm}
-          validate={this.handleValidate}
-          onSubmit={this.handleSubmit}
-        />
+      <Paper className={this.props.classes.root} >
+        {this.state.isLogingIn ?
+          <CircularProgress /> :
+          <Formik
+            initialValues={{ email: '', password: '' }}
+            component={SignInForm}
+            validate={this.handleValidate}
+            onSubmit={this.handleSubmit}
+          />}
+        <Typography color="textSecondary" >
+          {"Don't have an account?"}
+          <Link to={`/signup/#${this.state.redirect.pathname}`} href="/signup" className={this.props.classes.link} > Sign Up</Link>
+        </Typography>
+
+
+      </Paper>
     );
   }
 }
 
-export default withRouter(SignIn);
+export default withStyles(styles)(withRouter(SignIn));

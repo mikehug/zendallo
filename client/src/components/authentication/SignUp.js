@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -11,11 +12,17 @@ import { AuthManagement } from './Auth';
 
 const styles = () => ({
   root: {
+    minWidth: 320,
+    maxWidth: 450,
+    padding: 16,
     margin: 10,
-    width: 200,
+  },
+  link: {
+    textDecoration: 'none',
   },
   formStyle: {
     padding: 10,
+    width: 320,
   },
 });
 
@@ -34,25 +41,29 @@ const SignUpForm = withStyles(styles)((props) => {
     isSubmitting, isValid, classes,
   } = props;
   return (
-    <Form className={classes.root}>
-      <Typography variant="title" >Create New Account</Typography>
-      <div className={classes.formStyle}>
-        <div>
-          <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />
-        </div>
-        <div>
-          <Field name="password" type="password" component={renderTextField} placeholder="Password" />
-        </div>
-        <div>
-          <Field name="confirmPassword" type="password" component={renderTextField} placeholder="Confirm password" />
-        </div>
-        <Grid container direction="row-reverse" >
-          <Grid item>
-            <Button type="submit" disabled={isSubmitting || !isValid} >Submit</Button>
+    <Paper className={classes.root} >
+      <Form >
+        <Typography variant="title" >Sign Up</Typography>
+
+        <div className={classes.formStyle}>
+          <div>
+            <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />
+          </div>
+          <div>
+            <Field name="password" type="password" component={renderTextField} placeholder="Password" />
+          </div>
+          <div>
+            <Field name="confirmPassword" type="password" component={renderTextField} placeholder="Confirm password" />
+          </div>
+          <Grid container direction="row-reverse" >
+            <Grid item>
+              <Button type="submit" disabled={isSubmitting || !isValid} >Submit</Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    </Form>
+        </div>
+      </Form>
+
+    </Paper>
   );
 });
 
@@ -82,7 +93,7 @@ const handleValidate = values => AuthManagement.create({
     }
   });
 
-const SignUp = withRouter(({ history }) => (
+const SignUp = withRouter(({ history, handleLogin, match }) => (
   <Formik
     initialValues={{
       email: '',
@@ -91,7 +102,7 @@ const SignUp = withRouter(({ history }) => (
     }}
     component={SignUpForm}
     validate={handleValidate}
-    onSubmit={(values, { setSubmitting }) => {
+    onSubmit={(values, { setSubmitting, setErrors }) => {
       AppService.service('users').create({
         email: values.email,
         password: values.password,
@@ -99,12 +110,27 @@ const SignUp = withRouter(({ history }) => (
         .then(() => {
           // TODO: Use response to pass user email to sigin page
           setSubmitting(false);
-          history.push('/signin');
+          handleLogin({
+            strategy: 'local',
+            email: values.email,
+            password: values.password,
+          })
+          .then(() => {
+            let path = '/dashboard';
+            console.log(match.params);
+             if (match.params.redirect && match.params.redirect.slice(0, 1) === '#') {
+               path = match.params.redirect.slice(1);
+             }
+            history.push(path);
+          });
         })
         .catch((error) => {
           // TODO: Use error to create alert
           console.log('Error creating user!', error);
           setSubmitting(false);
+          const errors = {};
+          errors.email = 'Sign up problem';
+          setErrors(errors);
         });
     }}
   />

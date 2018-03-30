@@ -4,6 +4,7 @@ import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import { throttle } from 'lodash';
+import Paper from 'material-ui/Paper';
 import { Motion, spring } from 'react-motion';
 import amber from 'material-ui/colors/amber';
 import lightGreen from 'material-ui/colors/lightGreen';
@@ -15,14 +16,19 @@ import BallPopover from './BallPopover';
 
 
 const styles = theme => ({
-  map: {
-    flex: '1 100%',
-    height: 300,
+  paper: {
     maxWidth: 950,
+    minWidth: 360,
+    padding: 2,
+  },
+  map: {
+    maxWidth: 930,
+    flex: '1 100%',
+    height: 330,
     borderRadius: 10,
     paddingRight: 3,
     position: 'relative',
-    backgroundImage: 'radial-gradient(800px 1000px at center 200px,#f3c38f 0,#fc7946 100%)',
+    // backgroundImage: 'radial-gradient(800px 1000px at center 200px,#f3c38f 0,#fc7946 100%)',
     userSelect: 'none',
     tapHighlightColor: 'transparent',
   },
@@ -55,7 +61,7 @@ const styles = theme => ({
     },
   },
   chip: {
-    margin: theme.spacing.unit,
+
   },
   option1: {
     backgroundColor: lightGreen[500],
@@ -172,61 +178,64 @@ class DecisionMap extends React.Component {
       const scale = this.state.isPressed ? 'scale(1.2)' : 'scale(1)';
       const boxShadow = this.state.isPressed ? '6px 12px 5px #424242' : 'none';
       return (
-        <Grid container id="map" className={this.props.classes.map} direction="row" spacing={0} >
-          <Grid container justify="space-between" spacing={0}>
-            <Grid item >
-              <Chip
-                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
-                label={this.props.session.option1}
-                onClick={() => this.handleClick('option1')}
-                className={this.props.classes.chip}
-                component={(this.state.optionEdit && this.state.selectedOption === 'option1') ?
-                  this.getTextEdit
-                : 'div'}
-              />
-            </Grid>
-            <Grid item >
-              <Chip
-                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
-                label={this.props.session.option2}
-                onClick={() => this.handleClick('option2')}
-                className={this.props.classes.chip}
-                component={(this.state.optionEdit && this.state.selectedOption === 'option2') ?
-                  this.getTextEdit
-                : 'div'}
-                style={{ flexDirection: 'row-reverse' }}
-              />
-            </Grid>
-          </Grid>
 
-          <Motion style={{
+        <Paper className={this.props.classes.paper}>
+          <Grid container id="map" className={this.props.classes.map} direction="row" spacing={0} >
+
+            <Grid container justify="space-between" spacing={0}>
+              <Grid item >
+                <Chip
+                  avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
+                  label={this.props.session.option1}
+                  onClick={() => this.handleClick('option1')}
+                  className={this.props.classes.chip}
+                  component={(this.state.optionEdit && this.state.selectedOption === 'option1') ?
+                  this.getTextEdit
+                : 'div'}
+                />
+              </Grid>
+              <Grid item >
+                <Chip
+                  avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
+                  label={this.props.session.option2}
+                  onClick={() => this.handleClick('option2')}
+                  className={this.props.classes.chip}
+                  component={(this.state.optionEdit && this.state.selectedOption === 'option2') ?
+                  this.getTextEdit
+                : 'div'}
+                  style={{ flexDirection: 'row-reverse' }}
+                />
+              </Grid>
+            </Grid>
+
+            <Motion style={{
                     left: spring(this.props.status.x * this.state.width, { stiffness: 180, damping: 10 }),
                     top: spring(this.props.status.y * this.state.height, { stiffness: 200, damping: 10 }),
                     }}
-          >{ motionStyle => (
+            >{ motionStyle => (
 
-            <div
-              className={this.props.classes.myBall}
-              onMouseDown={this.handleMouseDown}
-              onTouchStart={this.handleTouchStart}
-              role="presentation"
-              style={{
+              <div
+                className={this.props.classes.myBall}
+                onMouseDown={this.handleMouseDown}
+                onTouchStart={this.handleTouchStart}
+                role="presentation"
+                style={{
                  left: motionStyle.left,
                  top: motionStyle.top,
                 transform: scale,
                 boxShadow,
                }}
-            >
-              <OpenWithIcon className={this.props.classes.myBallIcon} />
-            </div>
+              >
+                <OpenWithIcon className={this.props.classes.myBallIcon} />
+              </div>
 
             )}
-          </Motion>
+            </Motion>
 
-          {/* <BallPopover name={this.props.session.attendees[this.props.userIndex].name} > */}
-          {/* </BallPopover> */}
+            {/* <BallPopover name={this.props.session.attendees[this.props.userIndex].name} > */}
+            {/* </BallPopover> */}
 
-          {this.props.session.attendees.map((attendee, index) => (
+            {this.props.session.attendees.map((attendee, index) => (
             attendee && this.props.userIndex !== index ?
               <Motion
                 key={attendee.userId}
@@ -255,32 +264,33 @@ class DecisionMap extends React.Component {
               : null
 
           )) }
-          <Grid container justify="space-between" alignItems="flex-end" spacing={0} >
-            <Grid item >
-              <Chip
-                avatar={<Avatar className={this.props.classes.option1} ><EditIcon /></Avatar>}
-                label={this.props.session.option3}
-                onClick={() => this.handleClick('option3')}
-                className={this.props.classes.chip}
-                component={(this.state.optionEdit && this.state.selectedOption === 'option3') ?
+            <Grid container justify="space-between" alignItems="flex-end" spacing={0} >
+              <Grid item >
+                <Chip
+                  avatar={<Avatar className={this.props.classes.option1} ><EditIcon /></Avatar>}
+                  label={this.props.session.option3}
+                  onClick={() => this.handleClick('option3')}
+                  className={this.props.classes.chip}
+                  component={(this.state.optionEdit && this.state.selectedOption === 'option3') ?
                   this.getTextEdit
                 : 'div'}
-              />
-            </Grid>
-            <Grid item >
-              <Chip
-                avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
-                label={this.props.session.option4}
-                onClick={() => this.handleClick('option4')}
-                className={this.props.classes.chip}
-                component={(this.state.optionEdit && this.state.selectedOption === 'option4') ?
+                />
+              </Grid>
+              <Grid item >
+                <Chip
+                  avatar={<Avatar className={this.props.classes.option1}><EditIcon /></Avatar>}
+                  label={this.props.session.option4}
+                  onClick={() => this.handleClick('option4')}
+                  className={this.props.classes.chip}
+                  component={(this.state.optionEdit && this.state.selectedOption === 'option4') ?
                   this.getTextEdit
                 : 'div'}
-                style={{ flexDirection: 'row-reverse' }}
-              />
+                  style={{ flexDirection: 'row-reverse' }}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Paper>
       );
     }
 }

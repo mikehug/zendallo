@@ -35,7 +35,7 @@ class Session extends Component {
 
   deleteSession = (session) => {
     const { sessions } = this.state;
-    const deleteIndex = this.state.sessions.findIndex(sess => sess._id === session._id,);
+    const deleteIndex = this.state.sessions.findIndex(sess => sess._id === session._id);
     sessions.splice(deleteIndex, 1);
     AppService.service('sessions')
       .remove(session._id)
@@ -48,7 +48,7 @@ class Session extends Component {
     AppService.service('sessions')
       .create({
         name: values.name,
-        purpose: values.purpose,
+        // purpose: values.purpose,
         agenda: values.agenda,
         option1: '',
         option2: '',
@@ -70,6 +70,7 @@ class Session extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
+      <Typography variant="title" >Sessions</Typography>
         <ListSessions data={data} handleDelete={this.deleteSession} />
         <CreateSession data={data} handleCreate={this.createSession} />
       </Paper>

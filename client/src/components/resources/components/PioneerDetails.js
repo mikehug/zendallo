@@ -2,7 +2,7 @@ import md from '../../utils/react-markings';
 
 const PioneerDetails = () => md`
 
-  **Greatest value:** Fun and energising others
+  **Greatest value:** Influence
 
   **Generally:**
 
@@ -34,6 +34,11 @@ const PioneerDetails = () => md`
   * Don’t always steal the limelight
   * Follow-through
   * Listen more
-`;
+
+  **Preferred Interaction Style:**
+  
+  * Be enthusiastic and encouraging
+  * Inspire me  
+  `;
 
 export default PioneerDetails;

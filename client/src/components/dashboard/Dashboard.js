@@ -31,7 +31,7 @@ const styles = theme => ({
 const Dashboard = ({ classes }) => (
   <Grid container justify="center" spacing={24} className={classes.root} >
 
-    <Grid item xs={12} sm={8} md={6} lg={6}>
+    {/* <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
         heading="Challenges"
         content="Create and view challenges"
@@ -54,7 +54,7 @@ const Dashboard = ({ classes }) => (
       >
         <LightbulbOutline className={classes.icon} style={{ color: purple[500] }} />
       </DashboardCard>
-    </Grid>
+    </Grid> */}
 
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
@@ -70,6 +70,18 @@ const Dashboard = ({ classes }) => (
     </Grid>
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
+        heading="Profile"
+        content="Your details and settings"
+        progress={0}
+        background={{ }}
+        route="/profile"
+        chip="1/5"
+      > <Person className={classes.icon} style={{ color: teal[300] }} />
+      </DashboardCard>
+    </Grid>
+
+    {/* <Grid item xs={12} sm={8} md={6} lg={6}>
+      <DashboardCard
         heading="Teams"
         content="Team listing and information"
         background={{ }}
@@ -80,17 +92,7 @@ const Dashboard = ({ classes }) => (
         <GroupIcon className={classes.icon} style={{ color: lightBlue[500] }} />
       </DashboardCard>
     </Grid>
-    <Grid item xs={12} sm={8} md={6} lg={6}>
-      <DashboardCard
-        heading="Profile"
-        content="Your details and settings"
-        progress={0}
-        background={{ }}
-        route="/profile"
-        chip="1/5"
-      > <Person className={classes.icon} style={{ color: teal[300] }} />
-      </DashboardCard>
-    </Grid>
+
     <Grid item xs={12} sm={8} md={6} lg={6}>
       <DashboardCard
         heading="Resources"
@@ -102,7 +104,7 @@ const Dashboard = ({ classes }) => (
       >
         <PlaylistPlayIcon className={classes.icon} style={{ color: pink[500] }} />
       </DashboardCard>
-    </Grid>
+    </Grid> */}
   </Grid >
 );
 

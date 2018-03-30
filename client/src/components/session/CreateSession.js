@@ -6,12 +6,30 @@ import Dialog, {
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
+import { withStyles } from 'material-ui/styles';
 import { Formik, Form, Field } from 'formik';
 import Grid from 'material-ui/Grid';
 import { FormGroup } from 'material-ui/Form';
 import RenderTextField from '../utils/RenderTextField';
 
-export default class CreateSession extends React.Component {
+const styles = theme => ({
+  dialog: {
+    [theme.breakpoints.up('lg')]: {
+      marginLeft: 120,
+      marginTop: -30,
+    },
+  },
+  dialogContent: {
+    width: 300,
+    marginBottom: 10,
+  },
+  dialogTitle: {
+    paddingBottom: 10,
+    paddingTop: 18,
+  },
+});
+
+class CreateSession extends React.Component {
   state = {
     open: false,
   };
@@ -47,7 +65,7 @@ export default class CreateSession extends React.Component {
         <Button onClick={this.handleClickOpen} color="default">
           Create Session
         </Button>
-        <Dialog open={this.state.open} onClose={this.handleRequestClose}>
+        <Dialog open={this.state.open} onClose={this.handleRequestClose} className={this.props.classes.dialog}>
           <DialogTitle>Create Session</DialogTitle>
           <Formik
             initialValues={{ name: '' }}
@@ -55,27 +73,30 @@ export default class CreateSession extends React.Component {
             onSubmit={this.handleSubmit}
             render={props => (
               <Form>
-                <DialogContent>
+                <DialogContent className={this.props.classes.dialogContent}>
                   {/* <DialogContentText>New session details</DialogContentText> */}
                   <FormGroup>
                     <Field
                       autoFocus
                       margin="dense"
                       name="name"
-                      placeholder="Name"
+                      placeholder="Title"
                       variant="text"
                       component={RenderTextField}
                     />
-                    <Field
+                    {/* <Field
                       margin="dense"
                       name="purpose"
                       placeholder="Purpose"
                       variant="text"
                       component={RenderTextField}
-                    />
+                    /> */}
                     <Field
                       margin="dense"
-                      name="Agenda"
+                      multiline
+                      rows="8"
+                      rowsMax="15"
+                      name="agenda"
                       placeholder="Agenda"
                       variant="multiline"
                       component={RenderTextField}
@@ -100,3 +121,5 @@ export default class CreateSession extends React.Component {
     );
   }
 }
+
+export default withStyles(styles)(CreateSession);
