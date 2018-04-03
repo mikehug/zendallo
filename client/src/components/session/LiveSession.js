@@ -26,8 +26,8 @@ class LiveSession extends Component {
     }
 
     componentDidMount() {
-      sessionFeed.on('updated', throttle(session => this.setState({ session }), 50));
-      sessionFeed.on('patched', throttle(session => this.setState({ session }), 50));
+      sessionFeed.on('updated', session => this.setState({ session }));
+      sessionFeed.on('patched', session => this.setState({ session }));
     }
 
     handleFeedback =(data) => {

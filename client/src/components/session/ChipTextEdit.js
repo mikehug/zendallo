@@ -7,12 +7,11 @@ import RenderTextField from '../utils/RenderTextField';
 
 const styles = theme => ({
   field: {
-    backgroundColor: theme.palette.grey[300],
+    // backgroundColor: theme.palette.grey[300],
     paddingLeft: 10,
     margin: 3,
-    borderRadius: '15px;',
-
-
+    // width: 40,
+    // borderRadius: '15px;',
   },
 
 });

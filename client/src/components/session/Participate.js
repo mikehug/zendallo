@@ -34,17 +34,35 @@ import ArrowForwardIcon from 'material-ui-icons/ArrowForward';
 import CheckIcon from 'material-ui-icons/Check';
 import FreeBreakfastIcon from 'material-ui-icons/FreeBreakfast';
 import { Paper } from 'material-ui';
+import HappySvg from './emoticons/HappySvg';
+import ConfusedSvg from './emoticons/ConfusedSvg';
+import ExcitedSvg from './emoticons/ExcitedSvg';
+import AngrySvg from './emoticons/AngrySvg';
+import NeutralSvg from './emoticons/NeutralSvg';
+import SadSvg from './emoticons/SadSvg';
+import ThinkingSvg from './emoticons/ThinkingSvg';
+import UpsetSvg from './emoticons/UpsetSvg';
 
 const styles = theme => ({
   root: {
     minWidth: 340,
-    maxWidth: 950,
+    maxWidth: 420,
     paddingBottom: 16,
     margin: 0,
+    height: 360,
+    overflowY: 'auto',
+    overflowX: 'hidden',
   },
   iconButton: {
-    margin: 10,
+    color: theme.palette.secondary.main,
     // background: theme.palette.background.paper,
+    height: 36,
+    width: 36,
+    margin: '10px 10px 8px 10px',
+    backgroundColor: 'transparent',
+  },
+  icon: {
+
   },
   dialog: {
     [theme.breakpoints.up('lg')]: {
@@ -68,10 +86,8 @@ const styles = theme => ({
     paddingTop: 28,
   },
   list: {
+    width: 320,
     minHeight: 40,
-    paddingBttom: 16,
-    width: 400,
-    minWidth: 340,
   },
 });
 
@@ -79,50 +95,50 @@ const getAvatar = (key) => {
   switch (key) {
     case 'Excited':
       return (
-        <span role="img" aria-label="excited">
-          🤩
+        <span role="img" aria-label="excited" >
+          <ExcitedSvg />
         </span>
       );
 
     case 'Happy':
       return (
         <span role="img" aria-label="happy">
-          😀
+          <HappySvg />
         </span>
       );
 
     case 'Thinking':
       return (
         <span role="img" aria-label="Hmmm">
-          🤔
+          <ThinkingSvg />
         </span>
       );
 
     case 'Confused':
       return (
         <span role="img" aria-label="confused">
-          😕
+          <ConfusedSvg />
         </span>
       );
 
     case 'Worried':
       return (
         <span role="img" aria-label="unsatisfied">
-          😟
+          <SadSvg />
         </span>
       );
 
     case 'Frustrated':
       return (
         <span role="img" aria-label="unhappy">
-          😣
+          <UpsetSvg />
         </span>
       );
 
     case 'Angry':
       return (
         <span role="img" aria-label="angry">
-          😡
+          <AngrySvg />
         </span>
       );
 
@@ -219,6 +235,10 @@ const ShareOptions = withStyles(styles)(({ handleSelection, classes }) => (
 
 const AgendaOptions = withStyles(styles)(({ classes, handleSelection }) => (
   <List dense>
+    <ListItem button onClick={() => handleSelection({ type: 'Focus' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Focus')}</Avatar>
+      <ListItemText primary="Focus" secondary="We are on a tangent" />
+    </ListItem>
     <ListItem button onClick={() => handleSelection({ type: 'Break' })}>
       <Avatar className={classes.avartar}>{getAvatar('Break')}</Avatar>
       <ListItemText primary="Break" secondary="Request bio break" />
@@ -281,33 +301,35 @@ class Participate extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid >
-        <Paper className={classes.root}>
+      <Paper className={classes.root}>
+        <Grid >
           <IconButton
             className={classes.iconButton}
-            color="secondary"
-            aria-label="Agenda"
-            onClick={() => this.handleDialogOpen({ type: 'Agenda' })}
-          >
-            <AssignmentLateIcon />
-          </IconButton>
-          <IconButton
-            className={classes.iconButton}
-            color="secondary"
+
             aria-label="Share"
             onClick={() => this.handleDialogOpen({ type: 'Share' })}
           >
-            <FaceIcon />
+            <FaceIcon className={classes.icon} />
           </IconButton>
 
           <IconButton
             className={classes.iconButton}
-            color="secondary"
+
             aria-label="Chat"
             onClick={() => this.handleDialogOpen({ type: 'Chat' })}
           >
-            <ChatIcon />
+            <ChatIcon className={classes.icon} />
           </IconButton>
+
+          <IconButton
+            className={classes.iconButton}
+
+            aria-label="Agenda"
+            onClick={() => this.handleDialogOpen({ type: 'Agenda' })}
+          >
+            <AssignmentLateIcon className={classes.icon} />
+          </IconButton>
+
           {/* <Button color="default" aria-label="feedback" >
           <RemoveRedEyeIcon className={classes.icon} />
           Feedback
@@ -331,9 +353,10 @@ class Participate extends Component {
             </div>
           </Dialog>
 
-          <Paper className={classes.list}>
-            <List dense>
-              {this.props.session.activity
+          <List dense className={classes.list}>
+            <Divider />
+
+            {this.props.session.activity
                 .slice(0)
                 .reverse()
                 .map(activity => (
@@ -356,10 +379,9 @@ class Participate extends Component {
                     <Divider />
                   </div>
                 ))}
-            </List>
-          </Paper>
-        </Paper>
-      </Grid>
+          </List>
+        </Grid>
+      </Paper>
     );
   }
 }

@@ -32,6 +32,8 @@ const styles = theme => ({
     margin: '0 0 0 5px',
     padding: 1,
     backgroundColor: 'transparent',
+    color: theme.palette.secondary.main,
+
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -67,7 +69,6 @@ class NavList extends React.Component {
         <ListItem button onClick={() => this.handleClick('/sessions')}>
           <ListItemIcon
             className={classes.icon}
-            style={{ color: lightGreen[500] }}
           >
             <GroupWorkIcon />
           </ListItemIcon>
@@ -75,7 +76,9 @@ class NavList extends React.Component {
         </ListItem>
 
         <ListItem button onClick={() => this.handleClick('/profile')}>
-          <ListItemIcon className={classes.icon} style={{ color: teal[500] }}>
+          <ListItemIcon
+            className={classes.icon}
+          >
             <Person />
           </ListItemIcon>
           <ListItemText primary="Profile" />
@@ -107,7 +110,9 @@ class NavList extends React.Component {
         </ListItem> */}
 
         <ListItem button onClick={() => this.handleClick('/resources')}>
-          <ListItemIcon className={classes.icon} style={{ color: pink[500] }}>
+          <ListItemIcon
+            className={classes.icon}
+          >
             <PlaylistPlayIcon />
           </ListItemIcon>
           <ListItemText primary="Resources" />

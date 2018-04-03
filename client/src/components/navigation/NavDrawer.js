@@ -43,7 +43,7 @@ const NavDrawer = ({
     <Hidden lgUp>
       <Drawer
         variant="temporary"
-        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+        anchor="left"
         open={mobileOpen}
         classes={{ paper: classes.drawerPaper }}
         onClose={handleDrawerToggle}

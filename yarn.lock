@@ -282,8 +282,8 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
 aws-sdk@^2.211.1:
-  version "2.217.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.217.1.tgz#ed2d6113a54264727f985150407de69b0daed57f"
+  version "2.218.1"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.218.1.tgz#b4cf742cc0853bd7c868b388cbf0b4a1ef1abc12"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"

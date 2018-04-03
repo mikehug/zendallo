@@ -50,10 +50,11 @@ class Session extends Component {
         name: values.name,
         // purpose: values.purpose,
         agenda: values.agenda,
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
+        topicTitle: 'Concerns',
+        option1: 'WHAT',
+        option2: 'WHY',
+        option3: 'HOW',
+        option4: 'WHO',
         startTime: Date.now(),
         attendees: [],
         activity: [],
@@ -70,7 +71,7 @@ class Session extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
-      <Typography variant="title" >Sessions</Typography>
+        <Typography variant="title" >Sessions</Typography>
         <ListSessions data={data} handleDelete={this.deleteSession} />
         <CreateSession data={data} handleCreate={this.createSession} />
       </Paper>

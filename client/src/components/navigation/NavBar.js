@@ -58,7 +58,7 @@ const NavBar = withRouter((props) => {
 
   return (
     <div >
-      <AppBar position="fixed" className={classes.appBar} >
+      <AppBar position="fixed" className={classes.appBar} color="default" >
         <Toolbar >
           <IconButton
             aria-label="open drawer"
