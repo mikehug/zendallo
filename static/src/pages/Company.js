@@ -85,12 +85,14 @@ const CompanyPage = ({ classes }) => (
         Zendallo is headquartered in Ireland.
 
         </Typography>
-                <div className={classes.buttonRow} >
+        <div className={classes.buttonRow} >
 
-                <Button variant="raised"  >Contact Us</Button>
-                </div>
-
-        
+          <Button
+            variant="raised"
+            onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+          >Contact Us
+          </Button>
+        </div>
 
 
         <div className={classes.profileRow} >

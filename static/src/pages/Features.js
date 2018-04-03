@@ -46,19 +46,24 @@ const Features = ({ classes }) => (
 With our 10 day trial you can try out all our great features for free
 
         <p />
-        <Button variant="raised" color="secondary" >Get Started</Button>
+        <Button
+          variant="raised"
+          onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+          color="secondary"
+        >Get Started
+        </Button>
         <p />
       </Typography>
       <Paper className={classes.paper}>
 
         <Typography variant="headline" color="secondary" className={classes.font} >
 
-Online Team Building
+Meeting Management
         </Typography>
 
         <Typography variant="subheading" className={classes.font} >
 
-Build great teams through our behavioural profile and trust building activities
+Have more efficient and effective meetings with agenda collaboration and attendee profile sharing.
         </Typography>
 
         <img src={profileImg} alt="Profile Screenshot" width="90%" className={classes.img} />

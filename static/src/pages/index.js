@@ -72,10 +72,10 @@ const IndexPage = ({ classes, history }) => (
     <Grid container justify="center" className={classes.hero} spacing={0} >
       <Grid item >
         <h1 className={classes.heroText} >
-        Harness the Power of Collective Intelligence
+        Make Meetings Work
         </h1>
         <div className={classes.textIntro}>
-          Team Engagement & Innovation Management
+        Effective and efficient teamwork
         </div>
         <Button
           variant="raised"
@@ -98,7 +98,7 @@ const IndexPage = ({ classes, history }) => (
     <Grid container direction="column" alignItems="center" className={classes.benefitRoot} spacing={0}>
 
 
-      <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+      {/* <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
         <Grid item xs={10} sm={7} md={6} className={classes.col} >
 
 
@@ -113,7 +113,7 @@ Effective teamwork and efficient collaboration <br /> for the digital workplace.
           </Typography>
 
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
         <Grid item xs={9} sm={6} md={2} className={classes.col} >
@@ -121,7 +121,7 @@ Effective teamwork and efficient collaboration <br /> for the digital workplace.
             {/* <img src={Heart} alt="Heart Icon" className={classes.heart} /> */}
             <GroupIcon className={classes.svg} style={{ color: orange[500] }} />
             <Typography variant="headline" className={classes.font} >
-            Online Team Building
+            Meeting Management
             </Typography>
             <Button color="secondary" >  Engage</Button>
           </Grid>
@@ -132,7 +132,7 @@ Effective teamwork and efficient collaboration <br /> for the digital workplace.
             <RadioButtonCheckedIcon className={classes.svg} style={{ color: orange[500] }} />
 
             <Typography variant="headline" className={classes.font} >
-            Realtime Group Feedback
+            Realtime Feedback
             </Typography>
             <Button color="secondary" >  Align</Button>
           </Grid>

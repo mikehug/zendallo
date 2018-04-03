@@ -78,7 +78,12 @@ const Pricing = ({ classes }) => (
                 <Typography variant="caption" className={classes.caption} >
               per user per month billed annually
                 </Typography>
-                <Button color="secondary" style={{ margin: 16 }} >  Sign Up</Button>
+                <Button
+                  color="secondary"
+                  style={{ margin: 16 }}
+                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                >  Sign Up
+                </Button>
 
                 <Typography variant="body2" color="textSecondary" >
                   <ul className={classes.list}>
@@ -122,7 +127,13 @@ Basic Decision Maps
                 <Typography variant="caption" className={classes.caption} >
               per month per user billed annually
                 </Typography>
-                <Button color="secondary" variant="raised" style={{ margin: 16 }} >  Sign Up</Button>
+                <Button
+                  color="secondary"
+                  variant="raised"
+                  style={{ margin: 16 }}
+                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                >  Sign Up
+                </Button>
                 <Typography variant="body2" color="textSecondary" >
 
                   <ul className={classes.list}>
@@ -135,15 +146,15 @@ Basic Decision Maps
 
                     </li>
                     <li className={classes.listItem}>
-                   Team profiles.
+                   Team profiles
 
                     </li>
                     <li className={classes.listItem}>
-                  Meeting templates.
+                  Meeting templates
 
                     </li>
                     <li className={classes.listItem}>
-                  Team building.
+                  Team building
 
                     </li>
                     <li className={classes.listItem}>
@@ -151,7 +162,7 @@ Feedback analysis
 
                     </li>
                     <li className={classes.listItem}>
-                Decision process.
+                Decision process
 
                     </li>
 
@@ -175,7 +186,12 @@ Feedback analysis
                 <Typography variant="caption" className={classes.caption} >
               to arrange demo and discuss customization
                 </Typography>
-                <Button color="secondary" style={{ margin: 16 }} >Contact Us</Button>
+                <Button
+                  color="secondary"
+                  style={{ margin: 16 }}
+                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                >Contact Us
+                </Button>
                 <Typography variant="body2" color="textSecondary" >
 
                   <ul className={classes.list}>
