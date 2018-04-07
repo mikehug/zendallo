@@ -96,7 +96,7 @@ class Practice extends React.Component {
       >
         <Grid item>
           <Divider />
-          <MobileStepper
+          {/* <MobileStepper
             variant="dots"
             steps={
               this.props.module.lessons ? this.props.module.lessons.length : 0
@@ -130,7 +130,7 @@ class Practice extends React.Component {
                 Back
               </Button>
             }
-          />
+          /> */}
           <Typography
             variant="headline"
             align="center"

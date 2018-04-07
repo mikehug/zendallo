@@ -1,7 +1,19 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
 import RenderTextField from '../utils/RenderTextField';
+
+const styles = {
+  root: {
+    minWidth: 320,
+    maxWidth: 450,
+    padding: 16,
+    margin: 10,
+  },
+};
 
 const handleValidate = (values) => {
   const errors = {};
@@ -11,8 +23,12 @@ const handleValidate = (values) => {
   return errors;
 };
 
-const JoinSession = ({ id, handleSubmit }) => (
-  <div>
+const JoinSession = ({
+  id, handleSubmit, classes, name,
+}) => (
+  <Paper className={classes.root} >
+    <Typography variant="title">{name} </Typography>
+
     <Formik
       initialValues={{ name: '' }}
       validate={handleValidate}
@@ -24,7 +40,7 @@ const JoinSession = ({ id, handleSubmit }) => (
             autoFocus
             margin="dense"
             name="name"
-            placeholder="Participant name"
+            placeholder="Display name"
             variant="text"
             component={RenderTextField}
           />
@@ -34,7 +50,7 @@ const JoinSession = ({ id, handleSubmit }) => (
         </Form>
             )}
     />
-  </div>
+  </Paper>
 );
 
-export default JoinSession;
+export default withStyles(styles)(JoinSession);

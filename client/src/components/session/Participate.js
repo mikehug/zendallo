@@ -27,6 +27,8 @@ import AssignmentLateIcon from 'material-ui-icons/AssignmentLate';
 import ChatIcon from 'material-ui-icons/ChatBubbleOutline';
 import FaceIcon from 'material-ui-icons/Face';
 import ListIcon from 'material-ui-icons/List';
+import HandIcon from 'material-ui-icons/PanTool';
+import SendIcon from 'material-ui-icons/Send';
 import BlockIcon from 'material-ui-icons/Block';
 import CenterFocusStrongIcon from 'material-ui-icons/CenterFocusStrong';
 import ArrowBackIcon from 'material-ui-icons/ArrowBack';
@@ -34,6 +36,8 @@ import ArrowForwardIcon from 'material-ui-icons/ArrowForward';
 import CheckIcon from 'material-ui-icons/Check';
 import FreeBreakfastIcon from 'material-ui-icons/FreeBreakfast';
 import { Paper } from 'material-ui';
+import { Line, LineChart, Tooltip, ResponsiveContainer } from 'recharts';
+import Popover from 'material-ui/Popover';
 import HappySvg from './emoticons/HappySvg';
 import ConfusedSvg from './emoticons/ConfusedSvg';
 import ExcitedSvg from './emoticons/ExcitedSvg';
@@ -42,6 +46,7 @@ import NeutralSvg from './emoticons/NeutralSvg';
 import SadSvg from './emoticons/SadSvg';
 import ThinkingSvg from './emoticons/ThinkingSvg';
 import UpsetSvg from './emoticons/UpsetSvg';
+
 
 const styles = theme => ({
   root: {
@@ -72,6 +77,7 @@ const styles = theme => ({
   },
   dialogContent: {
     marginBottom: 10,
+    minWidth: 200,
   },
   dialogTitle: {
     paddingBottom: 10,
@@ -88,6 +94,10 @@ const styles = theme => ({
   list: {
     width: 320,
     minHeight: 40,
+    padding: 0,
+  },
+  chart: {
+    padding: '5px 0 5px 0',
   },
 });
 
@@ -109,8 +119,15 @@ const getAvatar = (key) => {
 
     case 'Thinking':
       return (
-        <span role="img" aria-label="Hmmm">
+        <span role="img" aria-label="thinking">
           <ThinkingSvg />
+        </span>
+      );
+
+    case 'Neutral':
+      return (
+        <span role="img" aria-label="Neutral">
+          <NeutralSvg />
         </span>
       );
 
@@ -123,27 +140,30 @@ const getAvatar = (key) => {
 
     case 'Worried':
       return (
-        <span role="img" aria-label="unsatisfied">
+        <span role="img" aria-label="worried">
           <SadSvg />
         </span>
       );
 
-    case 'Frustrated':
+    case 'Unhappy':
       return (
         <span role="img" aria-label="unhappy">
           <UpsetSvg />
         </span>
       );
 
-    case 'Angry':
-      return (
-        <span role="img" aria-label="angry">
-          <AngrySvg />
-        </span>
-      );
+    // case 'Angry':
+    //   return (
+    //     <span role="img" aria-label="angry">
+    //       <AngrySvg />
+    //     </span>
+      // );
 
     case 'Focus':
       return <CenterFocusStrongIcon style={{ color: purple[500] }} />;
+
+    case 'Raise Hand':
+      return <HandIcon style={{ color: amber[500] }} />;
 
     case 'Break':
       return <FreeBreakfastIcon style={{ color: orange[500] }} />;
@@ -154,10 +174,10 @@ const getAvatar = (key) => {
     case 'Move On':
       return <ArrowForwardIcon style={{ color: blue[500] }} />;
 
-    case 'Go Back':
-      return <ArrowBackIcon style={{ color: amber[500] }} />;
+    case 'Slow Down':
+      return <ArrowBackIcon style={{ color: orange[500] }} />;
 
-    case 'Stop':
+    case 'Disagree':
       return <BlockIcon style={{ color: red[500] }} />;
 
     case 'Chat':
@@ -170,9 +190,9 @@ const getAvatar = (key) => {
 
 const DialogContent = (props) => {
   switch (props.type) {
-    case 'Agenda':
+    case 'Suggestions':
       return <AgendaOptions handleSelection={props.handleSelection} />;
-    case 'Share':
+    case 'Feeling':
       return <ShareOptions handleSelection={props.handleSelection} />;
     case 'Chat':
       return (
@@ -187,91 +207,153 @@ const DialogContent = (props) => {
 };
 
 const ChatEntry = ({ chatText, handleTextChange, handleSubmit }) => (
-  <div style={{ padding: 16 }}>
-    <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
+    <Grid container direction="row" style={{ width: '100%', flexWrap: 'nowrap', paddingLeft: 16 }}>
       <TextField
         autoFocus
         id="message"
         value={chatText}
         onChange={handleTextChange}
       />
-      <Button type="submit">Send</Button>
-    </form>
-  </div>
+      <IconButton type="submit"><SendIcon /></IconButton>
+    </Grid>
+  </form>
 );
 
 const ShareOptions = withStyles(styles)(({ handleSelection, classes }) => (
   <List dense>
-    <ListItem button onClick={() => handleSelection({ type: 'Excited' })}>
-      <Avatar className={classes.avartar}>{getAvatar('Excited')}</Avatar>
-      <ListItemText primary="Excited" secondary="Middle of the road" />
-    </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Happy' })}>
+    {/* <ListItem button onClick={() => handleSelection({ type: 'Excited' })}>
+      <Avatar className={classes.avartar} >{getAvatar('Excited')}</Avatar>
+      <ListItemText primary="Excited" />
+    </ListItem> */}
+    <ListItem button onClick={() => handleSelection({ type: 'Happy', value: 2, category: 'share' })}>
       <Avatar className={classes.avartar}>{getAvatar('Happy')}</Avatar>
-      <ListItemText primary="Happy" secondary="Feeling groovy" />
+      <ListItemText primary="Happy" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Thinking' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Thinking', value: 1, category: 'share' })}>
       <Avatar className={classes.avartar}>{getAvatar('Thinking')}</Avatar>
-      <ListItemText primary="Thinking" secondary="Need time to think" />
+      <ListItemText primary="Thinking" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Confused' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Neutral', value: 0, category: 'share' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Neutral')}</Avatar>
+      <ListItemText primary="Neutral" />
+    </ListItem>
+    <ListItem button onClick={() => handleSelection({ type: 'Confused', value: -1, category: 'share' })}>
       <Avatar className={classes.avartar}>{getAvatar('Confused')}</Avatar>
-      <ListItemText primary="Confused" secondary="Not really following" />
+      <ListItemText primary="Confused" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Worried' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Worried', value: -2, category: 'share' })}>
       <Avatar className={classes.avartar}>{getAvatar('Worried')}</Avatar>
-      <ListItemText primary="Worried" secondary="Unsure and concerned " />
+      <ListItemText primary="Worried" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Frustrated' })}>
-      <Avatar className={classes.avartar}>{getAvatar('Frustrated')}</Avatar>
-      <ListItemText primary="Frustrated" secondary="Really dissatisfied " />
-    </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Angry' })}>
+    {/* <ListItem button onClick={() => handleSelection({ type: 'Unhappy' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Unhappy')}</Avatar>
+      <ListItemText primary="Unhappy" />
+    </ListItem> */}
+    {/* <ListItem button onClick={() => handleSelection({ type: 'Angry' })}>
       <Avatar className={classes.avartar}>{getAvatar('Angry')}</Avatar>
       <ListItemText primary="Angry" secondary="Losing the cool" />
-    </ListItem>
+    </ListItem> */}
   </List>
 ));
 
 const AgendaOptions = withStyles(styles)(({ classes, handleSelection }) => (
   <List dense>
-    <ListItem button onClick={() => handleSelection({ type: 'Focus' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Focus', category: 'agenda' })}>
       <Avatar className={classes.avartar}>{getAvatar('Focus')}</Avatar>
       <ListItemText primary="Focus" secondary="We are on a tangent" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Break' })}>
-      <Avatar className={classes.avartar}>{getAvatar('Break')}</Avatar>
-      <ListItemText primary="Break" secondary="Request bio break" />
-    </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Agree' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Agree', category: 'agenda' })}>
       <Avatar className={classes.avartar}>{getAvatar('Agree')}</Avatar>
       <ListItemText primary="Agree" secondary="Agree with the proposal" />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Move On' })}>
+    <ListItem button onClick={() => handleSelection({ type: 'Disagree', value: 0 })}>
+      <Avatar className={classes.avartar}>{getAvatar('Disagree')}</Avatar>
+      <ListItemText primary="Disagree" secondary="Disagree with the proposal" />
+    </ListItem>
+    <ListItem button onClick={() => handleSelection({ type: 'Raise Hand', category: 'agenda' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Raise Hand')}</Avatar>
+      <ListItemText primary="Raise Hand" secondary="I want to speak next" />
+    </ListItem>
+    <ListItem button onClick={() => handleSelection({ type: 'Slow Down', category: 'agenda' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Slow Down')}</Avatar>
+      <ListItemText primary="Slow Down" secondary="Slow down, going too fast" />
+    </ListItem>
+    <ListItem button onClick={() => handleSelection({ type: 'Move On', category: 'agenda' })}>
       <Avatar className={classes.avartar}>{getAvatar('Move On')}</Avatar>
       <ListItemText
         primary="Move On"
         secondary="Topic is covered sufficently"
       />
     </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Go Back' })}>
-      <Avatar className={classes.avartar}>{getAvatar('Go Back')}</Avatar>
-      <ListItemText primary="Go back" secondary="We missed something" />
-    </ListItem>
-    <ListItem button onClick={() => handleSelection({ type: 'Stop' })}>
-      <Avatar className={classes.avartar}>{getAvatar('Stop')}</Avatar>
-      <ListItemText primary="Stop" secondary="Hold it right there" />
+    <ListItem button onClick={() => handleSelection({ type: 'Break', category: 'agenda' })}>
+      <Avatar className={classes.avartar}>{getAvatar('Break')}</Avatar>
+      <ListItemText primary="Break" secondary="Request break or need to leave" />
     </ListItem>
   </List>
 ));
+
+
+const CustomizedDot = (props) => {
+  const { cx, cy, value } = props;
+
+  switch (value) {
+    case 2:
+      return (
+        <HappySvg x={cx - 10} y={cy - 10} />
+      );
+    case 1:
+      return (
+        <ThinkingSvg x={cx - 10} y={cy - 10} />
+      );
+    case 0:
+      return (
+        <NeutralSvg x={cx - 10} y={cy - 10} />
+      );
+    case -1:
+      return (
+        <ConfusedSvg x={cx - 10} y={cy - 10} />
+      );
+    case -2:
+      return (
+        <SadSvg x={cx - 10} y={cy - 10} />
+      );
+
+    default:
+      return null;
+  }
+};
 
 class Participate extends Component {
   // eslint-disable-line
   state = {
     open: false,
-    actionType: 'Agenda',
-    chatText: 'text',
+    actionType: 'Suggestions',
+    chatText: '',
   };
+
+  customiseToolTip = (props) => {
+    const { active, payload } = props;
+
+    if (active && payload && payload[0].payload) {
+      return (
+        <div style={{ padding: 5, backgroundColor: 'white', direction: 'rtl' }}>
+          {/* {getAvatar(payload[0].payload.type)} */}
+          <Grid container direction="column" align="bottom" >
+            <Typography className="custom-tooltip" >
+              {`${payload[0].payload.type} `}
+            </Typography>
+            <Typography variant="caption" >
+              {` ${this.props.session.attendees.find(attendee =>
+           attendee.userId === payload[0].payload.userId).name} ${moment(payload[0].payload.dateTime).fromNow()}`}
+            </Typography>
+          </Grid>
+        </div>
+      );
+    }
+    return null;
+  };
+
 
   handleDialogOpen = (action) => {
     this.setState({ open: true, actionType: action.type });
@@ -288,7 +370,7 @@ class Participate extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.chatText.length > 0) {
-      this.props.handleFeedback({ type: 'Chat', text: this.state.chatText });
+      this.props.handleFeedback({ type: 'Chat', text: this.state.chatText, category: 'text' });
       this.setState({ open: false, chatText: '' });
     }
   };
@@ -299,36 +381,67 @@ class Participate extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, session } = this.props;
+    const lineData = session.activity.filter(activity => activity.category === 'share');
     return (
       <Paper className={classes.root}>
-        <Grid >
-          <IconButton
-            className={classes.iconButton}
+        <Grid container justify="center">
+          <Grid container direction="row" justify="center" style={{ backgroundColor: grey[50] }} >
+            <IconButton
+              className={classes.iconButton}
 
-            aria-label="Share"
-            onClick={() => this.handleDialogOpen({ type: 'Share' })}
-          >
-            <FaceIcon className={classes.icon} />
-          </IconButton>
+              aria-label="Agenda"
+              onClick={() => this.handleDialogOpen({ type: 'Suggestions' })}
+            >
+              <AssignmentLateIcon className={classes.icon} />
+            </IconButton>
+            <ChatEntry
+              handleTextChange={this.handleTextChange}
+              chatText={this.state.chatText}
+              handleSubmit={this.handleSubmit}
+            />
+            <IconButton
+              className={classes.iconButton}
+              aria-label="Share"
+              onClick={() => this.handleDialogOpen({ type: 'Feeling' })}
+            >
+              <FaceIcon className={classes.icon} />
+            </IconButton>
+            {/* <IconButton
+              className={classes.iconButton}
 
-          <IconButton
-            className={classes.iconButton}
+              aria-label="Chat"
+              onClick={() => this.handleDialogOpen({ type: 'Chat' })}
+            >
+              <ChatIcon className={classes.icon} />
+            </IconButton> */}
 
-            aria-label="Chat"
-            onClick={() => this.handleDialogOpen({ type: 'Chat' })}
-          >
-            <ChatIcon className={classes.icon} />
-          </IconButton>
+          </Grid>
+          {lineData.length > 0 ?
+            <Grid
+              item
+              style={{
+                    margin: '10px 16px 16px 10px', overflowX: 'auto', width: 300, height: 80, direction: 'rtl',
+              }}
+            >
+              <Grid>
+                <ResponsiveContainer width={300 * (lineData.length > 6 ? (lineData.length / 6) : 1)} height={70} >
+                  <LineChart
+                    offset={0}
+                    data={lineData || {}}
+                    margin={{
+                    top: 15, right: 15, bottom: 15, left: 15,
+                    }}
+                  >
+                    <Tooltip content={this.customiseToolTip} isAnimationActive={false} offset={0} wrapperStyle={{ direction: 'rtl' }} />
+                    <Line animationDuration={300} type="monotone" dataKey="value" stroke="grey" stroke-dasharray="5, 5" strokeWidth={1} dot={<CustomizedDot />} />
+                  </LineChart>
 
-          <IconButton
-            className={classes.iconButton}
-
-            aria-label="Agenda"
-            onClick={() => this.handleDialogOpen({ type: 'Agenda' })}
-          >
-            <AssignmentLateIcon className={classes.icon} />
-          </IconButton>
+                </ResponsiveContainer>
+              </Grid>
+            </Grid> :
+          null}
+          <Grid item />
 
           {/* <Button color="default" aria-label="feedback" >
           <RemoveRedEyeIcon className={classes.icon} />
@@ -360,25 +473,27 @@ class Participate extends Component {
                 .slice(0)
                 .reverse()
                 .map(activity => (
-                  <div key={activity.dateTime}>
-                    <ListItem>
-                      <Avatar className={classes.avartar}>
-                        {getAvatar(activity.type)}
-                      </Avatar>
-                      <ListItemText
-                        primary={
+                  activity.category !== 'share' ?
+                    <div key={activity.dateTime}>
+                      <ListItem style={{ padding: 0 }}>
+                        <Avatar className={classes.avartar}>
+                          {getAvatar(activity.type)}
+                        </Avatar>
+                        <ListItemText
+                          primary={
                           activity.type === 'Chat'
                             ? activity.text
                             : activity.type
                         }
-                        secondary={`${
+                          secondary={`${
                           this.props.session.attendees.find(attendee => attendee.userId === activity.userId).name
                         } ${moment(activity.dateTime).fromNow()}`}
-                      />
-                    </ListItem>
-                    <Divider />
-                  </div>
-                ))}
+                        />
+                      </ListItem>
+                      <Divider />
+                    </div>
+                : null
+              ))}
           </List>
         </Grid>
       </Paper>

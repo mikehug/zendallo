@@ -11,7 +11,6 @@ import RadioButtonCheckedIcon from 'material-ui-icons/RadioButtonChecked';
 import orange from 'material-ui/colors/orange';
 import dasbboardPic from '../images/dashboard.png';
 
-
 const styles = theme => ({
   hero: {
     height: '350px',
@@ -115,7 +114,7 @@ Effective teamwork and efficient collaboration <br /> for the digital workplace.
         </Grid>
       </Grid> */}
 
-      <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+      <Grid container justify="center" direction="row" spacing={0} className={classes.row}>
         <Grid item xs={9} sm={6} md={2} className={classes.col} >
           <Grid container direction="column" alignItems="center" >
             {/* <img src={Heart} alt="Heart Icon" className={classes.heart} /> */}

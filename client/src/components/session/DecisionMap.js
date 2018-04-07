@@ -169,7 +169,6 @@ class DecisionMap extends React.Component {
     handleTextChange = (values) => {
       const updateObj = {};
       updateObj[this.state.selectedOption] = values.text;
-      console.log(updateObj);
       this.props.handleMapLabel(updateObj);
       this.setState({ optionEdit: false });
     }
@@ -209,7 +208,7 @@ class DecisionMap extends React.Component {
               component={(this.state.optionEdit && this.state.selectedOption === 'topicTitle') ?
                   this.getTextEdit
                 : 'div'}
-              style={{ flexDirection: 'row-reverse', background: 'none', 'font-size': 16 }}
+              style={{ flexDirection: 'row-reverse', background: 'none', fontSize: 16 }}
             />
 
             <Grid container id="map" className={this.props.classes.map} direction="row" spacing={0} >

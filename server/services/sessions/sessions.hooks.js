@@ -1,5 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-const { associateCurrentUser } = require('feathers-authentication-hooks');
+const { associateCurrentUser, queryWithCurrentUser } = require('feathers-authentication-hooks');
+const { required, unless } = require('feathers-hooks-common');
 const Hashids = require('hashids');
 const hashids = new Hashids('initiatio');        
 
@@ -7,7 +8,7 @@ const hashids = new Hashids('initiatio');
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
-    find: [],
+    find: [unless(context => context.params.query.code, queryWithCurrentUser())],
     get: [],
     create: [
       associateCurrentUser(),

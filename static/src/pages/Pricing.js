@@ -51,7 +51,7 @@ const styles = () => ({
 });
 
 const Pricing = ({ classes }) => (
-  <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+  <Grid container justify="center" direction="row" spacing={0} className={classes.row}>
     <Grid item xs={12} className={classes.col} >
 
 
@@ -62,7 +62,7 @@ const Pricing = ({ classes }) => (
 
       <Grid container direction="column" alignItems="center" className={classes.benefitRoot} spacing={0}>
 
-        <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+        <Grid container justify="center" direction="row" spacing={0} className={classes.row}>
           <Paper className={classes.paper}>
             <Grid item xs={9} sm={2} md={2} className={classes.col} >
               <Grid container direction="column" alignItems="center" >

@@ -49,7 +49,7 @@ class Session extends Component {
       .create({
         name: values.name,
         // purpose: values.purpose,
-        agenda: values.agenda,
+        agenda: values.agenda || '',
         topicTitle: 'Concerns',
         option1: 'WHAT',
         option2: 'WHY',

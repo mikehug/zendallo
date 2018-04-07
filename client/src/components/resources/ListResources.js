@@ -35,38 +35,6 @@ const ListSessions = withRouter(props => (
       </div>
     ))}
 
-    <ListItem button disable="true" >
-      <ListItemIcon>
-        <PlaylistPlayIcon />
-      </ListItemIcon>
-      <ListItemText primary="Team Charter" />
-      <ListItemSecondaryAction>
-        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-    <Divider />
-
-    <ListItem button disable="true" >
-      <ListItemIcon>
-        <PlaylistPlayIcon />
-      </ListItemIcon>
-      <ListItemText primary="Mindfulness Practices" />
-      <ListItemSecondaryAction>
-        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-    <Divider />
-
-    <ListItem button disable>
-      <ListItemIcon>
-        <PlaylistPlayIcon />
-      </ListItemIcon>
-      <ListItemText primary="Team Building Activities" />
-      <ListItemSecondaryAction>
-        <IconButton aria-label="Complete">{/* <DeleteIcon /> */}</IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-    <Divider />
   </List>
 ));
 

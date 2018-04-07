@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
-import BottomNavigation, {BottomNavigationAction,} from 'material-ui/BottomNavigation';
+import BottomNavigation, { BottomNavigationAction  } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import GameIcon from 'material-ui-icons/Games';
 import ShareIcon from 'material-ui-icons/Share';
@@ -105,7 +105,7 @@ class Learn extends React.Component {
           </TabContainer>
         </SwipeableViews>
 
-        <BottomNavigation
+        {/* <BottomNavigation
           value={this.state.value}
           onChange={this.handleChange}
           showLabels
@@ -113,7 +113,7 @@ class Learn extends React.Component {
         >
           <BottomNavigationAction label="Explore" icon={<ShareIcon />} />
           <BottomNavigationAction label="Practice" icon={<GameIcon />} />
-        </BottomNavigation>
+        </BottomNavigation> */}
       </Paper>
     );
   }

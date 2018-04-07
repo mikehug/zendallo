@@ -32,7 +32,7 @@ const styles = () => ({
 });
 
 const Features = ({ classes }) => (
-  <Grid container justify="center" justifyContent="center" direction="row" spacing={0} className={classes.row}>
+  <Grid container justify="center" direction="row" spacing={0} className={classes.row}>
     <Grid item xs={10} sm={8} md={7} lg={6} className={classes.col} >
 
 

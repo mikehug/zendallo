@@ -169,13 +169,19 @@ const Header = withStyles(styles)(({ classes }) => (
 const TemplateWrapper = ({ children, classes }) => (
   <MuiThemeProvider theme={theme}>
     <Grid container className={classes.root} direction="column" spacing={0} >
-      <Helmet
-        title="Zendallo"
-        meta={[
-          { name: 'description', content: 'Visual collaboration for effective teams' },
-          { name: 'keywords', content: 'teamwork, social collaboration' },
-        ]}
-      />
+      <Helmet>
+        <title>Zendallo</title>
+        <meta name="description" content="Visual collaboration for effective teams" />
+        <meta name="keywords" content="teamwork, social collaboration" />
+        <script type="text/javascript" >{`
+        if(typeof window !== 'undefined') {
+          window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("3825646806");
+        }
+        `}
+        </script>
+        <script src="https://js.stripe.com/v3/" />
+      </Helmet>
 
       <Header />
       {/* <Grid container justifyContent="center" spacing={0} direction="column" > */}
