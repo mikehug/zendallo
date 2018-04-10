@@ -7,6 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import { FormGroup } from 'material-ui/Form';
 import { Link } from 'react-router-dom';
 import Button from 'material-ui/Button';
+import { CircularProgress } from 'material-ui/Progress';
 import RenderTextField from '../utils/RenderTextField';
 import ProfileResult from '../resources/components/ProfileResult';
 import AppService from '../../AppService';
@@ -37,7 +38,6 @@ const styles = {
 class Profile extends React.Component {
   state = {
     user: {},
-    saveEnable: false,
   };
 
   componentWillMount() {
@@ -48,7 +48,6 @@ class Profile extends React.Component {
 
   handleValidate = (values) => {
     const errors = {};
-    this.setState({ saveEnable: true });
     // if (!values.name) {
     //   errors.name = 'Name required';
     // }
@@ -60,7 +59,12 @@ class Profile extends React.Component {
 
   handleSubmit = (values, props) => {
     props.setSubmitting(true);
-    users.patch(user._id, values);
+    users.patch(user._id, { profileDetails: values })
+      .then((result) => {
+        AppService.set('user', result);
+        props.setSubmitting(false);
+        props.resetForm();
+      });
   };
   render() {
     const { classes } = this.props;
@@ -71,11 +75,12 @@ class Profile extends React.Component {
           My Details
           </Typography>
           <Formik
-            initialValues={user ? {
-              name: user.name,
-              company: user.company,
-              role: user.role,
-              interests: user.interests,
+            initialValues={this.state.user && this.state.user.profileDetails ? {
+              name: this.state.user.profileDetails.name,
+              company: this.state.user.profileDetails.company,
+              role: this.state.user.profileDetails.role,
+              location: this.state.user.profileDetails.location,
+              interests: this.state.user.profileDetails.interests,
               } : {}}
             validate={this.handleValidate}
             onSubmit={this.handleSubmit}
@@ -106,6 +111,13 @@ class Profile extends React.Component {
                   />
                   <Field
                     margin="dense"
+                    name="location"
+                    label="Location"
+                    variant="text"
+                    component={RenderTextField}
+                  />
+                  <Field
+                    margin="dense"
                     multiline
                     rows="5"
                     rowsMax="15"
@@ -117,10 +129,13 @@ class Profile extends React.Component {
                 </FormGroup>
                 <Button
                   type="submit"
-                  disabled={props.isSubmitting || !this.state.saveEnable}
+                  disabled={props.isSubmitting || !props.dirty}
                   color="default"
                 >
-                    Save
+                  {props.isSubmitting ? // eslint-disable-line no-nested-ternary
+                    <CircularProgress /> :
+                    (props.dirty ? 'Save' : 'Saved')}
+
                 </Button>
               </Form>
               )}

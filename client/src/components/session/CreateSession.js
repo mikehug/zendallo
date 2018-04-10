@@ -84,13 +84,13 @@ class CreateSession extends React.Component {
                       variant="text"
                       component={RenderTextField}
                     />
-                    {/* <Field
+                    <Field
                       margin="dense"
-                      name="purpose"
-                      placeholder="Purpose"
+                      name="objective"
+                      placeholder="Objective"
                       variant="text"
                       component={RenderTextField}
-                    /> */}
+                    />
                     <Field
                       margin="dense"
                       multiline

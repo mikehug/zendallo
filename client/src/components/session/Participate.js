@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactDOM } from 'react';
 import moment from 'moment';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
@@ -208,14 +208,20 @@ const DialogContent = (props) => {
 
 const ChatEntry = ({ chatText, handleTextChange, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Grid container direction="row" style={{ width: '100%', flexWrap: 'nowrap', paddingLeft: 16 }}>
+    <Grid
+      container
+      direction="row"
+      style={{
+            width: '100%', flexWrap: 'nowrap', paddingLeft: 16, paddingTop: 10,
+            }}
+    >
       <TextField
         autoFocus
         id="message"
         value={chatText}
         onChange={handleTextChange}
       />
-      <IconButton type="submit"><SendIcon /></IconButton>
+      <IconButton type="submit" style={{ paddingBottom: 10 }} ><SendIcon /></IconButton>
     </Grid>
   </form>
 );
@@ -327,17 +333,29 @@ const CustomizedDot = (props) => {
 class Participate extends Component {
   // eslint-disable-line
   state = {
-    open: false,
+    dialogOpen: false,
     actionType: 'Suggestions',
     chatText: '',
+    popoverOpen: false,
   };
+
+  componentDidMount() {
+    this.scrollToLeft();
+  }
+
+  componentDidUpdate() {
+    this.scrollToLeft();
+  }
 
   customiseToolTip = (props) => {
     const { active, payload } = props;
 
     if (active && payload && payload[0].payload) {
       return (
-        <div style={{ padding: 5, backgroundColor: 'white', direction: 'rtl' }}>
+        <div style={{
+          padding: 5, backgroundColor: 'white', direction: 'rtl', zIndex: 100,
+          }}
+        >
           {/* {getAvatar(payload[0].payload.type)} */}
           <Grid container direction="column" align="bottom" >
             <Typography className="custom-tooltip" >
@@ -354,13 +372,12 @@ class Participate extends Component {
     return null;
   };
 
-
   handleDialogOpen = (action) => {
-    this.setState({ open: true, actionType: action.type });
+    this.setState({ dialogOpen: true, actionType: action.type });
   };
 
   handleDialogClose = () => {
-    this.setState({ open: false });
+    this.setState({ dialogOpen: false });
   };
 
   handleTextChange = (event) => {
@@ -371,13 +388,19 @@ class Participate extends Component {
     event.preventDefault();
     if (this.state.chatText.length > 0) {
       this.props.handleFeedback({ type: 'Chat', text: this.state.chatText, category: 'text' });
-      this.setState({ open: false, chatText: '' });
+      this.setState({ dialogOpen: false, chatText: '' });
     }
   };
 
   handleSelection = (selection) => {
     this.props.handleFeedback(selection);
-    this.setState({ open: false });
+    this.setState({ dialogOpen: false });
+  };
+
+  scrollToLeft = () => {
+    const lineData = this.props.session.activity.filter(activity => activity.category === 'share');
+    const width = 300 * (lineData.length > 6 ? (lineData.length / 6) : 1);
+    if (this.feelingContainer) this.feelingContainer.scrollLeft = width;
   };
 
   render() {
@@ -415,30 +438,33 @@ class Participate extends Component {
             >
               <ChatIcon className={classes.icon} />
             </IconButton> */}
-
           </Grid>
           {lineData.length > 0 ?
             <Grid
               item
               style={{
-                    margin: '10px 16px 16px 10px', overflowX: 'auto', width: 300, height: 80, direction: 'rtl',
+                    margin: '10px 16px 16px 10px',
               }}
             >
-              <Grid>
-                <ResponsiveContainer width={300 * (lineData.length > 6 ? (lineData.length / 6) : 1)} height={70} >
-                  <LineChart
-                    offset={0}
-                    data={lineData || {}}
-                    margin={{
+              <div
+                style={{ width: 300, height: 80, overflowX: 'auto' }}
+                ref={(el) => { this.feelingContainer = el; }}
+              >
+                <Grid >
+                  <ResponsiveContainer width={300 * (lineData.length > 6 ? (lineData.length / 6) : 1)} height={70} >
+                    <LineChart
+                      data={lineData || {}}
+                      margin={{
                     top: 15, right: 15, bottom: 15, left: 15,
                     }}
-                  >
-                    <Tooltip content={this.customiseToolTip} isAnimationActive={false} offset={0} wrapperStyle={{ direction: 'rtl' }} />
-                    <Line animationDuration={300} type="monotone" dataKey="value" stroke="grey" stroke-dasharray="5, 5" strokeWidth={1} dot={<CustomizedDot />} />
-                  </LineChart>
+                    >
+                      <Tooltip content={this.customiseToolTip} isAnimationActive={false} />
+                      <Line animationDuration={300} type="monotone" dataKey="value" stroke="grey" stroke-dasharray="5, 5" strokeWidth={1} dot={<CustomizedDot />} />
+                    </LineChart>
 
-                </ResponsiveContainer>
-              </Grid>
+                  </ResponsiveContainer>
+                </Grid>
+              </div>
             </Grid> :
           null}
           <Grid item />
@@ -448,7 +474,7 @@ class Participate extends Component {
           Feedback
         </Button> */}
           <Dialog
-            open={this.state.open}
+            open={this.state.dialogOpen}
             onClose={this.handleDialogClose}
             className={classes.dialog}
           >

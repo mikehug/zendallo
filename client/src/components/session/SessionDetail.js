@@ -7,6 +7,8 @@ import JoinSession from './JoinSession';
 import SessionNotValid from './SessionNotValid';
 import LiveSession from './LiveSession';
 
+let user = {};
+
 class SessionDetail extends Component {
     state = {
       session: null,
@@ -30,24 +32,30 @@ class SessionDetail extends Component {
     }
 
     findAttendeeIndex = () => {
-      const user = AppService.get('user');
+      user = AppService.get('user');
       return (this.state.session && this.state.session.attendees.findIndex(attendee => attendee.userId === user._id));
     }
 
     handleSubmit = (values, props) => {
       props.setSubmitting(true);
-      const user = AppService.get('user');
+      user = AppService.get('user');
       const { attendees } = this.state.session;
       // const tokenData = { sessionCode: this.state.session.code, userId: user._id };
       // AppService.service('session-tokens').create(tokenData)
       //   .then((result) => {
+      let profile = {};
+      const { profileDetails, profileResult } = user;
+      if (values.isProfileVisible && user.profileDetails) {
+        profile = { profileDetails, profileResult };
+      }
       attendees.push({
         name: values.name,
+        isProfileVisible: values.isProfileVisible,
+        profile,
         userId: user._id,
         status: { x: 0.5, y: 0.5 },
         // token: result,
       });
-
       // });
       AppService.service('sessions').patch(this.state.session._id, { attendees })
         .then(() => {
@@ -64,7 +72,7 @@ class SessionDetail extends Component {
       } else if (this.state.session) {
         return (
           <div>
-            <JoinSession id={this.state.session._id} name={this.state.session.name} handleSubmit={this.handleSubmit} />
+            <JoinSession id={this.state.session._id} name={this.state.session.name} handleSubmit={this.handleSubmit} user={user} />
           </div>);
       } else if (this.state.session === -1) {
         return (

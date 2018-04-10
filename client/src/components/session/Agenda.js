@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import { connect, createLocalTracks } from 'twilio-video';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import List, {
   ListItem,
+  ListItemSecondaryAction,
   // ListSubheader,
   ListItemIcon,
   ListItemText,
@@ -13,6 +14,8 @@ import Typography from 'material-ui/Typography';
 import Person from 'material-ui-icons/Person';
 import { withStyles } from 'material-ui/styles';
 import ListIcon from 'material-ui-icons/List';
+import IconButton from 'material-ui/IconButton';
+import Popover from 'material-ui/Popover';
 import EditSesssion from './EditSession';
 // import TextField from 'material-ui/TextField';
 // import PlayArrowIcon from 'material-ui-icons/PlayArrow';
@@ -49,73 +52,134 @@ const styles = () => ({
     textAlign: 'left',
     paddingBottom: 10,
   },
+  popover: {
+    padding: 16,
+  },
+  popoverDetail: {
+    padding: '4px 0 4px 0',
+  },
 });
 
 
-const Agenda = ({ classes, session }) =>
+class Agenda extends Component {
+  state ={
+    popoverOpen: false,
+  }
 
-  (
-    <div className={classes.root}>
-      <Typography variant="headline" gutterBottom>
-        {session.name}
-      </Typography>
+  handlePopoverOpen = () => {
+    this.setState({ popoverOpen: true });
+  };
 
-      <Grid container justify="center" spacing={0} >
-        <Grid item xs={12} md={6} >
-          <Paper className={classes.panel}>
-            <Grid container direction="row" justify="center" alignItems="center">
+  handlePopoverClose = () => {
+    this.setState({ popoverOpen: false });
+  };
 
-              <Typography variant="subheading" style={{ paddingLeft: 32 }} >
+  render() {
+    const { classes, session } = this.props;
+    return (
+      <div className={classes.root}>
+        <Typography variant="headline" gutterBottom>
+          {session.name}
+        </Typography>
+        <Typography variant="subheading" gutterBottom>
+          {session.objective}
+        </Typography>
+
+        <Grid container justify="center" spacing={0} >
+          <Grid item xs={12} md={6} >
+            <Paper className={classes.panel}>
+              <Grid container direction="row" justify="center" alignItems="center">
+
+                <Typography variant="subheading" style={{ paddingLeft: 32 }} >
               Agenda
-              </Typography>
-              <EditSesssion session={session} />
-            </Grid>
+                </Typography>
+                <EditSesssion session={session} />
+              </Grid>
 
-            <List dense className={classes.list}>
-              <Divider />
-              {session.agenda.split('\n').map(i => (
-                <div key={i}>
-                  <ListItem >
-                    <ListItemIcon>
-                      <ListIcon color="secondary" />
-                    </ListItemIcon>
-                    <ListItemText primary={i} />
-                  </ListItem>
-                  <Divider />
-                </div>
+              <List dense className={classes.list}>
+                <Divider />
+                {session.agenda.split('\n').map(i => (
+                  <div key={i}>
+                    <ListItem >
+                      <ListItemIcon>
+                        <ListIcon color="secondary" />
+                      </ListItemIcon>
+                      <ListItemText primary={i} />
+                    </ListItem>
+                    <Divider />
+                  </div>
               ))}
-            </List>
+              </List>
 
-          </Paper>
-        </Grid>
+            </Paper>
+          </Grid>
 
-        <Grid item xs={12} md={6} >
-          <Paper className={classes.panel}>
-            <Typography variant="subheading" style={{ height: 32 }}>
+          <Grid item xs={12} md={6} >
+            <Paper className={classes.panel}>
+              <Typography variant="subheading" style={{ height: 32 }}>
               Attendees {` (${session.attendees.length})`}
-            </Typography>
-            {/* </ExpansionPanelSummary> */}
-            {/* <ExpansionPanelDetails> */}
-            <List dense className={classes.list}>
-              <Divider />
-              {session.attendees.map(attendee => (
-                <div key={attendee.userId}>
-                  <ListItem >
-                    <ListItemIcon>
-                      <Person color="secondary" />
-                    </ListItemIcon>
-                    <ListItemText primary={attendee.name} />
-                  </ListItem>
-                  <Divider />
-                </div>
+              </Typography>
+              {/* </ExpansionPanelSummary> */}
+              {/* <ExpansionPanelDetails> */}
+              <List dense className={classes.list}>
+                <Divider />
+                {session.attendees.map((attendee, index) => (
+                  <div key={attendee.userId}>
+                    <ListItem >
+                      <ListItemIcon>
+                        <Person color="secondary" />
+                      </ListItemIcon>
+                      <ListItemText primary={attendee.name} />
+                      {attendee.isProfileVisible ?
+                        <ListItemSecondaryAction>
+                          <IconButton
+                            aria-label="Comments"
+                            color="secondary"
+                            onClick={() => this.handlePopoverOpen()}
+                            buttonRef={(node) => {
+                                                this[`anchorEl${index}`] = node;
+                                              }}
+                          >
+                            <ListIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction> : null}
+                      <Popover
+                        open={this.state.popoverOpen}
+                        onClose={this.handlePopoverClose}
+                        anchorEl={this[`anchorEl${index}`]}
+                      >
+
+                        <div className={classes.popover}>
+                          <Typography variant="caption" gutterBottom >Name:</Typography>
+                          <Typography className={classes.popoverDetail} >
+                            {attendee.profile.profileDetails && attendee.profile.profileDetails.name}
+                          </Typography>
+                          <Typography variant="caption" gutterBottom >Company:</Typography>
+                          <Typography className={classes.popoverDetail}>
+                            {attendee.profile.profileDetails && attendee.profile.profileDetails.company}
+                          </Typography>
+                          <Typography variant="caption" gutterBottom>Location:</Typography>
+                          <Typography className={classes.popoverDetail} >{
+                            attendee.profile.profileDetails && attendee.profile.profileDetails.location}
+                          </Typography>
+                          <Typography variant="caption" gutterBottom>Interests:</Typography>
+                          <Typography className={classes.popoverDetail} >
+                            {attendee.profile.profileDetails && attendee.profile.profileDetails.interests}
+                          </Typography>
+                        </div>
+                      </Popover>
+                    </ListItem>
+                    <Divider />
+                  </div>
               ))}
-            </List>
+              </List>
 
-          </Paper>
+            </Paper>
+          </Grid>
+
         </Grid>
-
-      </Grid>
-    </div>
-  );
-
+      </div>
+    );
+  }
+}
 export default withStyles(styles)(Agenda);

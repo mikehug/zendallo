@@ -48,7 +48,7 @@ class Session extends Component {
     AppService.service('sessions')
       .create({
         name: values.name,
-        // purpose: values.purpose,
+        purpose: values.objective || '',
         agenda: values.agenda || '',
         topicTitle: 'Concerns',
         option1: 'WHAT',
