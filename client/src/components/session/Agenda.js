@@ -64,10 +64,11 @@ const styles = () => ({
 class Agenda extends Component {
   state ={
     popoverOpen: false,
+    selectedUser: '',
   }
 
-  handlePopoverOpen = () => {
-    this.setState({ popoverOpen: true });
+  handlePopoverOpen = (userId) => {
+    this.setState({ popoverOpen: true, selectedUser: userId });
   };
 
   handlePopoverClose = () => {
@@ -82,7 +83,7 @@ class Agenda extends Component {
           {session.name}
         </Typography>
         <Typography variant="subheading" gutterBottom>
-          {session.objective}
+          {session.purpose}
         </Typography>
 
         <Grid container justify="center" spacing={0} >
@@ -135,7 +136,7 @@ class Agenda extends Component {
                           <IconButton
                             aria-label="Comments"
                             color="secondary"
-                            onClick={() => this.handlePopoverOpen()}
+                            onClick={() => this.handlePopoverOpen(attendee.userId)}
                             buttonRef={(node) => {
                                                 this[`anchorEl${index}`] = node;
                                               }}
@@ -143,31 +144,34 @@ class Agenda extends Component {
                             <ListIcon />
                           </IconButton>
                         </ListItemSecondaryAction> : null}
-                      <Popover
-                        open={this.state.popoverOpen}
-                        onClose={this.handlePopoverClose}
-                        anchorEl={this[`anchorEl${index}`]}
-                      >
+                      {this.state.selectedUser === attendee.userId ?
+                        <Popover
+                          open={this.state.popoverOpen}
+                          onClose={this.handlePopoverClose}
+                          anchorEl={this[`anchorEl${index}`]}
+                        >
 
-                        <div className={classes.popover}>
-                          <Typography variant="caption" gutterBottom >Name:</Typography>
-                          <Typography className={classes.popoverDetail} >
-                            {attendee.profile.profileDetails && attendee.profile.profileDetails.name}
-                          </Typography>
-                          <Typography variant="caption" gutterBottom >Company:</Typography>
-                          <Typography className={classes.popoverDetail}>
-                            {attendee.profile.profileDetails && attendee.profile.profileDetails.company}
-                          </Typography>
-                          <Typography variant="caption" gutterBottom>Location:</Typography>
-                          <Typography className={classes.popoverDetail} >{
+                          <div className={classes.popover}>
+                            <Typography variant="caption" gutterBottom >Name:</Typography>
+                            <Typography className={classes.popoverDetail} >
+                              {attendee.profile.profileDetails && attendee.profile.profileDetails.name}
+                            </Typography>
+                            <Typography variant="caption" gutterBottom >Company:</Typography>
+                            <Typography className={classes.popoverDetail}>
+                              {attendee.profile.profileDetails && attendee.profile.profileDetails.company}
+                            </Typography>
+                            <Typography variant="caption" gutterBottom>Location:</Typography>
+                            <Typography className={classes.popoverDetail} >{
                             attendee.profile.profileDetails && attendee.profile.profileDetails.location}
-                          </Typography>
-                          <Typography variant="caption" gutterBottom>Interests:</Typography>
-                          <Typography className={classes.popoverDetail} >
-                            {attendee.profile.profileDetails && attendee.profile.profileDetails.interests}
-                          </Typography>
-                        </div>
-                      </Popover>
+                            </Typography>
+                            <Typography variant="caption" gutterBottom>Interests:</Typography>
+                            <Typography className={classes.popoverDetail} >
+                              {attendee.profile.profileDetails && attendee.profile.profileDetails.interests}
+                            </Typography>
+                          </div>
+                        </Popover>
+                        : null
+                        }
                     </ListItem>
                     <Divider />
                   </div>
