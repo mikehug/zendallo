@@ -81,7 +81,7 @@ const Pricing = ({ classes }) => (
                 <Button
                   color="secondary"
                   style={{ margin: 16 }}
-                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                  onClick={() => { window.location.href = `${window.location.protocol}//${window.location.host}/app/signup`; }}
                 >  Sign Up
                 </Button>
 
@@ -131,7 +131,7 @@ Basic Decision Maps
                   color="secondary"
                   variant="raised"
                   style={{ margin: 16 }}
-                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                  onClick={() => { window.location.href = `${window.location.protocol}//${window.location.host}/app/signup`; }}
                 >  Sign Up
                 </Button>
                 <Typography variant="body2" color="textSecondary" >
@@ -189,7 +189,7 @@ Feedback analysis
                 <Button
                   color="secondary"
                   style={{ margin: 16 }}
-                  onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+                  onClick={() => { window.location.href = `${window.location.protocol}//${window.location.host}/app/signup`; }}
                 >Contact Us
                 </Button>
                 <Typography variant="body2" color="textSecondary" >

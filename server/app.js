@@ -22,6 +22,7 @@ const httpsRedirect = require('express-https-redirect');
 
 const authentication = require('./authentication');
 const authManagement = require('feathers-authentication-management');
+const notifier = require('./notifier');
 
 const mongodb = require('./mongodb');
 const channels = require('./channels');
@@ -68,7 +69,7 @@ app.configure(
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
 app.configure(authentication);
-app.configure(authManagement());
+app.configure(authManagement(notifier(app)));
 
 // Set up our services (see `services/index.js`)
 app.configure(services);

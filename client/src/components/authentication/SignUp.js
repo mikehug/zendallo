@@ -7,6 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import { Formik, Form, Field } from 'formik';
+import RenderTextField from '../utils/RenderTextField';
 import AppService from '../../AppService';
 import { AuthManagement } from './Auth';
 
@@ -26,15 +27,6 @@ const styles = () => ({
   },
 });
 
-const renderTextField = ({ field, form: { touched, errors }, ...props }) =>
-  (
-    <TextField
-      label={(touched[field.name] && errors[field.name]) ? errors[field.name] : ''}
-      error={!!((touched[field.name] && errors[field.name]))}
-      {...field}
-      {...props}
-    />
-  );
 
 const SignUpForm = withStyles(styles)((props) => {
   const {
@@ -47,13 +39,13 @@ const SignUpForm = withStyles(styles)((props) => {
 
         <div className={classes.formStyle}>
           <div>
-            <Field autoFocus name="email" type="email" component={renderTextField} placeholder="Email" />
+            <Field autoFocus name="email" type="email" component={RenderTextField} placeholder="Email" />
           </div>
           <div>
-            <Field name="password" type="password" component={renderTextField} placeholder="Password" />
+            <Field name="password" type="password" component={RenderTextField} placeholder="Password" />
           </div>
           <div>
-            <Field name="confirmPassword" type="password" component={renderTextField} placeholder="Confirm password" />
+            <Field name="confirmPassword" type="password" component={RenderTextField} placeholder="Confirm password" />
           </div>
           <Grid container direction="row-reverse" >
             <Grid item>

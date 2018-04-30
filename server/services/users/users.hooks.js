@@ -2,8 +2,9 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 const commonHooks = require('feathers-hooks-common');
 const { restrictToOwner } = require('feathers-authentication-hooks');
 const verifyHooks = require('feathers-authentication-management').hooks;
+const accountService = require('../../notifier');
 
-const { hashPassword } = require('@feathersjs/authentication-local').hooks;
+const { hashPassword, protect } = require('@feathersjs/authentication-local').hooks;
 const restrict = [
   authenticate('jwt'),
   restrictToOwner({
@@ -21,25 +22,50 @@ module.exports = {
       hashPassword(),
       verifyHooks.addVerification()
     ],
-    update: [...restrict, hashPassword()],
-    patch: [...restrict, hashPassword()],
+    update: [...restrict, 
+      commonHooks.disallow('external'), 
+      hashPassword()
+    ],
+    patch: [...restrict, 
+      commonHooks.iff(
+        commonHooks.isProvider('external'),    
+        commonHooks.preventChanges(
+          'email',
+          'isVerified',
+          'verifyToken',
+          'verifyShortToken',
+          'verifyExpires',
+          'verifyChanges',
+          'resetToken',
+          'resetShortToken',
+          'resetExpires'
+        )),
+      hashPassword()
+    ],
     remove: [...restrict]
   },
 
   after: {
     all: [
-      commonHooks.when(
-        hook => hook.params.provider,
-        commonHooks.discard('password')
-      ),
-      verifyHooks.removeVerification()
+      // commonHooks.when(
+      //   hook => hook.params.provider,
+      //   commonHooks.discard('password')
+      // ),
+      protect('password')
     ],
     find: [],
     get: [],
     create: [
+      context => {
+        accountService(context.app).notifier('resendVerifySignup', context.result);
+      },
+      verifyHooks.removeVerification()
     ],
-    update: [],
-    patch: [],
+    update: [
+    ],
+    patch: [
+      
+    ],
     remove: []
   },
 

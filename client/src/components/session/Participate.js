@@ -492,7 +492,7 @@ class Participate extends Component {
             </div>
           </Dialog>
 
-          <List dense className={classes.list}>
+          <List className={classes.list}>
             <Divider />
 
             {this.props.session.activity
@@ -511,9 +511,9 @@ class Participate extends Component {
                             ? activity.text
                             : activity.type
                         }
-                          secondary={`${
+                          secondary={`${moment(activity.dateTime).fromNow()}   -   ${
                           this.props.session.attendees.find(attendee => attendee.userId === activity.userId).name
-                        } ${moment(activity.dateTime).fromNow()}`}
+                        }`}
                         />
                       </ListItem>
                       <Divider />

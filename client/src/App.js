@@ -38,6 +38,7 @@ const AsyncChallenge = asyncComponent(() => import('./components/challenge/Chall
 const AsyncDashboard = asyncComponent(() => import('./components/dashboard/Dashboard'));
 const AsyncResources = asyncComponent(() => import('./components/resources/Resources'));
 const AsyncSessionDetail = asyncComponent(() => import('./components/session/SessionDetail'));
+const AsyncAuthManager = asyncComponent(() => import('./components/authentication/AuthManager'));
 
 const theme = createMuiTheme({
   palette: {
@@ -146,6 +147,7 @@ class App extends React.Component {
                     path="/signup/:redirect?"
                     render={() => <SignUp handleLogin={this.handleLogin} />}
                   />
+                  <Route path="/auth" component={AsyncAuthManager} />
                   <PrivateRoute exact path="/ideas" component={AsyncIdea} />
                   <PrivateRoute exact path="/challenges" component={AsyncChallenge} />
                   <PrivateRoute exact path="/sessions" component={AsyncSession} />

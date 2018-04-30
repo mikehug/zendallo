@@ -89,7 +89,7 @@ const CompanyPage = ({ classes }) => (
 
           <Button
             variant="raised"
-            onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+            onClick={() => { window.location.href = `${window.location.protocol}//${window.location.host}/app/signup`; }}
           >Contact Us
           </Button>
         </div>

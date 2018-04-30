@@ -48,7 +48,7 @@ With our 10 day trial you can try out all our great features for free
         <p />
         <Button
           variant="raised"
-          onClick={() => { window.location.href = `${window.location.href}app/signup`; }}
+          onClick={() => { window.location.href = `${window.location.protocol}//${window.location.host}/app/signup`; }}
           color="secondary"
         >Get Started
         </Button>
