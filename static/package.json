@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Mike Hughes",
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.46",
     "gatsby": "^1.9.238",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-material-ui": "^0.1.3",
