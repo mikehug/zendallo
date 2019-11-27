@@ -1,0 +1,66 @@
+{
+  "host": "127.0.0.1",
+  "port": "PORT",
+  "public": "../static/public/",
+  "client":  "../client/build/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "emailerKey": "",
+  "dbname": "zendallo1",
+  "nedb": "../data/",  
+  "mongodb": "",
+  "smtpUser": "",
+  "smtpPass": "",
+  "emailFrom": "",
+  "authentication": {
+    "secret": "",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://zendallo.com",
+      "subject": "anonymous",
+      "issuer": "zendallo",
+      "algorithm": "HS256",
+      "expiresIn": "10d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "auth0": {
+      "clientID": "your auth0 client id",
+      "clientSecret": "your auth0 client secret",
+      "successRedirect": "/",
+      "domain": "mydomain.auth0.com"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "github": {
+      "clientID": "your github client id",
+      "clientSecret": "your github client secret",
+      "successRedirect": "/"
+    },
+    "cookie": {
+      "enabled": false,
+      "name": "zendallo",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
+}
